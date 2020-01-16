@@ -26,21 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         carsell.cpp \
-    dbconnector.cpp \
-    user.cpp \
-    car.cpp \
-    message.cpp \
-    popup.cpp
+    dbconnector.cpp
 
 HEADERS += \
         carsell.h \
-    dbconnector.h \
-    user.h \
-    car.h \
-    message.h \
-    constances.h \
-    popup.h
+    dbconnector.h
 
 FORMS += \
-        carsell.ui \
-    popup.ui
+        carsell.ui
