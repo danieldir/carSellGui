@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Carsell</class>
+ <widget class="QMainWindow" name="Carsell">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1260</width>
+    <height>808</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Bitstream Vera Sans Mono</family>
+    <pointsize>10</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Carsell</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1261</width>
+      <height>731</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="loginPage">
+     <widget class="QLabel" name="presentationBackground">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-30</y>
+        <width>1251</width>
+        <height>761</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../Schreibtisch/2817465-ford-mustang-shelby-shelby-gt-car-old-car-muscle-cars-ford-mustang-shelby___cars-wallpapers.jpg</pixmap>
+      </property>
+     </widget>
+     <widget class="QLabel" name="identificationStatusLabel">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>70</y>
+        <width>431</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>aakar</family>
+        <weight>50</weight>
+        <italic>true</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(239, 41, 41);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="signUpButton">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>680</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bitstream Vera Serif</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Sign Up</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>-20</y>
+        <width>534</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Usename</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="userNameLineEdit">
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="passwordLineEdit">
+           <property name="inputMask">
+            <string/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>25</number>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="loginButton">
+         <property name="font">
+          <font>
+           <family>Bitstream Vera Serif</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="registrationPage">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>100</y>
+        <width>411</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Account Identification</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Username</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="userNameRegistrationLineEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="passwordRegistrationLineEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Repeat Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="repeatPasswordRegistrationLineEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Personal Identification</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Name   </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="nameRegistrationLineEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Surname</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="surnameRegistrationLineEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Phone Number</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="phoneNumberRegistrationLineEdit"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="submitRegistrationButton">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>640</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Submit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>700</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go Back</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="DashboardPage">
+     <widget class="QPushButton" name="toSellCarPageButton">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>380</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sell My Car</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="toBuyCarPageButton">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>190</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Looking For a Car</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="toOwnerGalleryCars">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>620</y>
+        <width>161</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>My Galery</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>320</y>
+        <width>341</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go to sellCarPage text Presentation dvDEVSDVDV</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>560</y>
+        <width>341</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go to Open Negociation text Presentation</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>271</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sawasdee</family>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>User Salutation (Wellcome Username)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>150</y>
+        <width>341</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go to buyCarPage text Presentation with a automatic Next Line Text</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="CarGaleryPage">
+     <widget class="QListView" name="listView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>301</width>
+        <height>671</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>639</x>
+        <y>29</y>
+        <width>591</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>589</width>
+         <height>609</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>660</y>
+        <width>521</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_23">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_2"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>Send</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="SellCarPage">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>421</width>
+        <height>681</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QComboBox" name="carBrandRegistrationComboBox">
+         <item>
+          <property name="text">
+           <string extracomment="choose a Model">Choose a Brand</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Alfa Romeo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Aston Martin</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Audi</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bentley</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>BMW</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Citroen</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dacia</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ferrari</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Fiat</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ford</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Honda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hyundai</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jaguar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jeep</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Kia</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Lamborghini</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Land Rover</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Lexus</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mazda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mercedes-Benz</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mini</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Nissan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Peugeot</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Porsche</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Rolls-Royce</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Skoda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Smart</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Toyota</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Volkswagen</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Volvo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Other</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>Model</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carModelRegistrationLineEdit">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QComboBox" name="carTypeRegistrationCombo">
+         <item>
+          <property name="text">
+           <string>Type</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Diesel</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Electric</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Gasoline</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hybrid</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>Construction Year</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carConstructionYearRegistrationLineEdit">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QComboBox" name="carColorRegistrationCombo">
+         <item>
+          <property name="text">
+           <string>Color</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Black</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>White</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Blue</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Grey</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Red</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Yellow</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Green</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Pink</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Gold</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Brown</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Other</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>Current Mileage</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carMileageRegistrationLineEdit">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <item>
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>Pick up City</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carPickPointRegistrationCityLineEdit">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <item>
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>Price</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="CarPriceRegistrationLineEdit">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="sellCarButton">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>650</y>
+        <width>161</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sell It !</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="carIdentificationLabel">
+      <property name="geometry">
+       <rect>
+        <x>36</x>
+        <y>20</y>
+        <width>401</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bitstream Vera Serif</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Car Identification</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="carBrandImage">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>60</y>
+        <width>111</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>brand Image</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>270</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Image</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>60</y>
+        <width>591</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_20"/>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>360</y>
+        <width>591</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="descriptionStatus">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>440</y>
+        <width>251</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(204, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="BuyCarPage">
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>301</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QComboBox" name="carBrandRegistrationComboBox_2">
+         <item>
+          <property name="text">
+           <string extracomment="choose a Model">Choose a Brand</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Alfa Romeo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Aston Martin</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Audi</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bentley</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>BMW</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Citroen</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dacia</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ferrari</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Fiat</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ford</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Honda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hyundai</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jaguar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jeep</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Kia</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Lamborghini</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Land Rover</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Lexus</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mazda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mercedes-Benz</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mini</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Nissan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Peugeot</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Porsche</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Rolls-Royce</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Skoda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Smart</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Toyota</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Volkswagen</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Volvo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Other</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <widget class="QLabel" name="label_19">
+           <property name="text">
+            <string>Model</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carModelRegistrationLineEdit_2"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>410</y>
+        <width>307</width>
+        <height>166</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <widget class="QLabel" name="label_20">
+           <property name="text">
+            <string>Construction Year</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carConstructionYearRegistrationLineEdit_2"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QComboBox" name="carColorRegistrationCombo_2">
+         <item>
+          <property name="text">
+           <string>Color</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Black</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>White</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Blue</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Grey</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Red</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Yellow</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Green</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Pink</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Gold</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Brown</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Other</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="carColorRegistrationCombo_3">
+         <item>
+          <property name="text">
+           <string>Max Mileage</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>10000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>15000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>20000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>30000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>40000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>50000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>100000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>150000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>200000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>250000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>300000</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <item>
+          <widget class="QLabel" name="label_22">
+           <property name="text">
+            <string>Pick up City</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carPickPointRegistrationCityLineEdit_2"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>300</y>
+        <width>214</width>
+        <height>102</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QComboBox" name="carTypeRegistrationCombo_2">
+         <item>
+          <property name="text">
+           <string>Type</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Diesel</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Electric</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Gasoline</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hybrid</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_22">
+         <item>
+          <widget class="QLabel" name="label_23">
+           <property name="text">
+            <string>Max Price</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="CarPriceRegistrationLineEdit_2"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>670</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="carBrandImage_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>40</y>
+        <width>151</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>brandImage</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>339</x>
+        <y>9</y>
+        <width>901</width>
+        <height>721</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="listOfAvailableCar"/>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1260</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCarsell">
+    <property name="title">
+     <string>Carsell</string>
+    </property>
+    <widget class="QMenu" name="menuChange_Language">
+     <property name="title">
+      <string>Change Language</string>
+     </property>
+     <addaction name="actionDeutsch"/>
+     <addaction name="separator"/>
+     <addaction name="actionAnglais"/>
+     <addaction name="separator"/>
+     <addaction name="actionFrancais"/>
+    </widget>
+    <addaction name="actionHome"/>
+    <addaction name="separator"/>
+    <addaction name="actionSell"/>
+    <addaction name="actionBuy"/>
+    <addaction name="actionGalery"/>
+    <addaction name="separator"/>
+    <addaction name="menuChange_Language"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAccount">
+    <property name="title">
+     <string>Account</string>
+    </property>
+    <addaction name="actionLogin"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogout"/>
+    <addaction name="separator"/>
+    <addaction name="actionParameter"/>
+    <addaction name="separator"/>
+    <addaction name="actionDelete_Account"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>?</string>
+    </property>
+    <addaction name="actionHelps"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout_Carsell"/>
+   </widget>
+   <addaction name="menuCarsell"/>
+   <addaction name="menuAccount"/>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionHome"/>
+   <addaction name="separator"/>
+   <addaction name="actionBuy"/>
+   <addaction name="separator"/>
+   <addaction name="actionGalery"/>
+  </widget>
+  <action name="actionLogin">
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </action>
+  <action name="actionSignUp">
+   <property name="text">
+    <string>SignUp</string>
+   </property>
+  </action>
+  <action name="actionDelete_Account">
+   <property name="text">
+    <string>Delete Account</string>
+   </property>
+  </action>
+  <action name="actionHelps">
+   <property name="text">
+    <string>Helps</string>
+   </property>
+  </action>
+  <action name="actionAbout_Carsell">
+   <property name="text">
+    <string>About Carsell</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDeutsch">
+   <property name="text">
+    <string>Deutsch</string>
+   </property>
+  </action>
+  <action name="actionFrancais">
+   <property name="text">
+    <string>Francais</string>
+   </property>
+  </action>
+  <action name="actionAnglais">
+   <property name="text">
+    <string>Englisch    (default)</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Sign Out</string>
+   </property>
+  </action>
+  <action name="actionHome">
+   <property name="text">
+    <string>Home</string>
+   </property>
+   <property name="toolTip">
+    <string>Go back to Dashboard</string>
+   </property>
+  </action>
+  <action name="actionSell">
+   <property name="text">
+    <string>Sell</string>
+   </property>
+  </action>
+  <action name="actionBuy">
+   <property name="text">
+    <string>Buy</string>
+   </property>
+   <property name="toolTip">
+    <string>Search a Car</string>
+   </property>
+  </action>
+  <action name="actionParameter">
+   <property name="text">
+    <string>Parameter</string>
+   </property>
+  </action>
+  <action name="actionGalery">
+   <property name="text">
+    <string>Galery</string>
+   </property>
+   <property name="toolTip">
+    <string>My Car Online</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
