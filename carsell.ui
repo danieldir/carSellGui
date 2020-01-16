@@ -32,7 +32,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="presentationBackground">
@@ -972,165 +972,10 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QComboBox" name="carBrandRegistrationComboBox_2">
+        <widget class="QComboBox" name="carBrandSearchComboBox">
          <item>
           <property name="text">
            <string extracomment="choose a Model">Choose a Brand</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Alfa Romeo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Aston Martin</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Audi</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Bentley</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>BMW</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Citroen</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Dacia</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ferrari</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Fiat</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ford</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Honda</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Hyundai</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Jaguar</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Jeep</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Kia</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Lamborghini</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Land Rover</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Lexus</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mazda</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mercedes-Benz</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mini</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Nissan</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Peugeot</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Porsche</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Rolls-Royce</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Skoda</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Smart</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Toyota</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Volkswagen</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Volvo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Other</string>
           </property>
          </item>
         </widget>
@@ -1138,14 +983,13 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_18">
          <item>
-          <widget class="QLabel" name="label_19">
-           <property name="text">
-            <string>Model</string>
-           </property>
+          <widget class="QComboBox" name="carModelSearchComboBox">
+           <item>
+            <property name="text">
+             <string extracomment="choose a Model">Choose a Model</string>
+            </property>
+           </item>
           </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="carModelRegistrationLineEdit_2"/>
          </item>
         </layout>
        </item>
@@ -1179,65 +1023,10 @@
         </layout>
        </item>
        <item>
-        <widget class="QComboBox" name="carColorRegistrationCombo_2">
+        <widget class="QComboBox" name="carColorSearchCombox">
          <item>
           <property name="text">
-           <string>Color</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Black</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>White</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Blue</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Grey</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Red</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Yellow</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Green</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Pink</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Gold</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Brown</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Other</string>
+           <string>Choose a Color</string>
           </property>
          </item>
         </widget>
@@ -1331,7 +1120,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="carPickPointRegistrationCityLineEdit_2"/>
+          <widget class="QLineEdit" name="carPickPointRegistrationCityLineEdit_2">
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -1351,10 +1144,10 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QComboBox" name="carTypeRegistrationCombo_2">
+        <widget class="QComboBox" name="carTypeSearchCombobox">
          <item>
           <property name="text">
-           <string>Type</string>
+           <string>Choose a Type</string>
           </property>
          </item>
          <item>
@@ -1389,13 +1182,13 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="CarPriceRegistrationLineEdit_2"/>
+          <widget class="QLineEdit" name="carPriceSearchLineEdit"/>
          </item>
         </layout>
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="searchButton">
       <property name="geometry">
        <rect>
         <x>80</x>

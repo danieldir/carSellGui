@@ -1,11 +1,13 @@
 #include "carsell.h"
 #include "ui_carsell.h"
 #include <QMessageBox>
+#include <map>
 
 Carsell::Carsell(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Carsell)
 {
+    DBConnector::connectToDB();
     ui->setupUi(this);
     ui->actionLogout->setEnabled(false);
     ui->actionBuy->setEnabled(false);
@@ -14,6 +16,32 @@ Carsell::Carsell(QWidget *parent) :
     ui->actionGalery->setEnabled(false);
     ui->actionParameter->setEnabled(false);
     ui->actionHome->setEnabled(false);
+
+
+    auto liste = DBConnector::getAllMarken();
+    QString item;
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->carBrandSearchComboBox->addItem(item);
+    }
+
+    liste = DBConnector::getAllModelle();
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->carModelSearchComboBox->addItem(item);
+    }
+
+    liste = DBConnector::getAllFarben();
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->carColorSearchCombo->addItem(item);
+    }
+
+    ui->CarPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+    ui->CarPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
 }
 
 Carsell::~Carsell()
@@ -30,7 +58,10 @@ void Carsell::on_loginButton_clicked()
             username = ui->userNameLineEdit->text(),
             password = ui->passwordLineEdit->text();
 
-
+    auto userList = DBConnector::getAllUser();
+    while(!userList.empty()) {
+        userList.
+    }
     if(username == "text" && password == "text")
     {
         ui->stackedWidget->setCurrentIndex(2);
@@ -114,4 +145,19 @@ void Carsell::on_actionBuy_triggered()
 void Carsell::on_actionGalery_triggered()
 {
     ui->stackedWidget->setCurrentIndex(3);
+}
+
+void Carsell::on_searchButton_clicked()
+{
+    int sPreis;
+    QString sMarke, sModell, sFarbe, sKraftstoff;
+    sPreis = ui->carPriceSearchLineEdit->text().toInt();
+    sMarke = ui->carBrandSearchComboBox->currentText();
+    sModell = ui->carModelSearchComboBox->currentText();
+    sFarbe = ui->carColorSearchCombox->currentText();
+    sKraftstoff = ui->carTypeSearchCombobox->currentText();
+    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
+
+    auto l = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
+
 }

@@ -76,21 +76,22 @@ std::list<QString> DBConnector::getAllFarben() {
     l.sort();
     return l;
 }
-
-std::map<int,std::pair<QString, QString> > DBConnector::getAllUsers(){
+std::tuple<int, QString, QString> DBConnector::getUserByUsername(const QString username){
     int id;
-    QString username, hash;
+    QString hash;
     QSqlQuery query;
-    std::map<int,std::pair<QString, QString> > m;
-    query.exec("SELECT * FROM User");
-    while(query.next()) {
+    std::tuple<int, QString, QString> user;
+    query.prepare("SELECT * FROM User WHERE Username = :username");
+    query.bindValue(":username", username);
+    query.exec();
+    if(query.next()) {
         id = query.value(0).toInt();
         username = query.value(1).toString();
         hash = query.value(2).toString();
-        m[id] = std::pair<QString, QString> (username, hash);
-        //        m.insert(std::pair<int, QString>((id, username));
+        std::tuple<int, QString, QString> (id, username, hash);
+        return user;
     }
-    return m;
+
 }
 
 std::list<std::tuple<int, int, int, int> > DBConnector::getAllSales() {
@@ -113,7 +114,6 @@ std::pair<QString, QString> DBConnector::getUserById(const int id) {
     QString username, hash;
     QSqlQuery query;
     query.prepare("select * from User where idUser = :idinput");
-    //    query.prepare("select * from User where idUser = 1");
     query.bindValue(":idinput", id);
     query.exec();
     query.next();

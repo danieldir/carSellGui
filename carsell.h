@@ -2,6 +2,7 @@
 #define CARSELL_H
 
 #include <QMainWindow>
+#include "dbconnector.h"
 
 namespace Ui {
 class Carsell;
@@ -39,6 +40,8 @@ private slots:
     void on_actionBuy_triggered();
 
     void on_actionGalery_triggered();
+
+    void on_searchButton_clicked();
 
 private:
     Ui::Carsell *ui;
