@@ -43,6 +43,8 @@ private slots:
 
     void on_searchButton_clicked();
 
+    void on_submitRegistrationButton_clicked();
+
 private:
     Ui::Carsell *ui;
 };

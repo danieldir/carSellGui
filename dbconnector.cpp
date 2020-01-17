@@ -80,17 +80,19 @@ std::tuple<int, QString, QString> DBConnector::getUserByUsername(const QString u
     int id;
     QString hash;
     QSqlQuery query;
-    std::tuple<int, QString, QString> user;
     query.prepare("SELECT * FROM User WHERE Username = :username");
     query.bindValue(":username", username);
     query.exec();
-    if(query.next()) {
-        id = query.value(0).toInt();
-        username = query.value(1).toString();
-        hash = query.value(2).toString();
-        std::tuple<int, QString, QString> (id, username, hash);
-        return user;
+    query.next();
+    if(query.size() == 0) {
+        qDebug() << "User don't found";
+        return std::tuple<int, QString, QString> ();
     }
+    id = query.value(0).toInt();
+    hash = query.value(2).toString();
+    return std::tuple<int, QString, QString> (id, username, hash);
+
+
 
 }
 

@@ -3,11 +3,14 @@
 
 int main(int argc, char *argv[])
 {
+//    DBConnector::connectToDB();
+
     QApplication a(argc, argv);
     Carsell w;
     w.show();
 
     //tests
+//    auto user = DBConnector::getUserByUsername("Daniel");
 //       auto l = dbconnector.getAllMarken();
 //       auto l2 = dbconnector.getAllModelle();
 //       auto l3 = dbconnector.getAllFarben();
@@ -17,7 +20,6 @@ int main(int argc, char *argv[])
 //    qDebug() << "Insert Car: " << DBConnector::insertCar("Tesla", "Model 3", "Rot", 49999, "Elektro", NULL, 3); //Test: Auto einfügen
    //    qDebug() << dbconnector.deleteUser(5); //Test: User löschen
    //    qDebug() << "Delete Car:  << dbconnector.deleteCar(3);
-       //Test: Erste Zeile von Car
    //    auto l = dbconnector.getAllCars();
    //    auto t = l.front();
    //    qDebug() << std::get<1>(t) << "\t" << std::get<2>(t);

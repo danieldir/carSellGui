@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1260</width>
-    <height>808</height>
+    <width>1244</width>
+    <height>813</height>
    </rect>
   </property>
   <property name="font">
@@ -120,7 +120,7 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>Usename</string>
+            <string>Username</string>
            </property>
           </widget>
          </item>
@@ -1233,7 +1233,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1260</width>
+     <width>1244</width>
      <height>22</height>
     </rect>
    </property>

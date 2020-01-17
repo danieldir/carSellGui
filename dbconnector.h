@@ -17,7 +17,7 @@ public:
     static std::list<QString> getAllMarken();
     static std::list<QString> getAllModelle();
     static std::list<QString> getAllFarben();
-    static std::list<std::tuple<int, QString, QString> > getAllUsers();
+    static std::tuple<int, QString, QString> getUserByUsername(const QString username);
     static std::list<std::tuple<int, int, int, int> > getAllSales();
     static std::pair<QString, QString> getUserById(const int id);
     static QString getHashByUsername(const QString username);

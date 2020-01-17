@@ -37,18 +37,16 @@ Carsell::Carsell(QWidget *parent) :
     while(!liste.empty()) {
         item = liste.front();
         liste.pop_front();
-        ui->carColorSearchCombo->addItem(item);
+        ui->carColorSearchCombox->addItem(item);
     }
 
-    ui->CarPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+    ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
     ui->CarPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
 }
 
 Carsell::~Carsell()
 {
     delete ui;
-
-
 }
 
 
@@ -58,12 +56,12 @@ void Carsell::on_loginButton_clicked()
             username = ui->userNameLineEdit->text(),
             password = ui->passwordLineEdit->text();
 
-    auto userList = DBConnector::getAllUser();
-    while(!userList.empty()) {
-        userList.
-    }
-    if(username == "text" && password == "text")
-    {
+    auto user = DBConnector::getUserByUsername(username);
+    QString password_hash = QCryptographicHash::hash(
+                QByteArray::fromStdString(password.toStdString()),
+                QCryptographicHash::RealSha3_256).toBase64();
+
+    if(std::get<2>(user) == password_hash) {
         ui->stackedWidget->setCurrentIndex(2);
 
         // Activation of Menu Tools and Tabbar Button
@@ -109,7 +107,7 @@ void Carsell::on_actionLogin_triggered()
 
 void Carsell::on_actionLogout_triggered()
 {
-     ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void Carsell::on_toBuyCarPageButton_clicked()
@@ -156,8 +154,45 @@ void Carsell::on_searchButton_clicked()
     sModell = ui->carModelSearchComboBox->currentText();
     sFarbe = ui->carColorSearchCombox->currentText();
     sKraftstoff = ui->carTypeSearchCombobox->currentText();
+    if(sMarke == "Choose a Brand") {
+        sMarke = "";
+    }
+    if(sModell == "Choose a Model") {
+        sModell = "";
+    }
+    if(sFarbe == "Choose a Color") {
+        sFarbe = "";
+    }
+    if(sKraftstoff == "Choose a Type") {
+        sKraftstoff = "";
+    }
     qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
 
     auto l = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
+
+}
+
+void Carsell::on_submitRegistrationButton_clicked()
+{
+    QString username, password;
+    if(ui->userNameRegistrationLineEdit->text() != ""){
+        if(ui->passwordRegistrationLineEdit->text() == ui->repeatPasswordRegistrationLineEdit->text()) {
+            username = ui->userNameRegistrationLineEdit->text();
+            password = ui->passwordRegistrationLineEdit->text();
+            bool insert = DBConnector::insertUser(username, password);
+            if(insert) {
+                qDebug() << "User sign up finish";
+                ui->stackedWidget->setCurrentIndex(0);
+            } else {
+                qDebug() << "insertUser() -> failed!";
+            }
+        } else {
+            qDebug() << "password != repeatPassword"; //TODO: Label für User einfügen damit User sieht was der Fehler ist
+        }
+    } else {
+        qDebug() << "username is NULL"; //TODO: Label einfügen
+    }
+
+
 
 }
