@@ -18,30 +18,10 @@ Carsell::Carsell(QWidget *parent) :
     ui->actionHome->setEnabled(false);
 
 
-    auto liste = DBConnector::getAllMarken();
-    QString item;
-    while(!liste.empty()) {
-        item = liste.front();
-        liste.pop_front();
-        ui->carBrandSearchComboBox->addItem(item);
-    }
-
-    liste = DBConnector::getAllModelle();
-    while(!liste.empty()) {
-        item = liste.front();
-        liste.pop_front();
-        ui->carModelSearchComboBox->addItem(item);
-    }
-
-    liste = DBConnector::getAllFarben();
-    while(!liste.empty()) {
-        item = liste.front();
-        liste.pop_front();
-        ui->carColorSearchCombox->addItem(item);
-    }
+    loadSearchFacilities();
 
     ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
-    ui->CarPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+    ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
 }
 
 Carsell::~Carsell()
@@ -62,6 +42,9 @@ void Carsell::on_loginButton_clicked()
                 QCryptographicHash::RealSha3_256).toBase64();
 
     if(std::get<2>(user) == password_hash) {
+        ui->userNameLineEdit->setText("");
+        ui->passwordLineEdit->setText("");
+        ui->userSalutation->setText("Welcome " + username);
         ui->stackedWidget->setCurrentIndex(2);
 
         // Activation of Menu Tools and Tabbar Button
@@ -113,6 +96,7 @@ void Carsell::on_actionLogout_triggered()
 void Carsell::on_toBuyCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(5);
+    loadSearchFacilities();
 }
 
 void Carsell::on_toSellCarPageButton_clicked()
@@ -138,6 +122,7 @@ void Carsell::on_actionHome_triggered()
 void Carsell::on_actionBuy_triggered()
 {
     ui->stackedWidget->setCurrentIndex(5);
+    loadSearchFacilities();
 }
 
 void Carsell::on_actionGalery_triggered()
@@ -147,7 +132,7 @@ void Carsell::on_actionGalery_triggered()
 
 void Carsell::on_searchButton_clicked()
 {
-    int sPreis;
+    int sPreis = 0;
     QString sMarke, sModell, sFarbe, sKraftstoff;
     sPreis = ui->carPriceSearchLineEdit->text().toInt();
     sMarke = ui->carBrandSearchComboBox->currentText();
@@ -167,9 +152,8 @@ void Carsell::on_searchButton_clicked()
         sKraftstoff = "";
     }
     qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
-
-    auto l = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
-
+    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
+    //    int searchedCarsSize = searchedCars.size();
 }
 
 void Carsell::on_submitRegistrationButton_clicked()
@@ -195,4 +179,71 @@ void Carsell::on_submitRegistrationButton_clicked()
 
 
 
+}
+
+void Carsell::on_sellCarButton_clicked()
+{
+    int sPreis;
+    QString sMarke, sModell, sFarbe, sKraftstoff;
+    sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
+    sMarke = ui->carBrandRegistrationComboBox->currentText();
+    sModell = ui->carModelRegistrationLineEdit->text();
+    sFarbe = ui->carColorRegistrationCombo->currentText();
+    sKraftstoff = ui->carTypeRegistrationCombo->currentText();
+
+    if(sMarke == "Choose a Brand") {
+        qDebug() << "No Brand chosed";
+    } else if(sModell == "") {
+        qDebug() << "No Model entered";
+    } else if(sFarbe == "Choose a Color") {
+        qDebug() << "No Color chosed";
+    } else if(sKraftstoff == "Choose a Type") {
+        qDebug() << "No Type chosed";
+    } else if(sPreis == 0) {
+        qDebug() << "No Price entered";
+    } else {
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
+        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, 5);
+        if(insert) {
+            qDebug() << "Car uploaded";
+        } else {
+            qDebug() << "Upload failed";
+        }
+    }
+}
+
+
+
+
+
+
+void Carsell::loadSearchFacilities()
+{
+    auto liste = DBConnector::getAllMarken();
+    QString item;
+    ui->carBrandSearchComboBox->clear();
+    ui->carBrandSearchComboBox->addItem("Choose a Brand");
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->carBrandSearchComboBox->addItem(item);
+    }
+
+    liste = DBConnector::getAllModelle();
+    ui->carModelSearchComboBox->clear();
+    ui->carModelSearchComboBox->addItem("Choose a Model");
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->carModelSearchComboBox->addItem(item);
+    }
+
+    liste = DBConnector::getAllFarben();
+    ui->carColorSearchCombox->clear();
+    ui->carColorSearchCombox->addItem("Choose a Color");
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->carColorSearchCombox->addItem(item);
+    }
 }

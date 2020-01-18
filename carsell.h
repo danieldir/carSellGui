@@ -45,6 +45,10 @@ private slots:
 
     void on_submitRegistrationButton_clicked();
 
+    void on_sellCarButton_clicked();
+
+    void loadSearchFacilities();
+
 private:
     Ui::Carsell *ui;
 };

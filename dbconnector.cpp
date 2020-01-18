@@ -268,7 +268,7 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConn
     }
 
     if(l.empty()) {
-        qDebug() << "List is empty";
+        qDebug() << "No Cars found";
     }
     return l;
 }

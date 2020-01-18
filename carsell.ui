@@ -32,7 +32,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="presentationBackground">
@@ -394,7 +394,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_21">
+     <widget class="QLabel" name="userSalutation">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -689,7 +689,12 @@
         <widget class="QComboBox" name="carTypeRegistrationCombo">
          <item>
           <property name="text">
-           <string>Type</string>
+           <string>Choose a Type</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Petrol</string>
           </property>
          </item>
          <item>
@@ -700,11 +705,6 @@
          <item>
           <property name="text">
            <string>Electric</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Gasoline</string>
           </property>
          </item>
          <item>
@@ -736,7 +736,7 @@
         <widget class="QComboBox" name="carColorRegistrationCombo">
          <item>
           <property name="text">
-           <string>Color</string>
+           <string>Choose a Color</string>
           </property>
          </item>
          <item>
@@ -842,7 +842,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="CarPriceRegistrationLineEdit">
+          <widget class="QLineEdit" name="carPriceRegistrationLineEdit">
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -1032,7 +1032,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="carColorRegistrationCombo_3">
+        <widget class="QComboBox" name="carMileRegistrationComboBox">
          <item>
           <property name="text">
            <string>Max Mileage</string>
@@ -1152,17 +1152,17 @@
          </item>
          <item>
           <property name="text">
+           <string>Petrol</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Diesel</string>
           </property>
          </item>
          <item>
           <property name="text">
            <string>Electric</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Gasoline</string>
           </property>
          </item>
          <item>
