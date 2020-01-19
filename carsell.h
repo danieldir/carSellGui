@@ -33,7 +33,6 @@ private slots:
 
     void on_toOwnerGalleryCars_clicked();
 
-    void on_pushButton_4_clicked();
 
     void on_actionHome_triggered();
 
@@ -48,6 +47,8 @@ private slots:
     void on_sellCarButton_clicked();
 
     void loadSearchFacilities();
+
+    void on_goBack_Button_clicked();
 
 private:
     Ui::Carsell *ui;

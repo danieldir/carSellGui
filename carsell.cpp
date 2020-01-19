@@ -2,6 +2,7 @@
 #include "ui_carsell.h"
 #include <QMessageBox>
 #include <map>
+#include <QtWidgets>
 
 Carsell::Carsell(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +23,8 @@ Carsell::Carsell(QWidget *parent) :
 
     ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
     ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+
+
 }
 
 Carsell::~Carsell()
@@ -109,10 +112,7 @@ void Carsell::on_toOwnerGalleryCars_clicked()
     ui->stackedWidget->setCurrentIndex(3);
 }
 
-void Carsell::on_pushButton_4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
+
 
 void Carsell::on_actionHome_triggered()
 {
@@ -246,4 +246,9 @@ void Carsell::loadSearchFacilities()
         liste.pop_front();
         ui->carColorSearchCombox->addItem(item);
     }
+}
+
+void Carsell::on_goBack_Button_clicked()
+{
+   ui->stackedWidget->setCurrentIndex(0);
 }
