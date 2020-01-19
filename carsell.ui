@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>955</width>
+    <width>1348</width>
     <height>840</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="presentationBackground">
@@ -43,6 +43,12 @@
         <width>1251</width>
         <height>761</height>
        </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1251</width>
+        <height>761</height>
+       </size>
       </property>
       <property name="text">
        <string/>
@@ -424,6 +430,9 @@ font: 57 italic 14pt &quot;URW Chancery L&quot;;</string>
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
       <property name="text">
        <string>Welcom Username!!</string>
       </property>
@@ -452,8 +461,8 @@ background-color: rgba(239, 67, 57, 185);</string>
      <widget class="QLabel" name="labelIcon">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>40</y>
+        <x>320</x>
+        <y>10</y>
         <width>71</width>
         <height>61</height>
        </rect>
@@ -490,54 +499,6 @@ background-color: rgba(239, 67, 57, 185);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>420</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../Downloads/icons8-backhand-index-pointing-left-emoji-48.png</pixmap>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>960</x>
-        <y>670</y>
-        <width>61</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../Downloads/icons8-backhand-index-pointing-right-emoji-48.png</pixmap>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_8">
-      <property name="geometry">
-       <rect>
-        <x>970</x>
-        <y>230</y>
-        <width>71</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../Downloads/icons8-backhand-index-pointing-right-emoji-48.png</pixmap>
-      </property>
-     </widget>
      <widget class="QLabel" name="icon1">
       <property name="geometry">
        <rect>
@@ -566,9 +527,6 @@ background-color: rgba(239, 67, 57, 185);</string>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>icons8-backhand-index-pointing-right-emoji-48.png</pixmap>
-      </property>
      </widget>
      <widget class="QLabel" name="icon3">
       <property name="geometry">
@@ -582,9 +540,6 @@ background-color: rgba(239, 67, 57, 185);</string>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>icons8-backhand-index-pointing-right-emoji-48.png</pixmap>
-      </property>
      </widget>
      <zorder>pixfoto</zorder>
      <zorder>labelLookingForCar</zorder>
@@ -595,9 +550,6 @@ background-color: rgba(239, 67, 57, 185);</string>
      <zorder>userSalutation</zorder>
      <zorder>labelIcon</zorder>
      <zorder>labelSellCar</zorder>
-     <zorder>label_4</zorder>
-     <zorder>label_3</zorder>
-     <zorder>label_8</zorder>
      <zorder>icon1</zorder>
      <zorder>icon2</zorder>
      <zorder>icon3</zorder>
@@ -1092,6 +1044,9 @@ border-color: rgb(114, 159, 207);</string>
         <height>25</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(44, 120, 115);</string>
+      </property>
       <property name="text">
        <string>Add Image</string>
       </property>
@@ -1482,8 +1437,8 @@ background-color: rgb(148, 211, 172);</string>
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>339</x>
-        <y>9</y>
+        <x>430</x>
+        <y>0</y>
         <width>901</width>
         <height>721</height>
        </rect>
@@ -1495,7 +1450,7 @@ background-color: rgb(148, 211, 172);</string>
        <rect>
         <x>6</x>
         <y>6</y>
-        <width>961</width>
+        <width>1291</width>
         <height>761</height>
        </rect>
       </property>
@@ -1522,7 +1477,7 @@ background-color: rgba(239, 252, 239, 222);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>955</width>
+     <width>1348</width>
      <height>22</height>
     </rect>
    </property>

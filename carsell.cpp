@@ -24,6 +24,21 @@ Carsell::Carsell(QWidget *parent) :
     ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
     ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
 
+    QPixmap pix("/home/jovine/Projekt/usedcar.jpg");
+    ui->pixfoto->setPixmap(pix);
+
+    QPixmap icon1("/home/jovine/Projekt/icon1.png");
+    ui->icon1->setPixmap(icon1);
+
+    QPixmap icon2("/home/jovine/Projekt/icon2.png");
+    ui->icon2->setPixmap(icon2);
+
+    QPixmap icon3("/home/jovine/Projekt/icon2.png");
+    ui->icon3->setPixmap(icon3);
+
+    QPixmap icon4("/home/jovine/Projekt/iconcool.png");
+    ui->labelIcon->setPixmap(icon4);
+
 
 }
 
