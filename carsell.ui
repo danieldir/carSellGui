@@ -372,9 +372,9 @@
       <property name="geometry">
        <rect>
         <x>270</x>
-        <y>350</y>
+        <y>400</y>
         <width>301</width>
-        <height>131</height>
+        <height>81</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -416,10 +416,10 @@ font: 57 italic 14pt &quot;URW Chancery L&quot;;</string>
      <widget class="QLabel" name="userSalutation">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>-40</y>
-        <width>191</width>
-        <height>141</height>
+        <x>180</x>
+        <y>10</y>
+        <width>141</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -441,9 +441,9 @@ font: 57 italic 14pt &quot;URW Chancery L&quot;;</string>
       <property name="geometry">
        <rect>
         <x>800</x>
-        <y>160</y>
+        <y>190</y>
         <width>241</width>
-        <height>111</height>
+        <height>81</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -452,26 +452,10 @@ font: 57 italic 14pt &quot;URW Chancery L&quot;;
 background-color: rgba(239, 67, 57, 185);</string>
       </property>
       <property name="text">
-       <string>                    Click here to go to buy</string>
+       <string>       Click here to go to buy</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelIcon">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>10</y>
-        <width>71</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../iconCool.png</pixmap>
       </property>
      </widget>
      <widget class="QLabel" name="pixfoto">
@@ -480,7 +464,7 @@ background-color: rgba(239, 67, 57, 185);</string>
         <x>40</x>
         <y>10</y>
         <width>1261</width>
-        <height>741</height>
+        <height>751</height>
        </rect>
       </property>
       <property name="maximumSize">
@@ -493,7 +477,7 @@ background-color: rgba(239, 67, 57, 185);</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>usedcar.jpg</pixmap>
+       <pixmap resource="ressources.qrc">:/img/usedcar.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -512,7 +496,7 @@ background-color: rgba(239, 67, 57, 185);</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons8-backhand-index-pointing-left-emoji-48.png</pixmap>
+       <pixmap resource="ressources.qrc">:/img/icon1-left.png</pixmap>
       </property>
      </widget>
      <widget class="QLabel" name="icon2">
@@ -527,6 +511,9 @@ background-color: rgba(239, 67, 57, 185);</string>
       <property name="text">
        <string/>
       </property>
+      <property name="pixmap">
+       <pixmap resource="ressources.qrc">:/img/icons8-right.png</pixmap>
+      </property>
      </widget>
      <widget class="QLabel" name="icon3">
       <property name="geometry">
@@ -540,6 +527,22 @@ background-color: rgba(239, 67, 57, 185);</string>
       <property name="text">
        <string/>
       </property>
+      <property name="pixmap">
+       <pixmap resource="ressources.qrc">:/img/icons8-right.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QLabel" name="iconcool">
+      <property name="geometry">
+       <rect>
+        <x>326</x>
+        <y>26</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="ressources.qrc">:/img/iconcool.png</pixmap>
+      </property>
      </widget>
      <zorder>pixfoto</zorder>
      <zorder>labelLookingForCar</zorder>
@@ -548,11 +551,11 @@ background-color: rgba(239, 67, 57, 185);</string>
      <zorder>toOwnerGalleryCars</zorder>
      <zorder>labelGalery</zorder>
      <zorder>userSalutation</zorder>
-     <zorder>labelIcon</zorder>
      <zorder>labelSellCar</zorder>
      <zorder>icon1</zorder>
      <zorder>icon2</zorder>
      <zorder>icon3</zorder>
+     <zorder>iconcool</zorder>
     </widget>
     <widget class="QWidget" name="CarGaleryPage">
      <widget class="QListView" name="listView">
@@ -1635,6 +1638,8 @@ background-color: rgba(239, 252, 239, 222);</string>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
