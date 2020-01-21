@@ -34,3 +34,9 @@ HEADERS += \
 
 FORMS += \
         carsell.ui
+
+RESOURCES += \
+    ressources.qrc
+
+DISTFILES += \
+    img/icons8-right.png
