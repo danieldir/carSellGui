@@ -3,6 +3,8 @@
 #include <QMessageBox>
 #include <map>
 #include <QtWidgets>
+#include "carcardwidget.h"
+
 
 Carsell::Carsell(QWidget *parent) :
     QMainWindow(parent),
@@ -17,6 +19,8 @@ Carsell::Carsell(QWidget *parent) :
     ui->actionGalery->setEnabled(false);
     ui->actionParameter->setEnabled(false);
     ui->actionHome->setEnabled(false);
+    ui->carListGridLayout->setColumnStretch(2,10);
+    ui->carListGridLayout->setRowStretch(2,10);
 
 
     loadSearchFacilities();
@@ -169,6 +173,10 @@ void Carsell::on_searchButton_clicked()
     qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
     auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
     //    int searchedCarsSize = searchedCars.size();
+
+         // to do : print card in a scrollbar and use a loop to print all available car
+         ui->carListGridLayout->addWidget(new CarCardWidget);
+
 }
 
 void Carsell::on_submitRegistrationButton_clicked()
