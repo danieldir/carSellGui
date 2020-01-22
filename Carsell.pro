@@ -26,17 +26,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         carsell.cpp \
-    dbconnector.cpp
+    dbconnector.cpp \
+    carcardwidget.cpp
 
 HEADERS += \
         carsell.h \
-    dbconnector.h
+    dbconnector.h \
+    carcardwidget.h
 
 FORMS += \
-        carsell.ui
+        carsell.ui \
+        carcardwidget.ui
 
 RESOURCES += \
     ressources.qrc
 
 DISTFILES += \
     img/icons8-right.png
+
+
+

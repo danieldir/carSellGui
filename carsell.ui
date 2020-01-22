@@ -32,7 +32,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="presentationBackground">
@@ -1443,18 +1443,7 @@ background-color: rgb(148, 211, 172);</string>
        <string>brandImage</string>
       </property>
      </widget>
-     <widget class="QWidget" name="gridLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>0</y>
-        <width>901</width>
-        <height>721</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="listOfAvailableCar"/>
-     </widget>
-     <widget class="QLabel" name="label_21">
+     <widget class="QLabel" name="buyCarLabel">
       <property name="geometry">
        <rect>
         <x>6</x>
@@ -1471,7 +1460,18 @@ background-color: rgba(239, 252, 239, 222);</string>
        <string/>
       </property>
      </widget>
-     <zorder>label_21</zorder>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>10</y>
+        <width>831</width>
+        <height>721</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="carListGridLayout"/>
+     </widget>
+     <zorder>buyCarLabel</zorder>
      <zorder>groupBox_4</zorder>
      <zorder>groupBox_5</zorder>
      <zorder>groupBox_6</zorder>
