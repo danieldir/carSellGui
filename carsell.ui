@@ -338,6 +338,9 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(186, 189, 182);</string>
+      </property>
       <property name="text">
        <string>Sell My Car</string>
       </property>
@@ -350,6 +353,9 @@
         <width>191</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(186, 189, 182);</string>
       </property>
       <property name="text">
        <string>Looking For a Car</string>
@@ -373,7 +379,7 @@
        <rect>
         <x>270</x>
         <y>400</y>
-        <width>301</width>
+        <width>251</width>
         <height>81</height>
        </rect>
       </property>
@@ -462,7 +468,7 @@ background-color: rgba(239, 67, 57, 185);</string>
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>10</y>
+        <y>0</y>
         <width>1261</width>
         <height>751</height>
        </rect>
