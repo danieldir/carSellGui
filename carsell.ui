@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1348</width>
+    <width>1247</width>
     <height>840</height>
    </rect>
   </property>
@@ -21,7 +21,13 @@
   <property name="windowTitle">
    <string>Carsell</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(223, 246, 240);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -31,8 +37,12 @@
       <height>731</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.05 rgba(14, 8, 73, 255), stop:0.36 rgba(28, 17, 145, 255), stop:0.6 rgba(126, 14, 81, 255), stop:0.75 rgba(234, 11, 11, 255), stop:0.79 rgba(244, 70, 5, 255), stop:0.86 rgba(255, 136, 0, 255), stop:0.935 rgba(239, 236, 55, 255));
+background-color: rgb(223, 246, 240);</string>
+    </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="presentationBackground">
@@ -93,8 +103,8 @@
      <widget class="QPushButton" name="signUpButton">
       <property name="geometry">
        <rect>
-        <x>1100</x>
-        <y>680</y>
+        <x>1060</x>
+        <y>510</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -132,6 +142,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="userNameLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="readOnly">
             <bool>false</bool>
            </property>
@@ -153,6 +166,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="passwordLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="inputMask">
             <string/>
            </property>
@@ -197,14 +213,22 @@
         <height>521</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(211, 215, 207);</string>
+      </property>
       <property name="title">
        <string/>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="label_13">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(138, 226, 52);
+</string>
+         </property>
          <property name="text">
-          <string>Account Identification</string>
+          <string>       Account identification</string>
          </property>
         </widget>
        </item>
@@ -218,7 +242,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="userNameRegistrationLineEdit"/>
+          <widget class="QLineEdit" name="userNameRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -232,7 +260,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="passwordRegistrationLineEdit"/>
+          <widget class="QLineEdit" name="passwordRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -246,7 +278,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="repeatPasswordRegistrationLineEdit"/>
+          <widget class="QLineEdit" name="repeatPasswordRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -267,7 +303,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="nameRegistrationLineEdit"/>
+          <widget class="QLineEdit" name="nameRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -281,7 +321,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="surnameRegistrationLineEdit"/>
+          <widget class="QLineEdit" name="surnameRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -295,7 +339,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="phoneNumberRegistrationLineEdit"/>
+          <widget class="QLineEdit" name="phoneNumberRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -310,6 +358,9 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(52, 101, 164);</string>
+      </property>
       <property name="text">
        <string>Submit</string>
       </property>
@@ -323,8 +374,27 @@
         <height>25</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(245, 121, 0);</string>
+      </property>
       <property name="text">
        <string>Go Back</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>20</y>
+        <width>231</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Ubuntu&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Welcome to Carsell !!</string>
       </property>
      </widget>
     </widget>
@@ -573,6 +643,9 @@ background-color: rgba(239, 67, 57, 185);</string>
         <height>671</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
      </widget>
      <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
@@ -582,6 +655,9 @@ background-color: rgba(239, 67, 57, 185);</string>
         <width>591</width>
         <height>611</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -625,9 +701,9 @@ background-color: rgba(239, 67, 57, 185);</string>
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>40</y>
+        <y>60</y>
         <width>421</width>
-        <height>681</height>
+        <height>661</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -640,6 +716,9 @@ border-color: rgb(114, 159, 207);</string>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QComboBox" name="carBrandRegistrationComboBox">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
          <item>
           <property name="text">
            <string extracomment="choose a Model">Choose a Brand</string>
@@ -813,6 +892,9 @@ border-color: rgb(114, 159, 207);</string>
          </item>
          <item>
           <widget class="QLineEdit" name="carModelRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -822,6 +904,9 @@ border-color: rgb(114, 159, 207);</string>
        </item>
        <item>
         <widget class="QComboBox" name="carTypeRegistrationCombo">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
          <item>
           <property name="text">
            <string>Choose a Type</string>
@@ -860,6 +945,9 @@ border-color: rgb(114, 159, 207);</string>
          </item>
          <item>
           <widget class="QLineEdit" name="carConstructionYearRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -869,6 +957,9 @@ border-color: rgb(114, 159, 207);</string>
        </item>
        <item>
         <widget class="QComboBox" name="carColorRegistrationCombo">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
          <item>
           <property name="text">
            <string>Choose a Color</string>
@@ -942,6 +1033,9 @@ border-color: rgb(114, 159, 207);</string>
          </item>
          <item>
           <widget class="QLineEdit" name="carMileageRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -960,6 +1054,9 @@ border-color: rgb(114, 159, 207);</string>
          </item>
          <item>
           <widget class="QLineEdit" name="carPickPointRegistrationCityLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -981,6 +1078,9 @@ border-color: rgb(114, 159, 207);</string>
          </item>
          <item>
           <widget class="QLineEdit" name="carPriceRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -1012,9 +1112,9 @@ border-color: rgb(114, 159, 207);</string>
      <widget class="QLabel" name="carIdentificationLabel">
       <property name="geometry">
        <rect>
-        <x>36</x>
+        <x>30</x>
         <y>20</y>
-        <width>401</width>
+        <width>421</width>
         <height>31</height>
        </rect>
       </property>
@@ -1040,8 +1140,11 @@ border-color: rgb(114, 159, 207);</string>
         <height>91</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
       <property name="text">
-       <string>brand Image</string>
+       <string>    brand Image</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_2">
@@ -1054,7 +1157,7 @@ border-color: rgb(114, 159, 207);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(44, 120, 115);</string>
+       <string notr="true">background-color: rgba(64, 183, 191, 215);</string>
       </property>
       <property name="text">
        <string>Add Image</string>
@@ -1424,7 +1527,7 @@ background-color: rgb(148, 211, 172);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(148, 211, 172);</string>
+       <string notr="true">background-color: rgb(114, 159, 207);</string>
       </property>
       <property name="text">
        <string>Search</string>
@@ -1439,8 +1542,11 @@ background-color: rgb(148, 211, 172);</string>
         <height>111</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
       <property name="text">
-       <string>brandImage</string>
+       <string>       brandImage</string>
       </property>
      </widget>
      <widget class="QLabel" name="buyCarLabel">
@@ -1460,7 +1566,7 @@ background-color: rgba(239, 252, 239, 222);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QWidget" name="gridLayoutWidget">
+     <widget class="QFrame" name="gridFrame">
       <property name="geometry">
        <rect>
         <x>430</x>
@@ -1468,6 +1574,9 @@ background-color: rgba(239, 252, 239, 222);</string>
         <width>831</width>
         <height>721</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <layout class="QGridLayout" name="carListGridLayout"/>
      </widget>
@@ -1477,7 +1586,7 @@ background-color: rgba(239, 252, 239, 222);</string>
      <zorder>groupBox_6</zorder>
      <zorder>searchButton</zorder>
      <zorder>carBrandImage_2</zorder>
-     <zorder>gridLayoutWidget</zorder>
+     <zorder>gridFrame</zorder>
     </widget>
    </widget>
   </widget>
@@ -1486,7 +1595,7 @@ background-color: rgba(239, 252, 239, 222);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1348</width>
+     <width>1247</width>
      <height>22</height>
     </rect>
    </property>
