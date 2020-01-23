@@ -27,6 +27,8 @@ public:
     static int getNewId(const QString table);
     static bool deleteUser(const int idUser);
     static bool deleteCar(const int idAuto);
+    static std::list<std::tuple<int, QString, QString, QString, int, QString, int> > searchCar
+        (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid);
 };
 
 #endif // DBCONNECTOR_H

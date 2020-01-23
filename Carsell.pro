@@ -41,8 +41,7 @@ FORMS += \
 RESOURCES += \
     ressources.qrc
 
-DISTFILES += \
-    img/icons8-right.png
+DISTFILES +=
 
 
 

@@ -38,35 +38,12 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.05 rgba(14, 8, 73, 255), stop:0.36 rgba(28, 17, 145, 255), stop:0.6 rgba(126, 14, 81, 255), stop:0.75 rgba(234, 11, 11, 255), stop:0.79 rgba(244, 70, 5, 255), stop:0.86 rgba(255, 136, 0, 255), stop:0.935 rgba(239, 236, 55, 255));
-background-color: rgb(223, 246, 240);</string>
+     <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
-     <widget class="QLabel" name="presentationBackground">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>-30</y>
-        <width>1251</width>
-        <height>761</height>
-       </rect>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>1251</width>
-        <height>761</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../Schreibtisch/2817465-ford-mustang-shelby-shelby-gt-car-old-car-muscle-cars-ford-mustang-shelby___cars-wallpapers.jpg</pixmap>
-      </property>
-     </widget>
      <widget class="QLabel" name="identificationStatusLabel">
       <property name="geometry">
        <rect>
@@ -103,8 +80,8 @@ background-color: rgb(223, 246, 240);</string>
      <widget class="QPushButton" name="signUpButton">
       <property name="geometry">
        <rect>
-        <x>1060</x>
-        <y>510</y>
+        <x>1070</x>
+        <y>350</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -588,7 +565,7 @@ background-color: rgba(239, 67, 57, 185);</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="ressources.qrc">:/img/icons8-right.png</pixmap>
+       <pixmap>:/img/icons8-right.png</pixmap>
       </property>
      </widget>
      <widget class="QLabel" name="icon3">
@@ -604,7 +581,7 @@ background-color: rgba(239, 67, 57, 185);</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="ressources.qrc">:/img/icons8-right.png</pixmap>
+       <pixmap>:/img/icons8-right.png</pixmap>
       </property>
      </widget>
      <widget class="QLabel" name="iconcool">

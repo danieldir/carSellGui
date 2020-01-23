@@ -50,8 +50,6 @@ private slots:
 
     void on_goBack_Button_clicked();
 
-    void searchCar (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid);
-
 private:
     Ui::Carsell *ui;
 };
