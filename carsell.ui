@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1247</width>
-    <height>840</height>
+    <width>1248</width>
+    <height>810</height>
    </rect>
   </property>
   <property name="font">
@@ -31,9 +31,9 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>-10</y>
-      <width>1261</width>
+      <x>0</x>
+      <y>0</y>
+      <width>1251</width>
       <height>731</height>
      </rect>
     </property>
@@ -42,7 +42,7 @@
 background-color: rgb(223, 246, 240);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="presentationBackground">
@@ -1566,19 +1566,15 @@ background-color: rgba(239, 252, 239, 222);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QFrame" name="gridFrame">
+     <widget class="QListWidget" name="carAvailableListWidget">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>10</y>
-        <width>831</width>
-        <height>721</height>
+        <x>320</x>
+        <y>0</y>
+        <width>931</width>
+        <height>731</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <layout class="QGridLayout" name="carListGridLayout"/>
      </widget>
      <zorder>buyCarLabel</zorder>
      <zorder>groupBox_4</zorder>
@@ -1586,7 +1582,7 @@ background-color: rgba(239, 252, 239, 222);</string>
      <zorder>groupBox_6</zorder>
      <zorder>searchButton</zorder>
      <zorder>carBrandImage_2</zorder>
-     <zorder>gridFrame</zorder>
+     <zorder>carAvailableListWidget</zorder>
     </widget>
    </widget>
   </widget>
@@ -1595,7 +1591,7 @@ background-color: rgba(239, 252, 239, 222);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1247</width>
+     <width>1248</width>
      <height>22</height>
     </rect>
    </property>

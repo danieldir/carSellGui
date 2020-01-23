@@ -4,5 +4,6 @@
         <file>img/iconcool.png</file>
         <file>img/icons8-right.png</file>
         <file>img/usedcar.jpg</file>
+        <file>defaultImage.jpg</file>
     </qresource>
 </RCC>

@@ -19,8 +19,6 @@ Carsell::Carsell(QWidget *parent) :
     ui->actionGalery->setEnabled(false);
     ui->actionParameter->setEnabled(false);
     ui->actionHome->setEnabled(false);
-    ui->carListGridLayout->setColumnStretch(2,10);
-    ui->carListGridLayout->setRowStretch(2,10);
 
 
     loadSearchFacilities();
@@ -151,31 +149,106 @@ void Carsell::on_actionGalery_triggered()
 
 void Carsell::on_searchButton_clicked()
 {
-    int sPreis = 0;
-    QString sMarke, sModell, sFarbe, sKraftstoff;
-    sPreis = ui->carPriceSearchLineEdit->text().toInt();
-    sMarke = ui->carBrandSearchComboBox->currentText();
-    sModell = ui->carModelSearchComboBox->currentText();
-    sFarbe = ui->carColorSearchCombox->currentText();
-    sKraftstoff = ui->carTypeSearchCombobox->currentText();
-    if(sMarke == "Choose a Brand") {
-        sMarke = "";
+    int search_Price = 0;
+    QString search_Brand, search_Modell, search_Color, search_Type;
+    search_Price = ui->carPriceSearchLineEdit->text().toInt();
+    search_Brand = ui->carBrandSearchComboBox->currentText();
+    search_Modell = ui->carModelSearchComboBox->currentText();
+    search_Color = ui->carColorSearchCombox->currentText();
+    search_Type = ui->carTypeSearchCombobox->currentText();
+    if(search_Brand == "Choose a Brand")
+    {
+        search_Brand = "";
     }
-    if(sModell == "Choose a Model") {
-        sModell = "";
+    if(search_Modell == "Choose a Model")
+    {
+        search_Modell = "";
     }
-    if(sFarbe == "Choose a Color") {
-        sFarbe = "";
+    if(search_Color == "Choose a Color")
+    {
+        search_Color = "";
     }
-    if(sKraftstoff == "Choose a Type") {
-        sKraftstoff = "";
+    if(search_Type == "Choose a Type")
+    {
+        search_Type = "";
     }
-    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
-    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
-    //    int searchedCarsSize = searchedCars.size();
+    qDebug() << search_Brand << "\t" << search_Modell << "\t" << search_Color << "\t" << search_Price << "\t" << search_Type;
+    Carsell::searchCar(search_Brand, search_Modell, search_Color, search_Price, search_Type, 0);
 
-         // to do : print card in a scrollbar and use a loop to print all available car
-         ui->carListGridLayout->addWidget(new CarCardWidget);
+
+}
+
+void Carsell::searchCar(QString brand, QString modell,
+                        QString color, int price,
+                        QString type, int seller)
+{
+    ui->carAvailableListWidget->clear();
+
+    int id;
+    QString queryString = "SELECT * FROM Auto WHERE ";
+    QSqlQuery query;
+
+    if(brand == NULL) {
+        queryString.append("Marke = Marke ");
+    } else {
+        queryString.append("Marke = :marke ");
+    }
+
+    if(modell == NULL) {
+        queryString.append("AND Modell = Modell ");
+    } else {
+        queryString.append("AND Modell = :modell ");
+    }
+
+    if(color == NULL) {
+        queryString.append("AND Farbe = Farbe ");
+    } else {
+        queryString.append("AND Farbe = :farbe ");
+    }
+
+    if(price != 0) {
+        queryString.append("AND Preis BETWEEN 0 AND :preis ");
+    }
+
+    if(type == NULL) {
+        queryString.append("AND Kraftstoffart = Kraftstoffart ");
+    } else {
+        queryString.append("AND Kraftstoffart = :kraftstoff ");
+    }
+
+    if(seller == 0) {
+        queryString.append("AND Verkaeufer = Verkaeufer");
+    } else {
+        queryString.append("AND Verkaeufer = :verkaeufer");
+    }
+
+    query.prepare(queryString);
+    query.bindValue(":marke", brand);
+    query.bindValue(":modell", modell);
+    query.bindValue(":farbe", color);
+    query.bindValue(":preis", price);
+    query.bindValue(":kraftstoff", type);
+    query.bindValue(":verkaeufer", seller);
+    query.exec();
+
+    while(query.next())
+    {
+        id = query.value(0).toInt();
+        brand = query.value(1).toString();
+        modell = query.value(2).toString();
+        color = query.value(3).toString();
+        price = query.value(4).toInt();
+        type = query.value(5).toString();
+        seller = query.value(7).toInt();
+
+        CarCardWidget *carCard = new CarCardWidget();
+        QListWidgetItem *item = new QListWidgetItem;
+        carCard->setSetting(brand,modell,type,price);
+        item->setSizeHint(QSize(300, 380));
+        ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
+        ui->carAvailableListWidget->addItem(item);
+        ui->carAvailableListWidget->setItemWidget(item, carCard);
+    }
 
 }
 
