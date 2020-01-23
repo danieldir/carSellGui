@@ -12,7 +12,7 @@ class CarCardWidget : public QWidget
     Q_OBJECT
 
 public:
-    void setSetting(QString,QString,QString,int);
+    void setSetting(QString,QString,QString,int,QString,int,QString);
     explicit CarCardWidget(QWidget *parent = 0);
     ~CarCardWidget();
 

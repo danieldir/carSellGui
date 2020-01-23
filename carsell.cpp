@@ -25,6 +25,7 @@ Carsell::Carsell(QWidget *parent) :
 
     ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
     ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+    ui->carMileageRegistrationLineEdit->setValidator(new QIntValidator(0, 500000, this));
 
     QPixmap pix(":/img/usedcar.jpg");
     ui->pixfoto->setPixmap(pix);
@@ -66,6 +67,7 @@ void Carsell::on_loginButton_clicked()
         ui->passwordLineEdit->setText("");
         ui->userSalutation->setText("Welcome " + username);
         ui->stackedWidget->setCurrentIndex(2);
+        userId = std::get<0>(user);
 
         // Activation of Menu Tools and Tabbar Button
         ui->actionLogout->setEnabled(true);
@@ -149,13 +151,19 @@ void Carsell::on_actionGalery_triggered()
 
 void Carsell::on_searchButton_clicked()
 {
-    int sPreis = 0;
-    QString sMarke, sModell, sFarbe, sKraftstoff;
+    int sPreis = 0, sMileage = 0;
+    QString sMarke, sModell, sFarbe, sKraftstoff, sCity;
+
+    if(ui->carMileRegistrationComboBox->currentText() != "Choose a Max Mileage") {
+        sMileage = ui->carMileRegistrationComboBox->currentText().toInt();
+    }
     sPreis = ui->carPriceSearchLineEdit->text().toInt();
     sMarke = ui->carBrandSearchComboBox->currentText();
     sModell = ui->carModelSearchComboBox->currentText();
     sFarbe = ui->carColorSearchCombox->currentText();
     sKraftstoff = ui->carTypeSearchCombobox->currentText();
+    sCity = ui->carPickPointSearchCityLineEdit->text();
+
     if(sMarke == "Choose a Brand") {
         sMarke = "";
     }
@@ -168,22 +176,21 @@ void Carsell::on_searchButton_clicked()
     if(sKraftstoff == "Choose a Type") {
         sKraftstoff = "";
     }
-    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
-    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0);
+
+
+    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage;
+    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0, sCity, sMileage);
     //    int searchedCarsSize = searchedCars.size();
-    std::tuple<int, QString, QString, QString, int, QString, int> sCar;
+    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sCar;
 
     while (!searchedCars.empty())
     {
         sCar = searchedCars.front();
         searchedCars.pop_front();
-//        qDebug() << std::get<3>(sCar);
 
-    // to do : print card in a scrollbar and use a loop to print all available car
-//    ui->carListGridLayout->addWidget(new CarCardWidget(std::get<3>(sCar)));
         CarCardWidget *carCard = new CarCardWidget();
         QListWidgetItem *item = new QListWidgetItem;
-        carCard->setSetting(std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar));
+        carCard->setSetting(std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
         item->setSizeHint(QSize(300,380));
         ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
         ui->carAvailableListWidget->addItem(item);
@@ -218,13 +225,17 @@ void Carsell::on_submitRegistrationButton_clicked()
 
 void Carsell::on_sellCarButton_clicked()
 {
-    int sPreis;
-    QString sMarke, sModell, sFarbe, sKraftstoff;
+    int sPreis, sMileage;
+    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
     sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
     sMarke = ui->carBrandRegistrationComboBox->currentText();
     sModell = ui->carModelRegistrationLineEdit->text();
     sFarbe = ui->carColorRegistrationCombo->currentText();
     sKraftstoff = ui->carTypeRegistrationCombo->currentText();
+    sCity = ui->carPickPointRegistrationCityLineEdit->text();
+    sMileage = ui->carMileageRegistrationLineEdit->text().toInt();
+    sDescription = ui->plainTextEdit->toPlainText();
+    sDescription.resize(200);
 
     if(sMarke == "Choose a Brand") {
         qDebug() << "No Brand chosed";
@@ -236,9 +247,13 @@ void Carsell::on_sellCarButton_clicked()
         qDebug() << "No Type chosed";
     } else if(sPreis == 0) {
         qDebug() << "No Price entered";
+    } else if(sCity == "") {
+        qDebug() << "No City entered";
+    } else if(sMileage == 0) {
+        qDebug() << "No Mileage entered";
     } else {
-        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff;
-        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, 5);
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription;
+        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription);
         if(insert) {
             qDebug() << "Car uploaded";
         } else {

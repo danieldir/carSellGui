@@ -13,6 +13,7 @@ class Carsell : public QMainWindow
     Q_OBJECT
 
 public:
+    int userId;
     explicit Carsell(QWidget *parent = 0);
     ~Carsell();
 
@@ -49,6 +50,8 @@ private slots:
     void loadSearchFacilities();
 
     void on_goBack_Button_clicked();
+
+    void on_plainTextEdit_textChanged();
 
 private:
     Ui::Carsell *ui;

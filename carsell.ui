@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QLabel" name="identificationStatusLabel">
@@ -211,6 +211,12 @@ color: rgb(138, 226, 52);
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <property name="topMargin">
+          <number>150</number>
+         </property>
+         <property name="bottomMargin">
+          <number>25</number>
+         </property>
          <item>
           <widget class="QLabel" name="label_10">
            <property name="text">
@@ -229,10 +235,16 @@ color: rgb(138, 226, 52);
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <property name="topMargin">
+          <number>25</number>
+         </property>
+         <property name="bottomMargin">
+          <number>25</number>
+         </property>
          <item>
           <widget class="QLabel" name="label_11">
            <property name="text">
-            <string>password</string>
+            <string>Password</string>
            </property>
           </widget>
          </item>
@@ -241,12 +253,21 @@ color: rgb(138, 226, 52);
            <property name="styleSheet">
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
           </widget>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <property name="topMargin">
+          <number>25</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
          <item>
           <widget class="QLabel" name="label_9">
            <property name="text">
@@ -259,66 +280,8 @@ color: rgb(138, 226, 52);
            <property name="styleSheet">
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Personal Identification</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Name   </string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="nameRegistrationLineEdit">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Surname</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="surnameRegistrationLineEdit">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>Phone Number</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="phoneNumberRegistrationLineEdit">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
            </property>
           </widget>
          </item>
@@ -912,27 +875,6 @@ border-color: rgb(114, 159, 207);</string>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_15">
-         <item>
-          <widget class="QLabel" name="label_16">
-           <property name="text">
-            <string>Construction Year</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="carConstructionYearRegistrationLineEdit">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
         <widget class="QComboBox" name="carColorRegistrationCombo">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -1160,6 +1102,9 @@ border-color: rgb(114, 159, 207);</string>
         <height>171</height>
        </rect>
       </property>
+      <property name="placeholderText">
+       <string>Description (max 200 characters)</string>
+      </property>
      </widget>
      <widget class="QLabel" name="descriptionStatus">
       <property name="geometry">
@@ -1282,27 +1227,6 @@ background-color: rgba(204, 237, 210, 232);</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_19">
-         <item>
-          <widget class="QLabel" name="label_20">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>Construction Year</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="carConstructionYearRegistrationLineEdit_2">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
         <widget class="QComboBox" name="carColorSearchCombox">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -1321,7 +1245,7 @@ background-color: rgba(204, 237, 210, 232);</string>
          </property>
          <item>
           <property name="text">
-           <string>Max Mileage</string>
+           <string>Choose a Max Mileage</string>
           </property>
          </item>
          <item>
@@ -1409,7 +1333,7 @@ background-color: rgba(204, 237, 210, 232);</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="carPickPointRegistrationCityLineEdit_2">
+          <widget class="QLineEdit" name="carPickPointSearchCityLineEdit">
            <property name="styleSheet">
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>

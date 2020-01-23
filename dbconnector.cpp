@@ -15,25 +15,25 @@ void DBConnector::connectToDB()
 
 }
 
-std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConnector::getAllCars(){
-    int id, preis, verkaeuferid;
-    QString marke, modell, farbe, kraftstoffart;
-    QSqlQuery query;
-    std::list<std::tuple<int, QString, QString, QString, int, QString, int> > l;
-    query.exec("SELECT * FROM Auto");
-    while(query.next()) {
-        id = query.value(0).toInt();
-        marke = query.value(1).toString();
-        modell = query.value(2).toString();
-        farbe = query.value(3).toString();
-        preis = query.value(4).toInt();
-        kraftstoffart = query.value(5).toString();
-        verkaeuferid = query.value(7).toInt();
-        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid;
-        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid));
-    }
-    return l;
-}
+//std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConnector::getAllCars(){
+//    int id, preis, verkaeuferid;
+//    QString marke, modell, farbe, kraftstoffart;
+//    QSqlQuery query;
+//    std::list<std::tuple<int, QString, QString, QString, int, QString, int> > l;
+//    query.exec("SELECT * FROM Auto");
+//    while(query.next()) {
+//        id = query.value(0).toInt();
+//        marke = query.value(1).toString();
+//        modell = query.value(2).toString();
+//        farbe = query.value(3).toString();
+//        preis = query.value(4).toInt();
+//        kraftstoffart = query.value(5).toString();
+//        verkaeuferid = query.value(7).toInt();
+//        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid;
+//        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid));
+//    }
+//    return l;
+//}
 
 std::list<QString> DBConnector::getAllMarken() {
     QString marke;
@@ -42,7 +42,7 @@ std::list<QString> DBConnector::getAllMarken() {
     query.exec("SELECT DISTINCT Marke FROM Auto");
     while(query.next()) {
         marke = query.value(0).toString();
-        qDebug() << marke;
+//        qDebug() << marke;
         l.push_back(marke);
     }
     l.sort();
@@ -56,7 +56,7 @@ std::list<QString> DBConnector::getAllModelle() {
     query.exec("SELECT DISTINCT Modell FROM Auto");
     while(query.next()) {
         modell = query.value(0).toString();
-        qDebug() << modell;
+//        qDebug() << modell;
         l.push_back(modell);
     }
     l.sort();
@@ -70,7 +70,7 @@ std::list<QString> DBConnector::getAllFarben() {
     query.exec("SELECT DISTINCT Farbe FROM Auto");
     while(query.next()) {
         farbe = query.value(0).toString();
-        qDebug() << farbe;
+//        qDebug() << farbe;
         l.push_back(farbe);
     }
     l.sort();
@@ -157,12 +157,13 @@ bool DBConnector::insertUser(const QString username, const QString password) {
     return query.exec();
 }
 
-bool DBConnector::insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart, const QString bild, const int verkaeuferid) {
+bool DBConnector::insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart,
+                            const QString bild, const int verkaeuferid, const QString city, const int mileage, const QString description) {
     QSqlQuery query;
     int id = getNewId("Auto");
 
-    query.prepare("INSERT INTO Auto (idAuto, Marke, Modell, Farbe, Preis, Kraftstoffart, Bild, Verkaeufer)"
-                  "VALUES (:id, :marke, :modell, :farbe, :preis, :kraftstoff, :bild, :verkaeufer)");
+    query.prepare("INSERT INTO Auto (idAuto, Marke, Modell, Farbe, Preis, Kraftstoffart, Bild, Verkaeufer, City, Mileage, Description, requested)"
+                  "VALUES (:id, :marke, :modell, :farbe, :preis, :kraftstoff, :bild, :verkaeufer, :city, :mileage, :description, 0)");
     query.bindValue(":id", id);
     query.bindValue(":marke", marke);
     query.bindValue(":modell", modell);
@@ -171,6 +172,9 @@ bool DBConnector::insertCar(const QString marke, const QString modell, const QSt
     query.bindValue(":kraftstoff", kraftstoffart);
     query.bindValue(":bild", bild);
     query.bindValue(":verkaeufer", verkaeuferid);
+    query.bindValue(":city", city);
+    query.bindValue(":mileage", mileage);
+    query.bindValue(":description", description);
     return query.exec();
 }
 
@@ -205,13 +209,17 @@ bool DBConnector::deleteCar(const int idAuto) {
     return query.exec();
 }
 
-std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConnector::searchCar
-(QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid)
+std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > DBConnector::searchCar
+(QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid,  QString city, int mileage)
 {
-    int id;
+    int id = 0;
+    QString description;
+    bool requested = false;
     QString queryString = "SELECT * FROM Auto WHERE ";
     QSqlQuery query;
-    std::list<std::tuple<int, QString, QString, QString, int, QString, int> > l;
+    std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > l;
+
+    qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested;
 
     if(marke == NULL) {
         queryString.append("Marke = Marke ");
@@ -242,9 +250,17 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConn
     }
 
     if(verkaeuferid == 0) {
-        queryString.append("AND Verkaeufer = Verkaeufer");
+        queryString.append("AND Verkaeufer = Verkaeufer ");
     } else {
-        queryString.append("AND Verkaeufer = :verkaeufer");
+        queryString.append("AND Verkaeufer = :verkaeufer ");
+    }
+
+    if(city != NULL) {
+        queryString.append("AND City = :city ");
+    }
+
+    if(mileage != 0) {
+        queryString.append("AND Mileage BETWEEN 0 AND :mileage ");
     }
 
     query.prepare(queryString);
@@ -254,6 +270,8 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConn
     query.bindValue(":preis", preis);
     query.bindValue(":kraftstoff", kraftstoffart);
     query.bindValue(":verkaeufer", verkaeuferid);
+    query.bindValue(":city", city);
+    query.bindValue(":mileage", mileage);
     query.exec();
 
     while(query.next())
@@ -265,8 +283,12 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConn
         preis = query.value(4).toInt();
         kraftstoffart = query.value(5).toString();
         verkaeuferid = query.value(7).toInt();
-        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid;
-        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid));
+        city = query.value(8).toString();
+        mileage = query.value(9).toInt();
+        description = query.value(10).toString();
+        requested = query.value(11).toBool();
+        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested;
+        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested));
     }
     if(l.empty()) {
             qDebug() << "No Cars found";

@@ -10,14 +10,14 @@ int main(int argc, char *argv[])
     w.show();
 
     //tests
-//    DBConnector::searchCar(NULL, NULL, NULL, 0, "Benzin", 0); //Test: Auto suchen (Null bei String / 0 bei int wenn Wert egal)
+//    DBConnector::searchCar(NULL, NULL, NULL, 0, "", 0, "", 2000); //Test: Auto suchen (Null bei String / 0 bei int wenn Wert egal)
+//    qDebug() << "Insert Car: " << DBConnector::insertCar("Aston Martin", "DB9", "Grey", 63000, "Petrol", NULL, 5, "Frankfurt", 42000, "James Bond wan't to sell his car."); //Test: Auto einfügen
 //    auto user = DBConnector::getUserByUsername("Daniel");
 //       auto l = dbconnector.getAllMarken();
 //       auto l2 = dbconnector.getAllModelle();
 //       auto l3 = dbconnector.getAllFarben();
    //    qDebug() << dbconnector.getNewId("Auto");
    //    qDebug() << dbconnector.insertUser("testuser5", "anders"); //Test: User einfügen
-//    qDebug() << "Insert Car: " << DBConnector::insertCar("Tesla", "Model 3", "Rot", 49999, "Elektro", NULL, 3); //Test: Auto einfügen
    //    qDebug() << dbconnector.deleteUser(5); //Test: User löschen
    //    qDebug() << "Delete Car:  << dbconnector.deleteCar(3);
    //    auto l = dbconnector.getAllCars();
