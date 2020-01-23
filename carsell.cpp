@@ -236,7 +236,7 @@ void Carsell::on_sellCarButton_clicked()
     sCity = ui->carPickPointRegistrationCityLineEdit->text();
     sMileage = ui->carMileageRegistrationLineEdit->text().toInt();
     sDescription = ui->plainTextEdit->toPlainText();
-    sDescription.resize(200);
+
 
     if(sMarke == "Choose a Brand") {
         qDebug() << "No Brand chosed";
