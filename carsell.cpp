@@ -151,6 +151,7 @@ void Carsell::on_actionGalery_triggered()
 
 void Carsell::on_searchButton_clicked()
 {
+    ui->carAvailableListWidget->clear();
     int sPreis = 0, sMileage = 0;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity;
 
