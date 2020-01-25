@@ -22,7 +22,7 @@
    <string>Carsell</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(223, 246, 240);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -41,9 +41,12 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(223, 246, 240);</string>
+     </property>
      <widget class="QLabel" name="identificationStatusLabel">
       <property name="geometry">
        <rect>
@@ -181,6 +184,9 @@
      </widget>
     </widget>
     <widget class="QWidget" name="registrationPage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(223, 246, 240);</string>
+     </property>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
@@ -339,6 +345,9 @@ color: rgb(138, 226, 52);
      </widget>
     </widget>
     <widget class="QWidget" name="DashboardPage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(223, 246, 240);</string>
+     </property>
      <widget class="QPushButton" name="toSellCarPageButton">
       <property name="geometry">
        <rect>
@@ -574,6 +583,9 @@ background-color: rgba(239, 67, 57, 185);</string>
      <zorder>iconcool</zorder>
     </widget>
     <widget class="QWidget" name="CarGaleryPage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(223, 246, 240);</string>
+     </property>
      <widget class="QListView" name="listView">
       <property name="geometry">
        <rect>
@@ -637,6 +649,9 @@ background-color: rgba(239, 67, 57, 185);</string>
      </widget>
     </widget>
     <widget class="QWidget" name="SellCarPage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(223, 246, 240);</string>
+     </property>
      <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
        <rect>
@@ -1012,8 +1027,8 @@ border-color: rgb(114, 159, 207);</string>
      <widget class="QPushButton" name="sellCarButton">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>650</y>
+        <x>850</x>
+        <y>620</y>
         <width>161</width>
         <height>41</height>
        </rect>
@@ -1161,6 +1176,9 @@ background-color: rgb(233, 185, 110);</string>
      <zorder>groupBox_3</zorder>
     </widget>
     <widget class="QWidget" name="BuyCarPage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(223, 246, 240);</string>
+     </property>
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
@@ -1421,10 +1439,10 @@ background-color: rgb(148, 211, 172);</string>
      <widget class="QPushButton" name="searchButton">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>670</y>
-        <width>151</width>
-        <height>51</height>
+        <x>50</x>
+        <y>620</y>
+        <width>181</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1481,9 +1499,9 @@ background-color: rgba(239, 252, 239, 222);</string>
      <zorder>groupBox_4</zorder>
      <zorder>groupBox_5</zorder>
      <zorder>groupBox_6</zorder>
-     <zorder>searchButton</zorder>
      <zorder>carBrandImage_2</zorder>
      <zorder>carAvailableListWidget</zorder>
+     <zorder>searchButton</zorder>
     </widget>
    </widget>
   </widget>
