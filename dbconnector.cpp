@@ -15,25 +15,35 @@ void DBConnector::connectToDB()
 
 }
 
-//std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConnector::getAllCars(){
-//    int id, preis, verkaeuferid;
-//    QString marke, modell, farbe, kraftstoffart;
-//    QSqlQuery query;
-//    std::list<std::tuple<int, QString, QString, QString, int, QString, int> > l;
-//    query.exec("SELECT * FROM Auto");
-//    while(query.next()) {
-//        id = query.value(0).toInt();
-//        marke = query.value(1).toString();
-//        modell = query.value(2).toString();
-//        farbe = query.value(3).toString();
-//        preis = query.value(4).toInt();
-//        kraftstoffart = query.value(5).toString();
-//        verkaeuferid = query.value(7).toInt();
-//        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid;
-//        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid));
-//    }
-//    return l;
-//}
+std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > DBConnector::getCarByUserId(const int userId) {
+    bool requested;
+    int id, preis, verkaeuferid, mileage;
+    QString marke, modell, farbe, kraftstoffart, city, description;
+    QSqlQuery query;
+    std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > l;
+    query.prepare("SELECT * FROM Auto WHERE Verkaeufer = :userId");
+    query.bindValue(":userId", userId);
+    query.exec();
+    while(query.next()) {
+        id = query.value(0).toInt();
+        marke = query.value(1).toString();
+        modell = query.value(2).toString();
+        farbe = query.value(3).toString();
+        preis = query.value(4).toInt();
+        kraftstoffart = query.value(5).toString();
+        verkaeuferid = query.value(7).toInt();
+        city = query.value(8).toString();
+        mileage = query.value(9).toInt();
+        description = query.value(10).toString();
+        requested = query.value(11).toBool();
+        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested;
+        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested));
+    }
+    if(l.empty()) {
+        qDebug() << "No Cars for this userId found";
+    }
+    return l;
+}
 
 std::list<QString> DBConnector::getAllMarken() {
     QString marke;
@@ -42,7 +52,7 @@ std::list<QString> DBConnector::getAllMarken() {
     query.exec("SELECT DISTINCT Marke FROM Auto");
     while(query.next()) {
         marke = query.value(0).toString();
-//        qDebug() << marke;
+        //        qDebug() << marke;
         l.push_back(marke);
     }
     l.sort();
@@ -56,7 +66,7 @@ std::list<QString> DBConnector::getAllModelle() {
     query.exec("SELECT DISTINCT Modell FROM Auto");
     while(query.next()) {
         modell = query.value(0).toString();
-//        qDebug() << modell;
+        //        qDebug() << modell;
         l.push_back(modell);
     }
     l.sort();
@@ -70,7 +80,7 @@ std::list<QString> DBConnector::getAllFarben() {
     query.exec("SELECT DISTINCT Farbe FROM Auto");
     while(query.next()) {
         farbe = query.value(0).toString();
-//        qDebug() << farbe;
+        //        qDebug() << farbe;
         l.push_back(farbe);
     }
     l.sort();
@@ -291,7 +301,7 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString,
         l.push_back(std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested));
     }
     if(l.empty()) {
-            qDebug() << "No Cars found";
-        }
-        return l;
+        qDebug() << "No Cars found";
+    }
+    return l;
 }
