@@ -4,6 +4,7 @@
 #include <map>
 #include <QtWidgets>
 #include "carcardwidget.h"
+#include "gallerycardwidget.h"
 
 
 Carsell::Carsell(QWidget *parent) :
@@ -41,7 +42,7 @@ Carsell::Carsell(QWidget *parent) :
 
     QPixmap icon4(":/img/iconCool.png");
     ui->iconcool->setPixmap(icon4);
-
+    
 
 }
 
@@ -128,9 +129,14 @@ void Carsell::on_toSellCarPageButton_clicked()
 
 void Carsell::on_toOwnerGalleryCars_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
-}
 
+   int i = 0;
+    ui->stackedWidget->setCurrentIndex(3);
+    if (i == 0)
+      {
+         getCarS();
+     }
+}
 
 
 void Carsell::on_actionHome_triggered()
@@ -146,7 +152,12 @@ void Carsell::on_actionBuy_triggered()
 
 void Carsell::on_actionGalery_triggered()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+ int i = 0;
+  ui->stackedWidget->setCurrentIndex(3);
+   if (i == 0)
+     {
+       getCarS();
+     }
 }
 
 void Carsell::on_searchButton_clicked()
@@ -221,7 +232,6 @@ void Carsell::on_submitRegistrationButton_clicked()
     }
 
 
-
 }
 
 void Carsell::on_sellCarButton_clicked()
@@ -261,10 +271,8 @@ void Carsell::on_sellCarButton_clicked()
             qDebug() << "Upload failed";
         }
     }
+
 }
-
-
-
 
 
 
@@ -302,4 +310,69 @@ void Carsell::loadSearchFacilities()
 void Carsell::on_goBack_Button_clicked()
 {
    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void Carsell::on_DeleteButton_clicked()
+{
+    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+            delete it;
+}
+
+
+void Carsell::on_editButton_clicked()
+{
+    //  deleteFacilities();
+       ui->stackedWidget->setCurrentIndex(4);
+}
+
+void Carsell::getCarS()
+{
+    ui->listWidget->clear();
+     auto getCarByUserIds = DBConnector::getCarByUserId(userId);
+
+      std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sl;
+      while (!getCarByUserIds.empty())
+       {
+         sl = getCarByUserIds.front();
+         getCarByUserIds.pop_front();
+
+         GalleryCardWidget *galleryCard = new GalleryCardWidget();
+         QListWidgetItem *item = new QListWidgetItem;
+         galleryCard->setting(std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl));
+         qDebug() << std::get<1>(sl);
+         item->setSizeHint(QSize(80,80));
+         ui->listWidget->setViewMode(QListWidget::ListMode);
+         ui->listWidget->addItem(item);
+         ui->listWidget->setItemWidget(item, galleryCard);
+      }
+
+}
+
+void Carsell::on_sellCarButton_pressed()
+{
+    int j=1;  QString item;
+    if(j==1){
+        ui->carBrandRegistrationComboBox->clear();
+        ui->carBrandRegistrationComboBox->addItem("Choose a Brand");
+        //while(!liste.empty()) {   sMarke =
+            item ="";
+            ui->carBrandRegistrationComboBox->addItem(item);
+
+         ui->carColorRegistrationCombo->clear();
+         ui->carColorRegistrationCombo->addItem("Choose a Color");
+            item ="";
+            ui->carColorSearchCombox->addItem(item);
+
+            ui->carTypeRegistrationCombo->clear();
+     ui->carTypeRegistrationCombo->addItem("Choose a Type");
+         item ="";
+     ui->carTypeRegistrationCombo->addItem(item);
+
+    }
+    int i = 1;
+      if (i == 1)
+        {
+          ui->stackedWidget->setCurrentIndex(2);
+        }
 }

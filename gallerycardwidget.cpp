@@ -6,6 +6,9 @@ GalleryCardWidget::GalleryCardWidget(QWidget *parent) :
     ui(new Ui::GalleryCardWidget)
 {
     ui->setupUi(this);
+    QPixmap galleryImage("://defaultImage.jpg");
+    ui->imageLabel->setPixmap(galleryImage.scaled(100,100,Qt::KeepAspectRatio));
+
 }
 
 void GalleryCardWidget::setting( QString labelBranch, QString labelModel, QString labelType, int Price)

@@ -6,86 +6,85 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>555</width>
-    <height>476</height>
+    <width>385</width>
+    <height>98</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QLabel" name="imageLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>17</x>
-     <y>70</y>
-     <width>511</width>
-     <height>161</height>
+     <x>150</x>
+     <y>20</y>
+     <width>221</width>
+     <height>61</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QLabel" name="labelBranch">
       <property name="text">
        <string>  Brand</string>
       </property>
      </widget>
     </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>268</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
+    <item row="0" column="1" colspan="2">
      <widget class="QLabel" name="labelModel">
       <property name="text">
-       <string>    Model  </string>
+       <string>  Model  </string>
       </property>
      </widget>
     </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>240</y>
-     <width>511</width>
-     <height>171</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QLabel" name="labelType">
-      <property name="text">
-       <string>    Type</string>
-      </property>
-     </widget>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="labelPrice">
+        <property name="text">
+         <string>   Price     </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="monaie">
+        <property name="text">
+         <string>€</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item>
+    <item row="1" column="1">
      <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>268</width>
+        <width>78</width>
         <height>20</height>
        </size>
       </property>
      </spacer>
     </item>
-    <item>
-     <widget class="QLabel" name="labelPrice">
+    <item row="1" column="2">
+     <widget class="QLabel" name="labelType">
       <property name="text">
-       <string>      Price   </string>
+       <string>    Type</string>
       </property>
      </widget>
     </item>

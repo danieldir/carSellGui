@@ -53,6 +53,15 @@ private slots:
 
     void on_plainTextEdit_textChanged();
 
+    void on_DeleteButton_clicked();
+
+    void getCarS();
+
+    
+    void on_editButton_clicked();
+
+    void on_sellCarButton_pressed();
+
 private:
     Ui::Carsell *ui;
 };
