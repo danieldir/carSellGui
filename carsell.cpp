@@ -5,6 +5,7 @@
 #include <QtWidgets>
 #include "carcardwidget.h"
 #include "gallerycardwidget.h"
+#include "QFileDialog"
 
 
 Carsell::Carsell(QWidget *parent) :
@@ -126,7 +127,7 @@ void Carsell::on_toSellCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
     int k=0;
-    if(k==0){ sellCar();}
+    if(k==0){;}
 
 }
 
@@ -247,7 +248,11 @@ void Carsell::on_submitRegistrationButton_clicked()
 
 void Carsell::on_sellCarButton_clicked()
 {
+    int sPreis, sMileage;
+    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
 
+     sellCar();
+     if(sMarke != "Choose a Brand"){
     QString sMarke = "Choose a Brand";
     QString sFarbe= "Choose a Color";
     QString sKraftstoff= "Choose a Type";
@@ -276,7 +281,7 @@ QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
 
           ui->stackedWidget->setCurrentIndex(2);
 
-
+}
 }
 
 
@@ -404,4 +409,14 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     selectedCar *car = new selectedCar();
     car->setSetting(mo,mi);
     car->exec();
+}
+
+void Carsell::on_addCarImageButton_clicked()
+{
+   auto fileImage = QFileDialog::getOpenFileName(this,
+        tr("Choose Image"), "/home/", tr("Image Files (*.png *.jpg *.bmp)"));
+
+
+ //  auto carImage = QFileDialog::getOpenFileName(this,"choose your Car's Image");
+
 }
