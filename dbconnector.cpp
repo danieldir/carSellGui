@@ -39,7 +39,7 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString,
         qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested;
         l.push_back(std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested));
     }
-    if(l.empty()) {
+    if(l.empty()) {      
         qDebug() << "No Cars for this userId found";
     }
     return l;
