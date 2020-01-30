@@ -127,7 +127,6 @@ void Carsell::on_toSellCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
     int k=0;
-    if(k==0){;}
 
 }
 
@@ -326,7 +325,13 @@ void Carsell::on_goBack_Button_clicked()
 void Carsell::on_DeleteButton_clicked()
 {
     QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
-            delete it;
+    bool worked = DBConnector::deleteCar(cId);
+
+    if(worked) {
+        delete it;
+    } else {
+        qDebug() << "Car not deleted";
+    }
 }
 
 
@@ -349,7 +354,7 @@ void Carsell::getCarS()
 
          GalleryCardWidget *galleryCard = new GalleryCardWidget();
          QListWidgetItem *item = new QListWidgetItem;
-         galleryCard->setting(std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl));
+         galleryCard->setting(std::get<0>(sl), std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl));
          qDebug() << std::get<1>(sl);
          item->setSizeHint(QSize(80,80));
          ui->listWidget->setViewMode(QListWidget::ListMode);
@@ -409,6 +414,12 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     selectedCar *car = new selectedCar();
     car->setSetting(mo,mi);
     car->exec();
+}
+
+void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    GalleryCardWidget *wid = qobject_cast<GalleryCardWidget*>(ui->listWidget->itemWidget(item));
+    cId = wid->getCarId();
 }
 
 void Carsell::on_addCarImageButton_clicked()
