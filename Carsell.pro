@@ -28,18 +28,23 @@ SOURCES += \
         carsell.cpp \
     dbconnector.cpp \
     carcardwidget.cpp \
-    gallerycardwidget.cpp
+    gallerycardwidget.cpp \
+    selectedcar.cpp
+
 
 HEADERS += \
         carsell.h \
     dbconnector.h \
     carcardwidget.h \
-    gallerycardwidget.h
+    gallerycardwidget.h \
+    selectedcar.h
+
 
 FORMS += \
         carsell.ui \
         carcardwidget.ui \
-    gallerycardwidget.ui
+    gallerycardwidget.ui \
+    selectedcar.ui
 
 RESOURCES += \
     ressources.qrc

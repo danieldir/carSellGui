@@ -2,6 +2,7 @@
 #define CARCARDWIDGET_H
 
 #include <QWidget>
+#include "selectedcar.h"
 
 namespace Ui {
 class CarCardWidget;
@@ -13,11 +14,15 @@ class CarCardWidget : public QWidget
 
 public:
     void setSetting(QString,QString,QString,int,QString,int,QString);
+    QString getCarDescrition();
+    QString getCarBrand();
     explicit CarCardWidget(QWidget *parent = 0);
     ~CarCardWidget();
 
 
 private:
+    QString description;
+    QString carBrand;
     Ui::CarCardWidget *ui;
 
 };

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "dbconnector.h"
+#include<QListWidgetItem>
 
 namespace Ui {
 class Carsell;
@@ -60,6 +61,8 @@ private slots:
     void sellCar();
     void on_editButton_clicked();
 
+
+    void on_carAvailableListWidget_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::Carsell *ui;
