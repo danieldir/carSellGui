@@ -455,11 +455,22 @@ void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
 
 void Carsell::on_addCarImageButton_clicked()
 {
-   auto fileImage = QFileDialog::getOpenFileName(this,
-        tr("Choose Image"), "/home/", tr("Image Files (*.png *.jpg *.bmp)"));
+   auto fileImage = QFileDialog::getOpenFileName(this,tr("Choose Image"), "/home/", tr("Image Files (*.png *.jpg *.bmp)"));
+    if(!fileImage.isEmpty())
+    {
+        QImage imag ;
+        bool valid = imag.load(fileImage);
+        if(valid)
+        {
+            imag = imag.scaledToWidth(ui->carImagePixmap->width(), Qt::SmoothTransformation);
+            ui->carImagePixmap->setPixmap(QPixmap::fromImage(imag));
+        }
 
+    }
+    else
+    {
 
- //  auto carImage = QFileDialog::getOpenFileName(this,"choose your Car's Image");
+    }
 
 }
 
