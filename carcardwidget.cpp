@@ -12,12 +12,13 @@ CarCardWidget::CarCardWidget(QWidget *parent) :
     ui->carImagePixmap->setPixmap(carImage.scaled(300,400,Qt::KeepAspectRatio));
 }
 
-void CarCardWidget::setSetting(QString car_brand, QString car_modell, QString car_type, int price, QString car_city, int mileage, QString car_description)
+void CarCardWidget::setSetting(int car_id, QString car_brand, QString car_modell, QString car_type, int price, QString car_city, int mileage, QString car_description)
 {
     QString car_price = QString::number(price);
     QString car_mileage = QString::number(mileage);
     description = car_description;
     carBrand = car_brand;
+    carId = car_id;
 
     ui->carBrandLabel->setText(carBrand);
     ui->CarModelLabel->setText(car_modell);
@@ -41,7 +42,9 @@ QString CarCardWidget::getCarBrand()
     return carBrand;
 }
 
-
+int CarCardWidget::getCarId() {
+    return carId;
+}
 
 CarCardWidget::~CarCardWidget()
 {

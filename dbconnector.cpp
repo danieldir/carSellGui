@@ -219,6 +219,21 @@ bool DBConnector::deleteCar(const int idAuto) {
     return query.exec();
 }
 
+
+bool DBConnector::setRequestedFromCar(const int CarId, const bool requested) {
+    int requestedInt;
+    QSqlQuery query;
+    if(requested) {
+        requestedInt = 1;
+    } else {
+        requestedInt = 0;
+    }
+    query.prepare("UPDATE `Auto` SET `requested` = :req WHERE `Auto`.`idAuto` = :id");
+    query.bindValue(":id", CarId);
+    query.bindValue(":req", requestedInt);
+    return query.exec();
+}
+
 std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > DBConnector::searchCar
 (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid,  QString city, int mileage)
 {

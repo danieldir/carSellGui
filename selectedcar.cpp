@@ -17,7 +17,8 @@ selectedCar::~selectedCar()
 
 void selectedCar::on_buyButton_clicked()
 {
-
+    DBConnector::setRequestedFromCar(IdCar, true);
+    this->close();
 }
 
 void selectedCar::on_cancelButton_clicked()
@@ -25,9 +26,9 @@ void selectedCar::on_cancelButton_clicked()
     this->close();
 }
 
-void selectedCar::setSetting(QString description, QString brand)
+void selectedCar::setSetting(QString description, QString brand, int id)
 {
     ui->carDescriptionLabel->setText(description);
-
+    IdCar = id;
     this->setWindowTitle(brand);
 }
