@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 //    auto l1 = DBConnector::getAllMarken();
 //    auto l2 = dbconnector.getAllModelle();
 //    auto l3 = dbconnector.getAllFarben();
+//    bool test = DBConnector::setRequestedFromCar(5, true);
    //    qDebug() << dbconnector.getNewId("Auto");
    //    qDebug() << dbconnector.insertUser("testuser5", "anders"); //Test: User einfügen
    //    qDebug() << dbconnector.deleteUser(5); //Test: User löschen

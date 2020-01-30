@@ -13,14 +13,16 @@ class CarCardWidget : public QWidget
     Q_OBJECT
 
 public:
-    void setSetting(QString,QString,QString,int,QString,int,QString);
+    void setSetting(int,QString,QString,QString,int,QString,int,QString);
     QString getCarDescrition();
     QString getCarBrand();
+    int getCarId();
     explicit CarCardWidget(QWidget *parent = 0);
     ~CarCardWidget();
 
 
 private:
+    int carId;
     QString description;
     QString carBrand;
     Ui::CarCardWidget *ui;

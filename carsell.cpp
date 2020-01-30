@@ -209,15 +209,16 @@ void Carsell::on_searchButton_clicked()
         sCar = searchedCars.front();
         searchedCars.pop_front();
 
+        if(std::get<10>(sCar) == false) {
         CarCardWidget *carCard = new CarCardWidget();
         QListWidgetItem *item = new QListWidgetItem;
-        carCard->setSetting(std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
+        carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
         item->setSizeHint(QSize(300,380));
-
 
         ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
         ui->carAvailableListWidget->addItem(item);
         ui->carAvailableListWidget->setItemWidget(item, carCard);
+        }
     }
  }
 
@@ -230,16 +231,22 @@ void Carsell::on_submitRegistrationButton_clicked()
             password = ui->passwordRegistrationLineEdit->text();
             bool insert = DBConnector::insertUser(username, password);
             if(insert) {
+                ui->registrationErrorlabel->setText("");
                 qDebug() << "User sign up finish";
                 ui->stackedWidget->setCurrentIndex(0);
             } else {
                 qDebug() << "insertUser() -> failed!";
+                ui->registrationErrorlabel->setText("User sign up failed");
             }
         } else {
             qDebug() << "password != repeatPassword"; //TODO: Label für User einfügen damit User sieht was der Fehler ist
+
+            ui->registrationErrorlabel->setText("Password and Repeat Password are different.");
         }
     } else {
         qDebug() << "username is NULL"; //TODO: Label einfügen
+
+        ui->registrationErrorlabel->setText("You need to fill in Username");
     }
 
 
@@ -407,8 +414,9 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     CarCardWidget *wid = qobject_cast<CarCardWidget*>(ui->carAvailableListWidget->itemWidget(item));
     QString mo = wid->getCarDescrition();
     QString mi = wid->getCarBrand();
+    int mu = wid->getCarId();
     selectedCar *car = new selectedCar();
-    car->setSetting(mo,mi);
+    car->setSetting(mo,mi,mu);
     car->exec();
 }
 
