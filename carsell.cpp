@@ -132,7 +132,10 @@ void Carsell::on_toSellCarPageButton_clicked()
 
 void Carsell::on_toOwnerGalleryCars_clicked()
 {
-
+    ui->SellButton->setEnabled(false);
+    ui->NotSellButton->setEnabled(false);
+    ui->editButton->setEnabled(false);
+    ui->DeleteButton->setEnabled(false);
    int i = 0;
     ui->stackedWidget->setCurrentIndex(3);
     if (i == 0)
@@ -155,6 +158,10 @@ void Carsell::on_actionBuy_triggered()
 
 void Carsell::on_actionGalery_triggered()
 {
+    ui->SellButton->setEnabled(false);
+    ui->NotSellButton->setEnabled(false);
+    ui->editButton->setEnabled(false);
+    ui->DeleteButton->setEnabled(false);
  int i = 0;
   ui->stackedWidget->setCurrentIndex(3);
    if (i == 0)
@@ -200,8 +207,7 @@ void Carsell::on_searchButton_clicked()
 
 
     qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage;
-    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, 0, sCity, sMileage);
-    //    int searchedCarsSize = searchedCars.size();
+    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage);
     std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sCar;
 
     while (!searchedCars.empty())
@@ -336,7 +342,11 @@ void Carsell::on_DeleteButton_clicked()
 
     if(worked) {
         delete it;
+
+        ui->messageLabel->setText("Car deleted");
     } else {
+
+        ui->messageLabel->setText("Car not deleted");
         qDebug() << "Car not deleted";
     }
 }
@@ -426,8 +436,21 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
 
 void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
 {
+    ui->messageLabel->setText("");
     GalleryCardWidget *wid = qobject_cast<GalleryCardWidget*>(ui->listWidget->itemWidget(item));
     cId = wid->getCarId();
+    bool requested = DBConnector::getRequestedFromCar(cId);
+    if(requested) {
+        ui->SellButton->setEnabled(true);
+        ui->NotSellButton->setEnabled(true);
+    } else {
+        ui->SellButton->setEnabled(false);
+        ui->NotSellButton->setEnabled(false);
+    }
+
+
+    ui->editButton->setEnabled(true);
+    ui->DeleteButton->setEnabled(true);
 }
 
 void Carsell::on_addCarImageButton_clicked()
@@ -438,4 +461,28 @@ void Carsell::on_addCarImageButton_clicked()
 
  //  auto carImage = QFileDialog::getOpenFileName(this,"choose your Car's Image");
 
+}
+
+void Carsell::on_NotSellButton_clicked()
+{
+    DBConnector::setRequestedFromCar(cId, false);
+    ui->SellButton->setEnabled(false);
+    ui->NotSellButton->setEnabled(false);
+    ui->messageLabel->setText("Car not sold");
+}
+
+void Carsell::on_SellButton_clicked()
+{
+    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+    bool worked = DBConnector::deleteCar(cId);
+
+    if(worked) {
+        delete it;
+
+        ui->messageLabel->setText("Car sold");
+    } else {
+
+        ui->messageLabel->setText("Car not sold");
+        qDebug() << "Car not deleted";
+    }
 }

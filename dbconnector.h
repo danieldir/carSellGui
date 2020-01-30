@@ -27,6 +27,7 @@ public:
     static bool deleteUser(const int idUser);
     static bool deleteCar(const int idAuto);
     static bool setRequestedFromCar(const int CarId, const bool requested);
+    static bool getRequestedFromCar(const int CarId);
 
     static std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > searchCar
         (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid, QString city, int mileage);

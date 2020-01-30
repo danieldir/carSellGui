@@ -234,6 +234,16 @@ bool DBConnector::setRequestedFromCar(const int CarId, const bool requested) {
     return query.exec();
 }
 
+bool DBConnector::getRequestedFromCar(const int CarId) {
+    QSqlQuery query;
+    query.prepare("SELECT requested FROM Auto WHERE idAuto = :id");
+    query.bindValue(":id", CarId);
+    query.exec();
+    query.next();
+    int req = query.value(0).toInt();
+    return req;
+}
+
 std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> > DBConnector::searchCar
 (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid,  QString city, int mileage)
 {
@@ -277,7 +287,7 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString,
     if(verkaeuferid == 0) {
         queryString.append("AND Verkaeufer = Verkaeufer ");
     } else {
-        queryString.append("AND Verkaeufer = :verkaeufer ");
+        queryString.append("AND Verkaeufer <> :verkaeufer ");
     }
 
     if(city != NULL) {

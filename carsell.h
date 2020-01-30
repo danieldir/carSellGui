@@ -36,7 +36,6 @@ private slots:
 
     void on_toOwnerGalleryCars_clicked();
 
-
     void on_actionHome_triggered();
 
     void on_actionBuy_triggered();
@@ -53,21 +52,24 @@ private slots:
 
     void on_goBack_Button_clicked();
 
-    void on_plainTextEdit_textChanged();
-
     void on_DeleteButton_clicked();
 
     void getCarS();
 
     void sellCar();
-    void on_editButton_clicked();
 
+    void on_editButton_clicked();
 
     void on_carAvailableListWidget_itemClicked(QListWidgetItem *item);
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
     void on_addCarImageButton_clicked();
+
+    void on_NotSellButton_clicked();
+
+    void on_SellButton_clicked();
+
 private:
     Ui::Carsell *ui;
 };

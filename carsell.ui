@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -665,11 +665,25 @@ background-color: rgba(239, 67, 57, 185);</string>
        <rect>
         <x>10</x>
         <y>670</y>
-        <width>351</width>
+        <width>521</width>
         <height>27</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QPushButton" name="SellButton">
+         <property name="text">
+          <string>Sell</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="NotSellButton">
+         <property name="text">
+          <string>Not Sell</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="DeleteButton">
          <property name="text">
@@ -685,6 +699,22 @@ background-color: rgba(239, 67, 57, 185);</string>
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="messageLabel">
+      <property name="geometry">
+       <rect>
+        <x>436</x>
+        <y>610</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="SellCarPage">
