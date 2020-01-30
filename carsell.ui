@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -1465,8 +1465,8 @@ background-color: rgb(148, 211, 172);</string>
      <widget class="QPushButton" name="searchButton">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>500</y>
+        <x>70</x>
+        <y>630</y>
         <width>181</width>
         <height>41</height>
        </rect>

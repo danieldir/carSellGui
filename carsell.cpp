@@ -166,9 +166,7 @@ void Carsell::on_searchButton_clicked()
     int sPreis = 0, sMileage = 0;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity;
 
-    if(ui->carMileRegistrationComboBox->currentText() != "Choose a Max Mileage") {
-        sMileage = ui->carMileRegistrationComboBox->currentText().toInt();
-    }
+
     sPreis = ui->carPriceSearchLineEdit->text().toInt();
     sMarke = ui->carBrandSearchComboBox->currentText();
     sModell = ui->carModelSearchComboBox->currentText();
@@ -176,16 +174,24 @@ void Carsell::on_searchButton_clicked()
     sKraftstoff = ui->carTypeSearchCombobox->currentText();
     sCity = ui->carPickPointSearchCityLineEdit->text();
 
-    if(sMarke == "Choose a Brand") {
+    if(ui->carMileRegistrationComboBox->currentText() != "Choose a Max Mileage")
+    {
+        sMileage = ui->carMileRegistrationComboBox->currentText().toInt();
+    }
+    if(sMarke == "Choose a Brand")
+    {
         sMarke = "";
     }
-    if(sModell == "Choose a Model") {
+    if(sModell == "Choose a Model")
+    {
         sModell = "";
     }
-    if(sFarbe == "Choose a Color") {
+    if(sFarbe == "Choose a Color")
+    {
         sFarbe = "";
     }
-    if(sKraftstoff == "Choose a Type") {
+    if(sKraftstoff == "Choose a Type")
+    {
         sKraftstoff = "";
     }
 
@@ -204,6 +210,8 @@ void Carsell::on_searchButton_clicked()
         QListWidgetItem *item = new QListWidgetItem;
         carCard->setSetting(std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
         item->setSizeHint(QSize(300,380));
+
+
         ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
         ui->carAvailableListWidget->addItem(item);
         ui->carAvailableListWidget->setItemWidget(item, carCard);
@@ -375,4 +383,14 @@ void Carsell::on_sellCarButton_pressed()
         {
           ui->stackedWidget->setCurrentIndex(2);
         }
+}
+
+void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
+{
+    CarCardWidget *wid = qobject_cast<CarCardWidget*>(ui->carAvailableListWidget->itemWidget(item));
+    QString mo = wid->getCarDescrition();
+    QString mi = wid->getCarBrand();
+    selectedCar *car = new selectedCar();
+    car->setSetting(mo,mi);
+    car->exec();
 }
