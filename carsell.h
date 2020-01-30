@@ -14,6 +14,7 @@ class Carsell : public QMainWindow
     Q_OBJECT
 
 public:
+    int cId;
     int userId;
     explicit Carsell(QWidget *parent = 0);
     ~Carsell();
@@ -63,6 +64,8 @@ private slots:
 
 
     void on_carAvailableListWidget_itemClicked(QListWidgetItem *item);
+
+    void on_listWidget_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::Carsell *ui;

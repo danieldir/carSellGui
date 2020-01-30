@@ -11,14 +11,23 @@ GalleryCardWidget::GalleryCardWidget(QWidget *parent) :
 
 }
 
-void GalleryCardWidget::setting( QString labelBranch, QString labelModel, QString labelType, int Price)
+void GalleryCardWidget::setting(int carId, QString labelBranch, QString labelModel, QString labelType, int Price)
   {
      QString labelPrice = QString::number(Price);
+     QString labelId = QString::number(carId);
      ui->labelBranch->setText(labelBranch);
      ui->labelModel->setText(labelModel);
      ui->labelType->setText(labelType);
      ui->labelPrice->setText(labelPrice);
+     ui->labelId->setText(labelId);
+     ui->labelId->setStyleSheet("QLabel  {  color : white; }");
+     cId = carId;
   }
+
+int GalleryCardWidget::getCarId()
+{
+    return cId;
+}
 
 GalleryCardWidget::~GalleryCardWidget()
 {
