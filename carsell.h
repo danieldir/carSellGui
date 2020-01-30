@@ -57,10 +57,9 @@ private slots:
 
     void getCarS();
 
-    
+    void sellCar();
     void on_editButton_clicked();
 
-    void on_sellCarButton_pressed();
 
 private:
     Ui::Carsell *ui;

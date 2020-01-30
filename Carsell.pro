@@ -27,16 +27,19 @@ SOURCES += \
         main.cpp \
         carsell.cpp \
     dbconnector.cpp \
-    carcardwidget.cpp
+    carcardwidget.cpp \
+    gallerycardwidget.cpp
 
 HEADERS += \
         carsell.h \
     dbconnector.h \
-    carcardwidget.h
+    carcardwidget.h \
+    gallerycardwidget.h
 
 FORMS += \
         carsell.ui \
-        carcardwidget.ui
+        carcardwidget.ui \
+    gallerycardwidget.ui
 
 RESOURCES += \
     ressources.qrc

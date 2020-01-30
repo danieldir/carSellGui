@@ -125,6 +125,9 @@ void Carsell::on_toBuyCarPageButton_clicked()
 void Carsell::on_toSellCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
+    int k=0;
+    if(k==0){ sellCar();}
+
 }
 
 void Carsell::on_toOwnerGalleryCars_clicked()
@@ -236,41 +239,35 @@ void Carsell::on_submitRegistrationButton_clicked()
 
 void Carsell::on_sellCarButton_clicked()
 {
-    int sPreis, sMileage;
-    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
-    sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
-    sMarke = ui->carBrandRegistrationComboBox->currentText();
-    sModell = ui->carModelRegistrationLineEdit->text();
-    sFarbe = ui->carColorRegistrationCombo->currentText();
-    sKraftstoff = ui->carTypeRegistrationCombo->currentText();
-    sCity = ui->carPickPointRegistrationCityLineEdit->text();
-    sMileage = ui->carMileageRegistrationLineEdit->text().toInt();
-    sDescription = ui->plainTextEdit->toPlainText();
 
+    QString sMarke = "Choose a Brand";
+    QString sFarbe= "Choose a Color";
+    QString sKraftstoff= "Choose a Type";
 
-    if(sMarke == "Choose a Brand") {
-        qDebug() << "No Brand chosed";
-    } else if(sModell == "") {
-        qDebug() << "No Model entered";
-    } else if(sFarbe == "Choose a Color") {
-        qDebug() << "No Color chosed";
-    } else if(sKraftstoff == "Choose a Type") {
-        qDebug() << "No Type chosed";
-    } else if(sPreis == 0) {
-        qDebug() << "No Price entered";
-    } else if(sCity == "") {
-        qDebug() << "No City entered";
-    } else if(sMileage == 0) {
-        qDebug() << "No Mileage entered";
-    } else {
-        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription;
-        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription);
-        if(insert) {
-            qDebug() << "Car uploaded";
-        } else {
-            qDebug() << "Upload failed";
+    ui->carBrandRegistrationComboBox->setCurrentText(sMarke);
+    ui->carColorRegistrationCombo->setCurrentText(sFarbe);
+    ui->carTypeRegistrationCombo->setCurrentText(sKraftstoff);
+
+    if(sMarke== "Choose a Brand"){
+        sMarke = "";
         }
+
+    if(sFarbe == "Choose a Color") {
+        sFarbe = "";
     }
+    if(sKraftstoff == "Choose a Type") {
+       sKraftstoff = "";
+    }
+
+    ui->carMileageRegistrationLineEdit->clear();
+    ui->carPriceRegistrationLineEdit->clear();
+    ui->carPickPointRegistrationCityLineEdit->clear();
+    ui->carModelRegistrationLineEdit->clear();
+
+QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
+
+          ui->stackedWidget->setCurrentIndex(2);
+
 
 }
 
@@ -349,30 +346,44 @@ void Carsell::getCarS()
 
 }
 
-void Carsell::on_sellCarButton_pressed()
+
+
+void Carsell::sellCar()
 {
-    int j=1;  QString item;
-    if(j==1){
-        ui->carBrandRegistrationComboBox->clear();
-        ui->carBrandRegistrationComboBox->addItem("Choose a Brand");
-        //while(!liste.empty()) {   sMarke =
-            item ="";
-            ui->carBrandRegistrationComboBox->addItem(item);
 
-         ui->carColorRegistrationCombo->clear();
-         ui->carColorRegistrationCombo->addItem("Choose a Color");
-            item ="";
-            ui->carColorSearchCombox->addItem(item);
+    int sPreis, sMileage;
+    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
+    sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
+    sMarke = ui->carBrandRegistrationComboBox->currentText();
+    sModell = ui->carModelRegistrationLineEdit->text();
+    sFarbe = ui->carColorRegistrationCombo->currentText();
+    sKraftstoff = ui->carTypeRegistrationCombo->currentText();
+    sCity = ui->carPickPointRegistrationCityLineEdit->text();
+    sMileage = ui->carMileageRegistrationLineEdit->text().toInt();
+    sDescription = ui->plainTextEdit->toPlainText();
 
-            ui->carTypeRegistrationCombo->clear();
-     ui->carTypeRegistrationCombo->addItem("Choose a Type");
-         item ="";
-     ui->carTypeRegistrationCombo->addItem(item);
 
-    }
-    int i = 1;
-      if (i == 1)
-        {
-          ui->stackedWidget->setCurrentIndex(2);
+    if(sMarke == "Choose a Brand") {
+        qDebug() << "No Brand chosed";
+    } else if(sModell == "") {
+        qDebug() << "No Model entered";
+    } else if(sFarbe == "Choose a Color") {
+        qDebug() << "No Color chosed";
+    } else if(sKraftstoff == "Choose a Type") {
+        qDebug() << "No Type chosed";
+    } else if(sPreis == 0) {
+        qDebug() << "No Price entered";
+    } else if(sCity == "") {
+        qDebug() << "No City entered";
+    } else if(sMileage == 0) {
+        qDebug() << "No Mileage entered";
+    } else {
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription;
+        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription);
+        if(insert) {
+            qDebug() << "Car uploaded";
+        } else {
+            qDebug() << "Upload failed";
         }
+    }
 }
