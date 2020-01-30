@@ -67,6 +67,7 @@ private slots:
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
+    void on_addCarImageButton_clicked();
 private:
     Ui::Carsell *ui;
 };

@@ -1120,11 +1120,11 @@ border-color: rgb(114, 159, 207);</string>
        <string>    brand Image</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="addCarImageButton">
       <property name="geometry">
        <rect>
-        <x>1130</x>
-        <y>270</y>
+        <x>1120</x>
+        <y>200</y>
         <width>89</width>
         <height>25</height>
        </rect>
@@ -1136,24 +1136,13 @@ border-color: rgb(114, 159, 207);</string>
        <string>Add Image</string>
       </property>
      </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>630</x>
-        <y>60</y>
-        <width>591</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_20"/>
-     </widget>
      <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="geometry">
        <rect>
-        <x>630</x>
-        <y>360</y>
-        <width>591</width>
-        <height>171</height>
+        <x>790</x>
+        <y>300</y>
+        <width>431</width>
+        <height>231</height>
        </rect>
       </property>
       <property name="placeholderText">
@@ -1204,15 +1193,45 @@ background-color: rgb(233, 185, 110);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="carImagePixmap">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>50</y>
+        <width>311</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="removeCarImageButton">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>240</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(64, 183, 191, 215);</string>
+      </property>
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
      <zorder>label_19</zorder>
      <zorder>sellCarButton</zorder>
      <zorder>carIdentificationLabel</zorder>
      <zorder>carBrandImage</zorder>
-     <zorder>pushButton_2</zorder>
-     <zorder>horizontalLayoutWidget</zorder>
+     <zorder>addCarImageButton</zorder>
      <zorder>plainTextEdit</zorder>
      <zorder>descriptionStatus</zorder>
      <zorder>groupBox_3</zorder>
+     <zorder>carImagePixmap</zorder>
+     <zorder>removeCarImageButton</zorder>
     </widget>
     <widget class="QWidget" name="BuyCarPage">
      <property name="styleSheet">
