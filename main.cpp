@@ -4,7 +4,6 @@
 int main(int argc, char *argv[])
 {
 //    DBConnector::connectToDB();
-
     QApplication a(argc, argv);
     Carsell w;
     w.show();
@@ -17,6 +16,7 @@ int main(int argc, char *argv[])
 //    auto l1 = DBConnector::getAllMarken();
 //    auto l2 = dbconnector.getAllModelle();
 //    auto l3 = dbconnector.getAllFarben();
+//    auto testAuto = DBConnector::getCarById(2);
 //    bool test = DBConnector::setRequestedFromCar(5, true);
 //    bool test1 = DBConnector::getRequestedFromCar(5);
    //    qDebug() << dbconnector.getNewId("Auto");

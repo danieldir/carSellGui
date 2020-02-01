@@ -14,6 +14,7 @@ class Carsell : public QMainWindow
     Q_OBJECT
 
 public:
+    bool editMode;
     int cId;
     int userId;
     QString cColor;

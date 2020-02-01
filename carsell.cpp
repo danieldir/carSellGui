@@ -126,7 +126,7 @@ void Carsell::on_toBuyCarPageButton_clicked()
 void Carsell::on_toSellCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
-    int k=0;
+//    int k=0;
 
 }
 
@@ -147,17 +147,20 @@ void Carsell::on_toOwnerGalleryCars_clicked()
 
 void Carsell::on_actionHome_triggered()
 {
+    editMode = false;
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 void Carsell::on_actionBuy_triggered()
 {
+    editMode = false;
     ui->stackedWidget->setCurrentIndex(5);
     loadSearchFacilities();
 }
 
 void Carsell::on_actionGalery_triggered()
 {
+    editMode = false;
     ui->SellButton->setEnabled(false);
     ui->NotSellButton->setEnabled(false);
     ui->editButton->setEnabled(false);
@@ -260,8 +263,10 @@ void Carsell::on_submitRegistrationButton_clicked()
 
 void Carsell::on_sellCarButton_clicked()
 {
-    int sPreis, sMileage;
-    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
+//    int sPreis, sMileage;
+    QString sMarke
+//            , sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc
+            ;
 
      sellCar();
      if(sMarke != "Choose a Brand"){
@@ -288,6 +293,7 @@ void Carsell::on_sellCarButton_clicked()
     ui->carPriceRegistrationLineEdit->clear();
     ui->carPickPointRegistrationCityLineEdit->clear();
     ui->carModelRegistrationLineEdit->clear();
+    ui->plainTextEdit->clear();
 
   QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
 
@@ -352,15 +358,28 @@ void Carsell::on_DeleteButton_clicked()
 
 void Carsell::on_editButton_clicked()
 {
-
-    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+    editMode = true;
+//    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
 
      ui->stackedWidget->setCurrentIndex(4);
-     int j=0;
-     if(j==0){
+     auto editCar = DBConnector::getCarById(cId);
+     //std::tuple<int, QString, QString, QString, int, QString,        int,         QString, int,   QString,     bool>
+     //         (carId, marke,  modell,   farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested);
+    cBrand = std::get<1>(editCar);
+    cModel = std::get<2>(editCar);
+    cColor = std::get<3>(editCar);
+    cPrice = std::get<4>(editCar);
+    cType = std::get<5>(editCar);
+    cit = std::get<7>(editCar);
+    mile = std::get<8>(editCar);
+    mo = std::get<9>(editCar);
+
+//     int j=0;
+//     if(j==0){
     ui->carBrandRegistrationComboBox->setCurrentText(cBrand);
     ui->carModelRegistrationLineEdit->setText(cModel);
     ui->carTypeRegistrationCombo->setCurrentText(cType);
+    ui->carColorRegistrationCombo->setCurrentText(cColor);
     ui->carPriceRegistrationLineEdit->setText(QString::number(cPrice));
     ui->carPickPointRegistrationCityLineEdit->setText(cit);
     ui->carMileageRegistrationLineEdit->setText(QString::number(mile));
@@ -369,20 +388,20 @@ void Carsell::on_editButton_clicked()
 
 
 
-    bool work= DBConnector::insertCar(cBrand, cModel, NULL, cPrice, cType, NULL, userId, cCity, NULL, NULL);
-    if(work) {
-        ui->messageLabel->setText("Car edited");
-    } else {
+//    bool work = DBConnector::insertCar(cBrand, cModel, cColor, cPrice, cType, NULL, userId, cCity, NULL, NULL);
+//    if(work) {
+//        ui->messageLabel->setText("Car edited");
+//    } else {
 
-        ui->messageLabel->setText("Car not edited");
-        qDebug() << "Car not edited";
-    }
-   }
+//        ui->messageLabel->setText("Car not edited");
+//        qDebug() << "Car not edited";
+//    }
+//   }
 
-    bool worked = DBConnector::deleteCar(cId);
-    if(worked) {
-        delete it;
-       }
+//    bool worked = DBConnector::deleteCar(cId);
+//    if(worked) {
+//        delete it;
+//       }
 
 }
 
@@ -445,10 +464,18 @@ void Carsell::sellCar()
         bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription);
         if(insert) {
             qDebug() << "Car uploaded";
+            if(editMode) {
+                QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+                bool worked = DBConnector::deleteCar(cId);
+                if(worked) {
+                    delete it;
+                }
+                editMode = false;
+            }
         } else {
             qDebug() << "Upload failed";
         }
-    }
+        }
 }
 
 void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
@@ -456,7 +483,7 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     CarCardWidget *wid = qobject_cast<CarCardWidget*>(ui->carAvailableListWidget->itemWidget(item));
     QString mo = wid->getCarDescrition();
     QString mi = wid->getCarBrand();
-    int mile = wid->getCarMileage();
+//    int mile = wid->getCarMileage();
     QString cit = wid->getCarCity();
     int mu = wid->getCarId();
     selectedCar *car = new selectedCar();
