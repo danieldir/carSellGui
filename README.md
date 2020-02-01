@@ -6,3 +6,6 @@ ToDo:
       
       - Button 'Delete My Account' in Gallery
 - LogIn Page Photo
+- Fix sell Car
+- photo Upload
+- photo Download from DB
