@@ -19,19 +19,24 @@ void CarCardWidget::setSetting(int car_id, QString car_brand, QString car_modell
     description = car_description;
     carBrand = car_brand;
     carId = car_id;
+    carCity= car_city;
+    carMileage= mileage;
 
     ui->carBrandLabel->setText(carBrand);
     ui->CarModelLabel->setText(car_modell);
     ui->carTypeLabel->setText(car_type);
     ui->carPriceLabel->setText(car_price);
-    ui->carLocationLabel->setText(car_city);
+    ui->carLocationLabel->setText(carCity);
 
     //Labels einfügen
     //ui->carMileageLabel->setText(car_mileage);
     //Insert Description here!
 }
 
-
+int CarCardWidget::getCarMileage()
+{
+    return carMileage;
+}
 QString CarCardWidget::getCarDescrition()
 {
     return description;
@@ -40,6 +45,10 @@ QString CarCardWidget::getCarDescrition()
 QString CarCardWidget::getCarBrand()
 {
     return carBrand;
+}
+QString CarCardWidget::getCarCity()
+{
+    return carCity;
 }
 
 int CarCardWidget::getCarId() {

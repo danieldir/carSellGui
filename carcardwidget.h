@@ -17,14 +17,19 @@ public:
     QString getCarDescrition();
     QString getCarBrand();
     int getCarId();
+    int getCarMileage();
+    QString  getCarCity();
     explicit CarCardWidget(QWidget *parent = 0);
     ~CarCardWidget();
+    QString carCity;
+    int carMileage;
 
 
 private:
     int carId;
     QString description;
     QString carBrand;
+   // QString Car_city;
     Ui::CarCardWidget *ui;
 
 };

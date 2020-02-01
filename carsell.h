@@ -16,8 +16,22 @@ class Carsell : public QMainWindow
 public:
     int cId;
     int userId;
+    QString cColor;
+    QString cCity;
+    QString car_description;
+    QString cBrand;
+    QString cModel;
+    int cPrice;
+    QString labelPrice;
+    //int cMileage;
+    QString cType;
     explicit Carsell(QWidget *parent = 0);
     ~Carsell();
+    QString carCity;
+    int carMileage;
+    int mile;
+    QString cit;
+    QString mo;
 
 private slots:
     void on_loginButton_clicked();

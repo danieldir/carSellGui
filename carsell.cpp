@@ -289,14 +289,12 @@ void Carsell::on_sellCarButton_clicked()
     ui->carPickPointRegistrationCityLineEdit->clear();
     ui->carModelRegistrationLineEdit->clear();
 
-QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
+  QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
 
           ui->stackedWidget->setCurrentIndex(2);
 
+   }
 }
-}
-
-
 
 void Carsell::loadSearchFacilities()
 {
@@ -354,8 +352,38 @@ void Carsell::on_DeleteButton_clicked()
 
 void Carsell::on_editButton_clicked()
 {
-    //  deleteFacilities();
-       ui->stackedWidget->setCurrentIndex(4);
+
+    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+
+     ui->stackedWidget->setCurrentIndex(4);
+     int j=0;
+     if(j==0){
+    ui->carBrandRegistrationComboBox->setCurrentText(cBrand);
+    ui->carModelRegistrationLineEdit->setText(cModel);
+    ui->carTypeRegistrationCombo->setCurrentText(cType);
+    ui->carPriceRegistrationLineEdit->setText(QString::number(cPrice));
+    ui->carPickPointRegistrationCityLineEdit->setText(cit);
+    ui->carMileageRegistrationLineEdit->setText(QString::number(mile));
+    ui->plainTextEdit->setPlainText(mo);
+
+
+
+
+    bool work= DBConnector::insertCar(cBrand, cModel, NULL, cPrice, cType, NULL, userId, cCity, NULL, NULL);
+    if(work) {
+        ui->messageLabel->setText("Car edited");
+    } else {
+
+        ui->messageLabel->setText("Car not edited");
+        qDebug() << "Car not edited";
+    }
+   }
+
+    bool worked = DBConnector::deleteCar(cId);
+    if(worked) {
+        delete it;
+       }
+
 }
 
 void Carsell::getCarS()
@@ -428,6 +456,8 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     CarCardWidget *wid = qobject_cast<CarCardWidget*>(ui->carAvailableListWidget->itemWidget(item));
     QString mo = wid->getCarDescrition();
     QString mi = wid->getCarBrand();
+    int mile = wid->getCarMileage();
+    QString cit = wid->getCarCity();
     int mu = wid->getCarId();
     selectedCar *car = new selectedCar();
     car->setSetting(mo,mi,mu);
@@ -439,11 +469,18 @@ void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
     ui->messageLabel->setText("");
     GalleryCardWidget *wid = qobject_cast<GalleryCardWidget*>(ui->listWidget->itemWidget(item));
     cId = wid->getCarId();
+    cPrice= wid->getCarPrice();
+    cModel= wid->getCarModel();
+    cBrand= wid->getCarBrand();
+    cType= wid->getCarType();
+    //QString mo = wid->getCarDescrition();
+    //int mile = wid->getCarMileage();
+   // QString cit= wid->getCarcity();
     bool requested = DBConnector::getRequestedFromCar(cId);
     if(requested) {
         ui->SellButton->setEnabled(true);
         ui->NotSellButton->setEnabled(true);
-    } else {
+    }else {
         ui->SellButton->setEnabled(false);
         ui->NotSellButton->setEnabled(false);
     }

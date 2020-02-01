@@ -12,22 +12,71 @@ GalleryCardWidget::GalleryCardWidget(QWidget *parent) :
 }
 
 void GalleryCardWidget::setting(int carId, QString labelBranch, QString labelModel, QString labelType, int Price)
+
   {
-     QString labelPrice = QString::number(Price);
+     labelPrice= QString::number(Price);
      QString labelId = QString::number(carId);
-     ui->labelBranch->setText(labelBranch);
-     ui->labelModel->setText(labelModel);
-     ui->labelType->setText(labelType);
+     //QString mileage = QString::number(mileage);
+
+     cBrand = labelBranch;
+     cModel =labelModel;
+     cType= labelType;
+     //cCity =city;
+    cPrice= Price;
+
+     ui->labelBranch->setText(cBrand);
+     ui->labelModel->setText(cModel);
+     ui->labelType->setText(cType);
      ui->labelPrice->setText(labelPrice);
      ui->labelId->setText(labelId);
      ui->labelId->setStyleSheet("QLabel  {  color : white; }");
      cId = carId;
+     cColor;//= carColor;
+     cCity;//= city;
+     car_description; //= descript;
   }
+int GalleryCardWidget::getCarPrice()
+{
+    return cPrice;
+}
+
+//int GalleryCardWidget::getCarMileage()
+//{
+//    return cMileage;
+//}
 
 int GalleryCardWidget::getCarId()
 {
     return cId;
 }
+
+//QString GalleryCardWidget::getCarDescrition()
+//{
+//    return car_description;
+//}
+
+QString GalleryCardWidget::getCarBrand()
+{
+    return cBrand;
+}
+
+QString GalleryCardWidget::getCarModel()
+{
+    return cModel;
+}
+QString GalleryCardWidget::getCarType()
+{
+    return cType;
+}
+QString GalleryCardWidget::getCarcolor()
+{
+    return cColor;
+}
+QString GalleryCardWidget::getCarcity()
+{
+    return cCity;
+}
+
 
 GalleryCardWidget::~GalleryCardWidget()
 {
