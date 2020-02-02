@@ -100,6 +100,9 @@ void Carsell::on_loginButton_clicked()
 
 void Carsell::on_signUpButton_clicked()
 {
+    ui->userNameRegistrationLineEdit->setText("");
+    ui->passwordRegistrationLineEdit->setText("");
+    ui->repeatPasswordRegistrationLineEdit->setText("");
     ui->registrationUsernameErrorlabel->setVisible(false);
     ui->registrationPasswordErrorlabel->setVisible(false);
     ui->stackedWidget->setCurrentIndex(1);
@@ -243,21 +246,32 @@ void Carsell::on_submitRegistrationButton_clicked()
         if(ui->passwordRegistrationLineEdit->text() == ui->repeatPasswordRegistrationLineEdit->text()) {
             username = ui->userNameRegistrationLineEdit->text();
             password = ui->passwordRegistrationLineEdit->text();
-            bool insert = DBConnector::insertUser(username, password);
-            if(insert) {
-                qDebug() << "User sign up finish";
-                QMessageBox::information(this,"Sign Up", "User sign up finish");
-                ui->stackedWidget->setCurrentIndex(0);
+
+            auto duplicate = DBConnector::getUserByUsername(username);
+            if(std::get<1>(duplicate) != username) {
+
+                bool insert = DBConnector::insertUser(username, password);
+                if(insert) {
+                    qDebug() << "User sign up finish";
+                    QMessageBox::information(this,"Sign Up", "User sign up finish");
+                    ui->stackedWidget->setCurrentIndex(0);
+                } else {
+                    qDebug() << "insertUser() -> failed!";
+                    QMessageBox::information(this,"Sign Up Error", "User sign up failed");
+                }
             } else {
-                qDebug() << "insertUser() -> failed!";
-                QMessageBox::information(this,"Sign Up Error", "User sign up failed");
+                qDebug() << "username is already taken";
+                ui->registrationUsernameErrorlabel->setText("The username is already taken");
+                ui->registrationUsernameErrorlabel->setVisible(true);
             }
+
         } else {
             qDebug() << "password != repeatPassword";
             ui->registrationPasswordErrorlabel->setVisible(true);
         }
     } else {
         qDebug() << "username is NULL";
+        ui->registrationUsernameErrorlabel->setText("You need to fill in Username");
         ui->registrationUsernameErrorlabel->setVisible(true);
     }
 
@@ -581,4 +595,41 @@ void Carsell::on_SellButton_clicked()
         ui->messageLabel->setText("Car not sold");
         qDebug() << "Car not deleted";
     }
+}
+
+void Carsell::on_deleteUserButton_clicked()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Delete User Account", "Are you sure you want to delete your account? All your cars will deleted too.",
+                                  QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        qDebug() << "Yes was clicked";
+        bool deleteCar, deleteUser;
+        auto userCars = DBConnector::getCarByUserId(userId);
+        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> userCar;
+
+        while (!userCars.empty())
+        {
+            userCar = userCars.front();
+            userCars.pop_front();
+
+            deleteCar = DBConnector::deleteCar(std::get<0>(userCar));
+            if(deleteCar) {
+                qDebug() << std::get<0>(userCar) << " deleted!";
+            }
+        }
+
+        deleteUser = DBConnector::deleteUser(userId);
+        if(deleteUser) {
+            qDebug() << "User deleted!";
+        }
+
+        ui->stackedWidget->setCurrentIndex(0);
+
+    } else {
+        qDebug() << "Yes was *not* clicked";
+    }
+
+
+
 }

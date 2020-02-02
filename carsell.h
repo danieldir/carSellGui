@@ -85,6 +85,8 @@ private slots:
 
     void on_SellButton_clicked();
 
+    void on_deleteUserButton_clicked();
+
 private:
     Ui::Carsell *ui;
 };
