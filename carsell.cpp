@@ -22,6 +22,7 @@ Carsell::Carsell(QWidget *parent) :
     ui->actionParameter->setEnabled(false);
     ui->actionHome->setEnabled(false);
 
+    ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
 
     loadSearchFacilities();
 
@@ -99,6 +100,8 @@ void Carsell::on_loginButton_clicked()
 
 void Carsell::on_signUpButton_clicked()
 {
+    ui->registrationUsernameErrorlabel->setVisible(false);
+    ui->registrationPasswordErrorlabel->setVisible(false);
     ui->stackedWidget->setCurrentIndex(1);
 }
 
@@ -126,7 +129,7 @@ void Carsell::on_toBuyCarPageButton_clicked()
 void Carsell::on_toSellCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
-//    int k=0;
+    //    int k=0;
 
 }
 
@@ -136,12 +139,12 @@ void Carsell::on_toOwnerGalleryCars_clicked()
     ui->NotSellButton->setEnabled(false);
     ui->editButton->setEnabled(false);
     ui->DeleteButton->setEnabled(false);
-   int i = 0;
+    int i = 0;
     ui->stackedWidget->setCurrentIndex(3);
     if (i == 0)
-      {
-         getCarS();
-     }
+    {
+        getCarS();
+    }
 }
 
 
@@ -165,12 +168,12 @@ void Carsell::on_actionGalery_triggered()
     ui->NotSellButton->setEnabled(false);
     ui->editButton->setEnabled(false);
     ui->DeleteButton->setEnabled(false);
- int i = 0;
-  ui->stackedWidget->setCurrentIndex(3);
-   if (i == 0)
-     {
-       getCarS();
-     }
+    int i = 0;
+    ui->stackedWidget->setCurrentIndex(3);
+    if (i == 0)
+    {
+        getCarS();
+    }
 }
 
 void Carsell::on_searchButton_clicked()
@@ -219,43 +222,43 @@ void Carsell::on_searchButton_clicked()
         searchedCars.pop_front();
 
         if(std::get<10>(sCar) == false) {
-        CarCardWidget *carCard = new CarCardWidget();
-        QListWidgetItem *item = new QListWidgetItem;
-        carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
-        item->setSizeHint(QSize(300,380));
+            CarCardWidget *carCard = new CarCardWidget();
+            QListWidgetItem *item = new QListWidgetItem;
+            carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
+            item->setSizeHint(QSize(300,380));
 
-        ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
-        ui->carAvailableListWidget->addItem(item);
-        ui->carAvailableListWidget->setItemWidget(item, carCard);
+            ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
+            ui->carAvailableListWidget->addItem(item);
+            ui->carAvailableListWidget->setItemWidget(item, carCard);
         }
     }
- }
+}
 
 void Carsell::on_submitRegistrationButton_clicked()
 {
     QString username, password;
+    ui->registrationUsernameErrorlabel->setVisible(false);
+    ui->registrationPasswordErrorlabel->setVisible(false);
     if(ui->userNameRegistrationLineEdit->text() != ""){
         if(ui->passwordRegistrationLineEdit->text() == ui->repeatPasswordRegistrationLineEdit->text()) {
             username = ui->userNameRegistrationLineEdit->text();
             password = ui->passwordRegistrationLineEdit->text();
             bool insert = DBConnector::insertUser(username, password);
             if(insert) {
-                ui->registrationErrorlabel->setText("");
                 qDebug() << "User sign up finish";
+                QMessageBox::information(this,"Sign Up", "User sign up finish");
                 ui->stackedWidget->setCurrentIndex(0);
             } else {
                 qDebug() << "insertUser() -> failed!";
-                ui->registrationErrorlabel->setText("User sign up failed");
+                QMessageBox::information(this,"Sign Up Error", "User sign up failed");
             }
         } else {
-            qDebug() << "password != repeatPassword"; //TODO: Label für User einfügen damit User sieht was der Fehler ist
-
-            ui->registrationErrorlabel->setText("Password and Repeat Password are different.");
+            qDebug() << "password != repeatPassword";
+            ui->registrationPasswordErrorlabel->setVisible(true);
         }
     } else {
-        qDebug() << "username is NULL"; //TODO: Label einfügen
-
-        ui->registrationErrorlabel->setText("You need to fill in Username");
+        qDebug() << "username is NULL";
+        ui->registrationUsernameErrorlabel->setVisible(true);
     }
 
 
@@ -263,43 +266,43 @@ void Carsell::on_submitRegistrationButton_clicked()
 
 void Carsell::on_sellCarButton_clicked()
 {
-//    int sPreis, sMileage;
+    //    int sPreis, sMileage;
     QString sMarke
-//            , sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc
+            //            , sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc
             ;
 
-     sellCar();
-     if(sMarke != "Choose a Brand"){
-    QString sMarke = "Choose a Brand";
-    QString sFarbe= "Choose a Color";
-    QString sKraftstoff= "Choose a Type";
+    bool inserted = sellCar();
+    if(inserted){
+        QString sMarke = "Choose a Brand";
+        QString sFarbe= "Choose a Color";
+        QString sKraftstoff= "Choose a Type";
 
-    ui->carBrandRegistrationComboBox->setCurrentText(sMarke);
-    ui->carColorRegistrationCombo->setCurrentText(sFarbe);
-    ui->carTypeRegistrationCombo->setCurrentText(sKraftstoff);
+        ui->carBrandRegistrationComboBox->setCurrentText(sMarke);
+        ui->carColorRegistrationCombo->setCurrentText(sFarbe);
+        ui->carTypeRegistrationCombo->setCurrentText(sKraftstoff);
 
-    if(sMarke== "Choose a Brand"){
+        //    if(sMarke== "Choose a Brand"){
         sMarke = "";
-        }
+        //        }
 
-    if(sFarbe == "Choose a Color") {
+        //    if(sFarbe == "Choose a Color") {
         sFarbe = "";
+        //    }
+        //    if(sKraftstoff == "Choose a Type") {
+        sKraftstoff = "";
+        //    }
+
+        ui->carMileageRegistrationLineEdit->clear();
+        ui->carPriceRegistrationLineEdit->clear();
+        ui->carPickPointRegistrationCityLineEdit->clear();
+        ui->carModelRegistrationLineEdit->clear();
+        ui->plainTextEdit->clear();
+
+        //  QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
+
+        ui->stackedWidget->setCurrentIndex(2);
+
     }
-    if(sKraftstoff == "Choose a Type") {
-       sKraftstoff = "";
-    }
-
-    ui->carMileageRegistrationLineEdit->clear();
-    ui->carPriceRegistrationLineEdit->clear();
-    ui->carPickPointRegistrationCityLineEdit->clear();
-    ui->carModelRegistrationLineEdit->clear();
-    ui->plainTextEdit->clear();
-
-  QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
-
-          ui->stackedWidget->setCurrentIndex(2);
-
-   }
 }
 
 void Carsell::loadSearchFacilities()
@@ -335,7 +338,7 @@ void Carsell::loadSearchFacilities()
 
 void Carsell::on_goBack_Button_clicked()
 {
-   ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 
@@ -359,12 +362,12 @@ void Carsell::on_DeleteButton_clicked()
 void Carsell::on_editButton_clicked()
 {
     editMode = true;
-//    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+    //    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
 
-     ui->stackedWidget->setCurrentIndex(4);
-     auto editCar = DBConnector::getCarById(cId);
-     //std::tuple<int, QString, QString, QString, int, QString,        int,         QString, int,   QString,     bool>
-     //         (carId, marke,  modell,   farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested);
+    ui->stackedWidget->setCurrentIndex(4);
+    auto editCar = DBConnector::getCarById(cId);
+    //std::tuple<int, QString, QString, QString, int, QString,        int,         QString, int,   QString,     bool>
+    //         (carId, marke,  modell,   farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested);
     cBrand = std::get<1>(editCar);
     cModel = std::get<2>(editCar);
     cColor = std::get<3>(editCar);
@@ -374,8 +377,8 @@ void Carsell::on_editButton_clicked()
     mile = std::get<8>(editCar);
     mo = std::get<9>(editCar);
 
-//     int j=0;
-//     if(j==0){
+    //     int j=0;
+    //     if(j==0){
     ui->carBrandRegistrationComboBox->setCurrentText(cBrand);
     ui->carModelRegistrationLineEdit->setText(cModel);
     ui->carTypeRegistrationCombo->setCurrentText(cType);
@@ -388,51 +391,54 @@ void Carsell::on_editButton_clicked()
 
 
 
-//    bool work = DBConnector::insertCar(cBrand, cModel, cColor, cPrice, cType, NULL, userId, cCity, NULL, NULL);
-//    if(work) {
-//        ui->messageLabel->setText("Car edited");
-//    } else {
+    //    bool work = DBConnector::insertCar(cBrand, cModel, cColor, cPrice, cType, NULL, userId, cCity, NULL, NULL);
+    //    if(work) {
+    //        ui->messageLabel->setText("Car edited");
+    //    } else {
 
-//        ui->messageLabel->setText("Car not edited");
-//        qDebug() << "Car not edited";
-//    }
-//   }
+    //        ui->messageLabel->setText("Car not edited");
+    //        qDebug() << "Car not edited";
+    //    }
+    //   }
 
-//    bool worked = DBConnector::deleteCar(cId);
-//    if(worked) {
-//        delete it;
-//       }
+    //    bool worked = DBConnector::deleteCar(cId);
+    //    if(worked) {
+    //        delete it;
+    //       }
 
 }
 
 void Carsell::getCarS()
 {
     ui->listWidget->clear();
-     auto getCarByUserIds = DBConnector::getCarByUserId(userId);
+    ui->listEmptyLabel->setVisible(false);
+    auto getCarByUserIds = DBConnector::getCarByUserId(userId);
 
-      std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sl;
-      while (!getCarByUserIds.empty())
-       {
-         sl = getCarByUserIds.front();
-         getCarByUserIds.pop_front();
+    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sl;
+    if(getCarByUserIds.empty()) {
+        ui->listEmptyLabel->setVisible(true);
+    }
+    while (!getCarByUserIds.empty())
+    {
+        sl = getCarByUserIds.front();
+        getCarByUserIds.pop_front();
 
-         GalleryCardWidget *galleryCard = new GalleryCardWidget();
-         QListWidgetItem *item = new QListWidgetItem;
-         galleryCard->setting(std::get<0>(sl), std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl));
-         qDebug() << std::get<1>(sl);
-         item->setSizeHint(QSize(80,80));
-         ui->listWidget->setViewMode(QListWidget::ListMode);
-         ui->listWidget->addItem(item);
-         ui->listWidget->setItemWidget(item, galleryCard);
-      }
+        GalleryCardWidget *galleryCard = new GalleryCardWidget();
+        QListWidgetItem *item = new QListWidgetItem;
+        galleryCard->setting(std::get<0>(sl), std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl));
+        qDebug() << std::get<1>(sl);
+        item->setSizeHint(QSize(80,80));
+        ui->listWidget->setViewMode(QListWidget::ListMode);
+        ui->listWidget->addItem(item);
+        ui->listWidget->setItemWidget(item, galleryCard);
+    }
 
 }
 
 
 
-void Carsell::sellCar()
+bool Carsell::sellCar()
 {
-
     int sPreis, sMileage;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
     sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
@@ -447,23 +453,35 @@ void Carsell::sellCar()
 
     if(sMarke == "Choose a Brand") {
         qDebug() << "No Brand chosed";
+        QMessageBox::information(this,"Error", "No Brand chosed");
+
     } else if(sModell == "") {
         qDebug() << "No Model entered";
-    } else if(sFarbe == "Choose a Color") {
-        qDebug() << "No Color chosed";
+        QMessageBox::information(this,"Error", "No Model entered");
     } else if(sKraftstoff == "Choose a Type") {
         qDebug() << "No Type chosed";
-    } else if(sPreis == 0) {
-        qDebug() << "No Price entered";
-    } else if(sCity == "") {
-        qDebug() << "No City entered";
+        QMessageBox::information(this,"Error", "No Type chosed");
+    } else if(sFarbe == "Choose a Color") {
+        qDebug() << "No Color chosed";
+        QMessageBox::information(this,"Error", "No Color chosed");
     } else if(sMileage == 0) {
         qDebug() << "No Mileage entered";
+        QMessageBox::information(this,"Error", "No Mileage entered");
+    } else if(sCity == "") {
+        qDebug() << "No City entered";
+        QMessageBox::information(this,"Error", "No City entered");
+    } else if(sPreis == 0) {
+        qDebug() << "No Price entered";
+        QMessageBox::information(this,"Error", "No Price entered");
+    } else if(sDescription == "") {
+        qDebug() << "No Description entered";
+        QMessageBox::information(this,"Error", "No Description entered");
     } else {
         qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription;
         bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription);
         if(insert) {
             qDebug() << "Car uploaded";
+            QMessageBox::information(this,"Car uploaded", "Your car is now online.");
             if(editMode) {
                 QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
                 bool worked = DBConnector::deleteCar(cId);
@@ -472,10 +490,13 @@ void Carsell::sellCar()
                 }
                 editMode = false;
             }
+            return true;
         } else {
             qDebug() << "Upload failed";
+            QMessageBox::information(this,"Upload error", "Database connection failure.");
         }
-        }
+    }
+    return false;
 }
 
 void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
@@ -483,7 +504,7 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     CarCardWidget *wid = qobject_cast<CarCardWidget*>(ui->carAvailableListWidget->itemWidget(item));
     QString mo = wid->getCarDescrition();
     QString mi = wid->getCarBrand();
-//    int mile = wid->getCarMileage();
+    //    int mile = wid->getCarMileage();
     QString cit = wid->getCarCity();
     int mu = wid->getCarId();
     selectedCar *car = new selectedCar();
@@ -502,7 +523,7 @@ void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
     cType= wid->getCarType();
     //QString mo = wid->getCarDescrition();
     //int mile = wid->getCarMileage();
-   // QString cit= wid->getCarcity();
+    // QString cit= wid->getCarcity();
     bool requested = DBConnector::getRequestedFromCar(cId);
     if(requested) {
         ui->SellButton->setEnabled(true);
@@ -519,7 +540,7 @@ void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
 
 void Carsell::on_addCarImageButton_clicked()
 {
-   auto fileImage = QFileDialog::getOpenFileName(this,tr("Choose Image"), "/home/", tr("Image Files (*.png *.jpg *.bmp)"));
+    auto fileImage = QFileDialog::getOpenFileName(this,tr("Choose Image"), "/home/", tr("Image Files (*.png *.jpg *.bmp)"));
     if(!fileImage.isEmpty())
     {
         QImage imag ;

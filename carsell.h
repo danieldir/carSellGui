@@ -71,7 +71,7 @@ private slots:
 
     void getCarS();
 
-    void sellCar();
+    bool sellCar();
 
     void on_editButton_clicked();
 
