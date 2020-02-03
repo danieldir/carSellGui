@@ -33,17 +33,17 @@ Carsell::Carsell(QWidget *parent) :
     QPixmap pix(":/img/usedcar.jpg");
     ui->pixfoto->setPixmap(pix);
 
-    QPixmap icon1(":/img/icon1-left.png");
-    ui->icon1->setPixmap(icon1);
+//    QPixmap icon1(":/img/icon1-left.png");
+//    ui->icon1->setPixmap(icon1);
 
-    QPixmap icon2(":/img/icons8-right.png");
-    ui->icon2->setPixmap(icon2);
+//    QPixmap icon2(":/img/icons8-right.png");
+//    ui->icon2->setPixmap(icon2);
 
-    QPixmap icon3(":/img/icons8-right.png");
-    ui->icon3->setPixmap(icon3);
+//    QPixmap icon3(":/img/icons8-right.png");
+//    ui->icon3->setPixmap(icon3);
 
-    QPixmap icon4(":/img/iconCool.png");
-    ui->iconcool->setPixmap(icon4);
+//    QPixmap icon4(":/img/iconCool.png");
+//    ui->iconcool->setPixmap(icon4);
     
 
 }
