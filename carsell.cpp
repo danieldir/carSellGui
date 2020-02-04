@@ -182,8 +182,9 @@ void Carsell::on_actionGalery_triggered()
 void Carsell::on_searchButton_clicked()
 {
     ui->carAvailableListWidget->clear();
+    bool sDamaged;
     int sPreis = 0, sMileage = 0;
-    QString sMarke, sModell, sFarbe, sKraftstoff, sCity;
+    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sFirstReg;
 
 
     sPreis = ui->carPriceSearchLineEdit->text().toInt();
@@ -192,6 +193,15 @@ void Carsell::on_searchButton_clicked()
     sFarbe = ui->carColorSearchCombox->currentText();
     sKraftstoff = ui->carTypeSearchCombobox->currentText();
     sCity = ui->carPickPointSearchCityLineEdit->text();
+    sFirstReg = ui->carFirstRegLineEdit->text();
+
+    qDebug() << sFirstReg;
+
+    if(ui->damagedCheckBox->isChecked()) {
+        sDamaged = true;
+    } else {
+        sDamaged = false;
+    }
 
     if(ui->carMileRegistrationComboBox->currentText() != "Choose a Max Mileage")
     {
@@ -215,9 +225,9 @@ void Carsell::on_searchButton_clicked()
     }
 
 
-    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage;
-    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage);
-    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sCar;
+    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged;
+    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage, sFirstReg, sDamaged);
+    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sCar;
 
     while (!searchedCars.empty())
     {
@@ -428,7 +438,7 @@ void Carsell::getCarS()
     ui->listEmptyLabel->setVisible(false);
     auto getCarByUserIds = DBConnector::getCarByUserId(userId);
 
-    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> sl;
+    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sl;
     if(getCarByUserIds.empty()) {
         ui->listEmptyLabel->setVisible(true);
     }
@@ -453,8 +463,9 @@ void Carsell::getCarS()
 
 bool Carsell::sellCar()
 {
+    bool sDamaged;
     int sPreis, sMileage;
-    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, cutDesc;
+    QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, sFirstReg;
     sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
     sMarke = ui->carBrandRegistrationComboBox->currentText();
     sModell = ui->carModelRegistrationLineEdit->text();
@@ -463,7 +474,13 @@ bool Carsell::sellCar()
     sCity = ui->carPickPointRegistrationCityLineEdit->text();
     sMileage = ui->carMileageRegistrationLineEdit->text().toInt();
     sDescription = ui->plainTextEdit->toPlainText();
+    sFirstReg = ui->carFirstRegistrationLineEdit->text();
 
+    if(ui->damagedRadioButton->isChecked()) {
+        sDamaged = true;
+    } else {
+        sDamaged = false;
+    }
 
     if(sMarke == "Choose a Brand") {
         qDebug() << "No Brand chosed";
@@ -490,9 +507,12 @@ bool Carsell::sellCar()
     } else if(sDescription == "") {
         qDebug() << "No Description entered";
         QMessageBox::information(this,"Error", "No Description entered");
+    } else if(sFirstReg == "--") {
+        qDebug() << "No First Registration entered";
+        QMessageBox::information(this,"Error", "First registration not entered");
     } else {
-        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription;
-        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription);
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription << "\t" << sFirstReg << "\t" << sDamaged;
+        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription, sFirstReg, sDamaged);
         if(insert) {
             qDebug() << "Car uploaded";
             QMessageBox::information(this,"Car uploaded", "Your car is now online.");
@@ -606,7 +626,7 @@ void Carsell::on_deleteUserButton_clicked()
         qDebug() << "Yes was clicked";
         bool deleteCar, deleteUser;
         auto userCars = DBConnector::getCarByUserId(userId);
-        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool> userCar;
+        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> userCar;
 
         while (!userCars.empty())
         {

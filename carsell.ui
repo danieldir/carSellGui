@@ -770,171 +770,175 @@ border-color: rgb(114, 159, 207);</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QComboBox" name="carBrandRegistrationComboBox">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_25">
          <item>
-          <property name="text">
-           <string extracomment="choose a Model">Choose a Brand</string>
-          </property>
+          <widget class="QComboBox" name="carBrandRegistrationComboBox">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <item>
+            <property name="text">
+             <string extracomment="choose a Model">Choose a Brand</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Alfa Romeo</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Aston Martin</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Audi</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Bentley</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BMW</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Citroen</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Dacia</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Ferrari</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fiat</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Ford</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Honda</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Hyundai</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Jaguar</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Jeep</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Kia</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Lamborghini</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Land Rover</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Lexus</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Mazda</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Mercedes-Benz</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Mini</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Nissan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Peugeot</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Porsche</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Rolls-Royce</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Skoda</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Smart</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Toyota</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Volkswagen</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Volvo</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Other</string>
+            </property>
+           </item>
+          </widget>
          </item>
-         <item>
-          <property name="text">
-           <string>Alfa Romeo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Aston Martin</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Audi</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Bentley</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>BMW</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Citroen</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Dacia</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ferrari</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Fiat</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ford</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Honda</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Hyundai</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Jaguar</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Jeep</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Kia</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Lamborghini</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Land Rover</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Lexus</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mazda</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mercedes-Benz</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mini</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Nissan</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Peugeot</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Porsche</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Rolls-Royce</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Skoda</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Smart</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Toyota</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Volkswagen</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Volvo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Other</string>
-          </property>
-         </item>
-        </widget>
+        </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -958,103 +962,111 @@ border-color: rgb(114, 159, 207);</string>
         </layout>
        </item>
        <item>
-        <widget class="QComboBox" name="carTypeRegistrationCombo">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
          <item>
-          <property name="text">
-           <string>Choose a Type</string>
-          </property>
+          <widget class="QComboBox" name="carTypeRegistrationCombo">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>Choose a Type</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Petrol</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Diesel</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Electric</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Hybrid</string>
+            </property>
+           </item>
+          </widget>
          </item>
-         <item>
-          <property name="text">
-           <string>Petrol</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Diesel</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Electric</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Hybrid</string>
-          </property>
-         </item>
-        </widget>
+        </layout>
        </item>
        <item>
-        <widget class="QComboBox" name="carColorRegistrationCombo">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_24">
          <item>
-          <property name="text">
-           <string>Choose a Color</string>
-          </property>
+          <widget class="QComboBox" name="carColorRegistrationCombo">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>Choose a Color</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>White</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Grey</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Pink</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Gold</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Brown</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Other</string>
+            </property>
+           </item>
+          </widget>
          </item>
-         <item>
-          <property name="text">
-           <string>Black</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>White</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Blue</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Grey</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Red</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Yellow</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Green</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Pink</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Gold</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Brown</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Other</string>
-          </property>
-         </item>
-        </widget>
+        </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -1122,13 +1134,66 @@ border-color: rgb(114, 159, 207);</string>
          </item>
         </layout>
        </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <widget class="QLabel" name="label_20">
+           <property name="font">
+            <font>
+             <family>Ubuntu</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>First registration date</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carFirstRegistrationLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="inputMask">
+            <string>9999-99-99</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_20">
+         <item>
+          <widget class="QRadioButton" name="damagedRadioButton">
+           <property name="text">
+            <string>car demaged</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="notDamagedRadioButton">
+           <property name="text">
+            <string>car not damaged</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
      <widget class="QPushButton" name="sellCarButton">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>570</y>
+        <x>930</x>
+        <y>620</y>
         <width>161</width>
         <height>41</height>
        </rect>
@@ -1163,22 +1228,6 @@ border-color: rgb(114, 159, 207);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="carBrandImage">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>60</y>
-        <width>111</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>    brand Image</string>
       </property>
      </widget>
      <widget class="QPushButton" name="addCarImageButton">
@@ -1232,7 +1281,7 @@ border-color: rgb(114, 159, 207);</string>
      <widget class="QLabel" name="label_19">
       <property name="geometry">
        <rect>
-        <x>16</x>
+        <x>0</x>
         <y>0</y>
         <width>1241</width>
         <height>791</height>
@@ -1286,7 +1335,6 @@ background-color: rgb(233, 185, 110);</string>
      <zorder>label_19</zorder>
      <zorder>sellCarButton</zorder>
      <zorder>carIdentificationLabel</zorder>
-     <zorder>carBrandImage</zorder>
      <zorder>addCarImageButton</zorder>
      <zorder>plainTextEdit</zorder>
      <zorder>descriptionStatus</zorder>
@@ -1302,7 +1350,7 @@ background-color: rgb(233, 185, 110);</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>170</y>
+        <y>80</y>
         <width>301</width>
         <height>111</height>
        </rect>
@@ -1350,9 +1398,9 @@ background-color: rgb(255, 255, 255);</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>410</y>
-        <width>307</width>
-        <height>166</height>
+        <y>310</y>
+        <width>301</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1481,13 +1529,51 @@ background-color: rgba(204, 237, 210, 232);</string>
          </item>
         </layout>
        </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_27">
+         <item>
+          <widget class="QLabel" name="label_25">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>First Registration</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="carFirstRegLineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="inputMask">
+            <string>9999-99-99</string>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_26">
+         <item>
+          <widget class="QCheckBox" name="damagedCheckBox">
+           <property name="text">
+            <string>show cars with damage</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>300</y>
+        <y>200</y>
         <width>214</width>
         <height>102</height>
        </rect>
@@ -1571,22 +1657,6 @@ background-color: rgb(148, 211, 172);</string>
        <string>Search</string>
       </property>
      </widget>
-     <widget class="QLabel" name="carBrandImage_2">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>40</y>
-        <width>151</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>       brandImage</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="buyCarLabel">
       <property name="geometry">
        <rect>
@@ -1614,13 +1684,35 @@ background-color: rgba(239, 252, 239, 222);</string>
        </rect>
       </property>
      </widget>
+     <widget class="QLabel" name="searchLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>301</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bitstream Vera Serif</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>search criteria</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
      <zorder>buyCarLabel</zorder>
      <zorder>groupBox_4</zorder>
      <zorder>groupBox_5</zorder>
      <zorder>groupBox_6</zorder>
-     <zorder>carBrandImage_2</zorder>
      <zorder>carAvailableListWidget</zorder>
      <zorder>searchButton</zorder>
+     <zorder>searchLabel</zorder>
     </widget>
    </widget>
   </widget>
