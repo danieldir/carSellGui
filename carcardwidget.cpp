@@ -38,9 +38,6 @@ void CarCardWidget::setSetting(int car_id,QByteArray byteImage, QString car_bran
     ui->carPriceLabel->setText(car_price);
     ui->carLocationLabel->setText(carCity);
 
-    //Labels einfügen
-    //ui->carMileageLabel->setText(car_mileage);
-    //Insert Description here!
 }
 
 int CarCardWidget::getCarMileage()
