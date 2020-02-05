@@ -7,7 +7,8 @@ void DBConnector::connectToDB()
     db.setDatabaseName("pztczcJad0");
     db.setUserName("pztczcJad0");
     db.setPassword("F522g2piJ5");
-    if(db.open()) {
+    if(db.open())
+    {
         std::cout << "DB connected!" << std::endl;
     } else {
         std::cout << "DB not connected!" << std::endl;
@@ -281,15 +282,15 @@ bool DBConnector::getRequestedFromCar(const int CarId) {
     return req;
 }
 
-std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> > DBConnector::searchCar
-(QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid,  QString city, int mileage, QString firstReg, bool damaged)
+std::list<std::tuple<int, QString, QString, QString, int, QString, QByteArray, int, QString, int, QString, bool, QString, bool> > DBConnector::searchCar
+(QString marke, QString modell, QString farbe, int preis, QString kraftstoffart,QByteArray carByteImage, int verkaeuferid,  QString city, int mileage, QString firstReg, bool damaged)
 {
     int id = 0;
     QString description;
     bool requested = false;
     QString queryString = "SELECT * FROM Auto WHERE ";
     QSqlQuery query;
-    std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> > l;
+    std::list<std::tuple<int, QString, QString, QString, int, QString, QByteArray, int, QString, int, QString, bool, QString, bool> > l;
 
     qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested << "\t" << firstReg << "\t" << damaged;
 
@@ -363,6 +364,8 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString,
         farbe = query.value(3).toString();
         preis = query.value(4).toInt();
         kraftstoffart = query.value(5).toString();
+        carByteImage = query.value(6).toByteArray();
+        // qDebug() << carByteImage << "pas bien" ;
         verkaeuferid = query.value(7).toInt();
         city = query.value(8).toString();
         mileage = query.value(9).toInt();
@@ -370,8 +373,8 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString,
         requested = query.value(11).toBool();
         firstReg = query.value(12).toString();
         damaged = query.value(13).toBool();
-        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested << "\t" << firstReg << "\t" << damaged;
-        l.push_back(std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool>(id, marke, modell, farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested, firstReg, damaged));
+        qDebug() << id << "\t" << marke << "\t" << modell << "\t" << farbe << "\t" << preis << "\t" << kraftstoffart << "\t" <<  carByteImage << "\t" << verkaeuferid << "\t" << city << "\t" << mileage << "\t" << description << "\t" << requested << "\t" << firstReg << "\t" << damaged;
+        l.push_back(std::tuple<int, QString, QString, QString, int, QString,QByteArray, int, QString, int, QString, bool, QString, bool>(id, marke, modell, farbe, preis, kraftstoffart, carByteImage, verkaeuferid, city, mileage, description, requested, firstReg, damaged));
     }
     if(l.empty()) {
         qDebug() << "No Cars found";

@@ -8,20 +8,30 @@ CarCardWidget::CarCardWidget(QWidget *parent) :
     ui(new Ui::CarCardWidget)
 {
     ui->setupUi(this);
-    QPixmap carImage("://defaultImage.jpg");
-    ui->carImagePixmap->setPixmap(carImage.scaled(300,400,Qt::KeepAspectRatio));
+
+
 }
 
-void CarCardWidget::setSetting(int car_id, QString car_brand, QString car_modell, QString car_type, int price, QString car_city, int mileage, QString car_description)
+void CarCardWidget::setSetting(int car_id,QByteArray byteImage, QString car_brand, QString car_modell, QString car_type, int price, QString car_city, int mileage, QString car_description)
 {
     QString car_price = QString::number(price);
     QString car_mileage = QString::number(mileage);
+    QPixmap carImage = QPixmap();
+    QPixmap defaultImage("://defaultImage.jpg");
     description = car_description;
     carBrand = car_brand;
     carId = car_id;
     carCity= car_city;
     carMileage= mileage;
-
+    carImage.loadFromData(byteImage);
+    if(byteImage != "" ) // display default Image if the current car don't get Image
+    {
+        ui->carImagePixmap->setPixmap(carImage.scaled(300,400,Qt::KeepAspectRatio));
+    }
+    else
+    {
+        ui->carImagePixmap->setPixmap(defaultImage.scaled(300,400,Qt::KeepAspectRatio));
+    }
     ui->carBrandLabel->setText(carBrand);
     ui->CarModelLabel->setText(car_modell);
     ui->carTypeLabel->setText(car_type);

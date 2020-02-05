@@ -125,6 +125,9 @@
            <property name="styleSheet">
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
+           <property name="inputMask">
+            <string>pipo</string>
+           </property>
            <property name="readOnly">
             <bool>false</bool>
            </property>
@@ -150,13 +153,13 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="inputMask">
-            <string/>
+            <string>pipo</string>
            </property>
            <property name="text">
-            <string/>
+            <string>pipo</string>
            </property>
            <property name="maxLength">
-            <number>25</number>
+            <number>4</number>
            </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>

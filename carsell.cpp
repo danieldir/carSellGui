@@ -34,19 +34,6 @@ Carsell::Carsell(QWidget *parent) :
     QPixmap pix(":/img/usedcar.jpg");
     ui->pixfoto->setPixmap(pix);
 
-//    QPixmap icon1(":/img/icon1-left.png");
-//    ui->icon1->setPixmap(icon1);
-
-//    QPixmap icon2(":/img/icons8-right.png");
-//    ui->icon2->setPixmap(icon2);
-
-//    QPixmap icon3(":/img/icons8-right.png");
-//    ui->icon3->setPixmap(icon3);
-
-//    QPixmap icon4(":/img/iconCool.png");
-//    ui->iconcool->setPixmap(icon4);
-    
-
 }
 
 Carsell::~Carsell()
@@ -186,6 +173,7 @@ void Carsell::on_searchButton_clicked()
     bool sDamaged;
     int sPreis = 0, sMileage = 0;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sFirstReg;
+    QByteArray sCarImage;
     std::string stdFirstReg;
 
     sPreis = ui->carPriceSearchLineEdit->text().toInt();
@@ -228,19 +216,19 @@ void Carsell::on_searchButton_clicked()
     }
 
     if(regexMatch) {
-        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged;
-        auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage, sFirstReg, sDamaged);
-        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sCar;
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged<< "\t" << sCarImage;
+        auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, sCarImage, userId, sCity, sMileage, sFirstReg, sDamaged);
+        std::tuple<int, QString, QString, QString, int, QString, QByteArray, int, QString, int, QString, bool, QString, bool> sCar;
 
         while (!searchedCars.empty())
         {
             sCar = searchedCars.front();
             searchedCars.pop_front();
 
-            if(std::get<10>(sCar) == false) {
+            if(std::get<11>(sCar) == false) {
                 CarCardWidget *carCard = new CarCardWidget();
                 QListWidgetItem *item = new QListWidgetItem;
-                carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
+                carCard->setSetting(std::get<0>(sCar),std::get<6>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<8>(sCar), std::get<9>(sCar), std::get<10>(sCar));
                 item->setSizeHint(QSize(300,380));
 
                 ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
@@ -248,11 +236,13 @@ void Carsell::on_searchButton_clicked()
                 ui->carAvailableListWidget->setItemWidget(item, carCard);
             }
         }
+
     } else {
 
         qDebug() << "First Registration unrealistic";
         QMessageBox::information(this,"Error", "First registration is unrealistic");
     }
+
 }
 
 void Carsell::on_submitRegistrationButton_clicked()
@@ -409,8 +399,7 @@ void Carsell::on_editButton_clicked()
     mile = std::get<8>(editCar);
     mo = std::get<9>(editCar);
 
-    //     int j=0;
-    //     if(j==0){
+
     ui->carBrandRegistrationComboBox->setCurrentText(cBrand);
     ui->carModelRegistrationLineEdit->setText(cModel);
     ui->carTypeRegistrationCombo->setCurrentText(cType);
@@ -420,23 +409,6 @@ void Carsell::on_editButton_clicked()
     ui->carMileageRegistrationLineEdit->setText(QString::number(mile));
     ui->plainTextEdit->setPlainText(mo);
 
-
-
-
-    //    bool work = DBConnector::insertCar(cBrand, cModel, cColor, cPrice, cType, NULL, userId, cCity, NULL, NULL);
-    //    if(work) {
-    //        ui->messageLabel->setText("Car edited");
-    //    } else {
-
-    //        ui->messageLabel->setText("Car not edited");
-    //        qDebug() << "Car not edited";
-    //    }
-    //   }
-
-    //    bool worked = DBConnector::deleteCar(cId);
-    //    if(worked) {
-    //        delete it;
-    //       }
 
 }
 
@@ -474,7 +446,10 @@ bool Carsell::sellCar()
     bool sDamaged;
     int sPreis, sMileage;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, sFirstReg;
+    QImage currentImage;
+    QByteArray bytes;
     std::string stdFirstReg;
+    currentImage = ui->carImagePixmap->pixmap()->toImage();
     sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
     sMarke = ui->carBrandRegistrationComboBox->currentText();
     sModell = ui->carModelRegistrationLineEdit->text();
@@ -486,11 +461,17 @@ bool Carsell::sellCar()
     sFirstReg = ui->carFirstRegistrationLineEdit->text();
     stdFirstReg = sFirstReg.toStdString();
 
+    //convert Image To Byte
+    QBuffer buffer(&bytes);
+    buffer.open(QIODevice::WriteOnly);
+    currentImage.save(&buffer, "PNG");
+
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
     auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
     qDebug() << "Regex Match: " << regexMatch;
 
-    if(ui->damagedRadioButton->isChecked()) {
+    if(ui->damagedRadioButton->isChecked())
+    {
         sDamaged = true;
     } else {
         sDamaged = false;
@@ -526,22 +507,28 @@ bool Carsell::sellCar()
     } else if(!regexMatch) {
         qDebug() << "First Registration unrealistic";
         QMessageBox::information(this,"Error", "First registration is unrealistic");
-    } else {
+    } else
+    {
         qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription << "\t" << sFirstReg << "\t" << sDamaged;
-        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription, sFirstReg, sDamaged);
-        if(insert) {
+        bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, bytes, userId, sCity, sMileage, sDescription, sFirstReg, sDamaged);
+        if(insert)
+        {
             qDebug() << "Car uploaded";
             QMessageBox::information(this,"Car uploaded", "Your car is now online.");
-            if(editMode) {
+            if(editMode)
+            {
                 QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
                 bool worked = DBConnector::deleteCar(cId);
-                if(worked) {
+                if(worked)
+                {
                     delete it;
                 }
                 editMode = false;
             }
             return true;
-        } else {
+        }
+        else
+        {
             qDebug() << "Upload failed";
             QMessageBox::information(this,"Upload error", "Database connection failure.");
         }
@@ -554,7 +541,6 @@ void Carsell::on_carAvailableListWidget_itemClicked(QListWidgetItem *item)
     CarCardWidget *wid = qobject_cast<CarCardWidget*>(ui->carAvailableListWidget->itemWidget(item));
     QString mo = wid->getCarDescrition();
     QString mi = wid->getCarBrand();
-    //    int mile = wid->getCarMileage();
     QString cit = wid->getCarCity();
     int mu = wid->getCarId();
     selectedCar *car = new selectedCar();
@@ -571,9 +557,6 @@ void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
     cModel= wid->getCarModel();
     cBrand= wid->getCarBrand();
     cType= wid->getCarType();
-    //QString mo = wid->getCarDescrition();
-    //int mile = wid->getCarMileage();
-    // QString cit= wid->getCarcity();
     bool requested = DBConnector::getRequestedFromCar(cId);
     if(requested) {
         ui->SellButton->setEnabled(true);
@@ -604,7 +587,7 @@ void Carsell::on_addCarImageButton_clicked()
     }
     else
     {
-
+        return;
     }
 
 }

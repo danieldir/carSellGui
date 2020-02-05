@@ -31,8 +31,8 @@ public:
     static bool setRequestedFromCar(const int CarId, const bool requested);
     static bool getRequestedFromCar(const int CarId);
 
-    static std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> > searchCar
-        (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid, QString city, int mileage, QString firstReg, bool damaged);
+    static std::list<std::tuple<int, QString, QString, QString, int, QString, QByteArray,int, QString, int, QString, bool, QString, bool> > searchCar
+        (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, QByteArray carByteImage, int verkaeuferid, QString city, int mileage, QString firstReg, bool damaged);
 };
 
 #endif // DBCONNECTOR_H

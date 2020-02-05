@@ -13,7 +13,7 @@ class CarCardWidget : public QWidget
     Q_OBJECT
 
 public:
-    void setSetting(int,QString,QString,QString,int,QString,int,QString);
+    void setSetting(int,QByteArray,QString,QString,QString,int,QString,int,QString);
     QString getCarDescrition();
     QString getCarBrand();
     int getCarId();
