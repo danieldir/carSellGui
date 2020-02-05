@@ -195,11 +195,15 @@ void Carsell::on_searchButton_clicked()
     sKraftstoff = ui->carTypeSearchCombobox->currentText();
     sCity = ui->carPickPointSearchCityLineEdit->text();
     sFirstReg = ui->carFirstRegLineEdit->text();
-
+    stdFirstReg = sFirstReg.toStdString();
+    bool regexMatch;
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
-    auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
-    qDebug() << "Regex Match: " << regexMatch;
-
+    if(sFirstReg =="--"){
+        regexMatch = true;
+    } else {
+        regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
+        qDebug() << "Regex Match: " << regexMatch;
+    }
     if(ui->damagedCheckBox->isChecked()) {
         sDamaged = true;
     } else {
@@ -485,11 +489,14 @@ bool Carsell::sellCar()
     sDescription = ui->plainTextEdit->toPlainText();
     sFirstReg = ui->carFirstRegistrationLineEdit->text();
     stdFirstReg = sFirstReg.toStdString();
-
+    bool regexMatch;
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
-    auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
-    qDebug() << "Regex Match: " << regexMatch;
-
+    if(sFirstReg =="--"){
+        regexMatch = true;
+    } else {
+        regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
+        qDebug() << "Regex Match: " << regexMatch;
+    }
     if(ui->damagedRadioButton->isChecked()) {
         sDamaged = true;
     } else {
