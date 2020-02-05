@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -190,9 +190,9 @@
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>410</x>
         <y>100</y>
-        <width>411</width>
+        <width>421</width>
         <height>521</height>
        </rect>
       </property>
@@ -207,11 +207,11 @@
         <widget class="QLabel" name="label_13">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(138, 226, 52);
+font: 75 26pt &quot;URW Bookman L&quot;;
 </string>
          </property>
          <property name="text">
-          <string>       Account identification</string>
+          <string> Account Identification</string>
          </property>
         </widget>
        </item>
