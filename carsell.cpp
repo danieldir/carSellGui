@@ -25,6 +25,33 @@ Carsell::Carsell(QWidget *parent) :
 
     ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
 
+
+    ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
+    ui->carBrandRegistrationComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
+    ui->carColorRegistrationCombo->setStyleSheet("QComboBox{ background-color : white; color : black; }");
+    ui->carTypeRegistrationCombo->setStyleSheet("QComboBox { background-color : white; color : black; }");
+
+    ui->carBrandSearchComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
+    ui->carColorSearchCombox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
+    ui->carModelSearchComboBox->setStyleSheet("QComboBox { background-color : white; color : black; }");
+    ui->carTypeSearchCombobox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
+    ui->carMileRegistrationComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
+
+    ui->groupBox_2->setStyleSheet("QGroupBox{ background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #eef, stop: 1 #ccf); border: 3px solid gray; border-radius: 40px;  }");
+    ui->userNameRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
+    ui->goBack_Button->setStyleSheet("QPushButton {color: white; background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);border-width: 1px; border-color: #339; border-style: solid; border-radius: 7; padding: 3px; font-size: 15px; padding-left: 5px;  padding-right: 5px; min-width: 50px; max-width: 50px; min-height: 13px; max-height: 13px; }");
+    ui->submitRegistrationButton->setStyleSheet("QPushButton {color: white; background-color: orange; border-width: 1px; border-color: #339; border-style: solid; border-radius: 7; padding: 3px; font-size: 15px; padding-left: 5px;  padding-right: 5px; min-width: 50px; max-width: 50px; min-height: 13px; max-height: 13px; }");
+    ui->passwordRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
+    ui->repeatPasswordRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
+    ui->label_9->setStyleSheet("QLabel{ background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #eef, stop: 1 #ccf);font-weight: bold; font-size: 15px; }");
+    ui->label_10->setStyleSheet("QLabel{ background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #eef, stop: 1 #ccf);font-weight: bold; font-size: 15px; }");
+    ui->label_11->setStyleSheet("QLabel{ background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #eef, stop: 1 #ccf);font-weight: bold; font-size: 15px; }");
+
+//    QPixmap galleryImage("://defaultImage.jpg");
+//    ui->label_13->setPixmap(galleryImage.scaled(100,300,Qt::KeepAspectRatio));
+    ui->label_13->setStyleSheet("QLabel{ background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #eef, stop: 1 #ccf); font: 75 26pt URW Bookman L; }");
+
+
     loadSearchFacilities();
 
     ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
@@ -183,11 +210,15 @@ void Carsell::on_searchButton_clicked()
     sKraftstoff = ui->carTypeSearchCombobox->currentText();
     sCity = ui->carPickPointSearchCityLineEdit->text();
     sFirstReg = ui->carFirstRegLineEdit->text();
-
+    stdFirstReg = sFirstReg.toStdString();
+    bool regexMatch;
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
-    auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
-    qDebug() << "Regex Match: " << regexMatch;
-
+    if(sFirstReg =="--"){
+        regexMatch = true;
+    } else {
+        regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
+        qDebug() << "Regex Match: " << regexMatch;
+    }
     if(ui->damagedCheckBox->isChecked()) {
         sDamaged = true;
     } else {
@@ -216,19 +247,19 @@ void Carsell::on_searchButton_clicked()
     }
 
     if(regexMatch) {
-        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged<< "\t" << sCarImage;
-        auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, sCarImage, userId, sCity, sMileage, sFirstReg, sDamaged);
-        std::tuple<int, QString, QString, QString, int, QString, QByteArray, int, QString, int, QString, bool, QString, bool> sCar;
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged;
+        auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage, sFirstReg, sDamaged);
+        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sCar;
 
         while (!searchedCars.empty())
         {
             sCar = searchedCars.front();
             searchedCars.pop_front();
 
-            if(std::get<11>(sCar) == false) {
+            if(std::get<10>(sCar) == false) {
                 CarCardWidget *carCard = new CarCardWidget();
                 QListWidgetItem *item = new QListWidgetItem;
-                carCard->setSetting(std::get<0>(sCar),std::get<6>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<8>(sCar), std::get<9>(sCar), std::get<10>(sCar));
+                carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
                 item->setSizeHint(QSize(300,380));
 
                 ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
@@ -467,11 +498,13 @@ bool Carsell::sellCar()
     currentImage.save(&buffer, "PNG");
 
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
-    auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
-    qDebug() << "Regex Match: " << regexMatch;
-
-    if(ui->damagedRadioButton->isChecked())
-    {
+    if(sFirstReg =="--"){
+        regexMatch = true;
+    } else {
+        regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
+        qDebug() << "Regex Match: " << regexMatch;
+    }
+    if(ui->damagedRadioButton->isChecked()) {
         sDamaged = true;
     } else {
         sDamaged = false;
