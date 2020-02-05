@@ -6,6 +6,7 @@
 #include "carcardwidget.h"
 #include "gallerycardwidget.h"
 #include "QFileDialog"
+#include <regex>
 
 
 Carsell::Carsell(QWidget *parent) :
@@ -185,7 +186,7 @@ void Carsell::on_searchButton_clicked()
     bool sDamaged;
     int sPreis = 0, sMileage = 0;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sFirstReg;
-
+    std::string stdFirstReg;
 
     sPreis = ui->carPriceSearchLineEdit->text().toInt();
     sMarke = ui->carBrandSearchComboBox->currentText();
@@ -195,7 +196,9 @@ void Carsell::on_searchButton_clicked()
     sCity = ui->carPickPointSearchCityLineEdit->text();
     sFirstReg = ui->carFirstRegLineEdit->text();
 
-    qDebug() << sFirstReg;
+    const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
+    auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
+    qDebug() << "Regex Match: " << regexMatch;
 
     if(ui->damagedCheckBox->isChecked()) {
         sDamaged = true;
@@ -224,26 +227,31 @@ void Carsell::on_searchButton_clicked()
         sKraftstoff = "";
     }
 
+    if(regexMatch) {
+        qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged;
+        auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage, sFirstReg, sDamaged);
+        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sCar;
 
-    qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff << "\t" << sCity << "\t" << sMileage << "\t" << sFirstReg << "\t" << sDamaged;
-    auto searchedCars = DBConnector::searchCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, userId, sCity, sMileage, sFirstReg, sDamaged);
-    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sCar;
+        while (!searchedCars.empty())
+        {
+            sCar = searchedCars.front();
+            searchedCars.pop_front();
 
-    while (!searchedCars.empty())
-    {
-        sCar = searchedCars.front();
-        searchedCars.pop_front();
+            if(std::get<10>(sCar) == false) {
+                CarCardWidget *carCard = new CarCardWidget();
+                QListWidgetItem *item = new QListWidgetItem;
+                carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
+                item->setSizeHint(QSize(300,380));
 
-        if(std::get<10>(sCar) == false) {
-            CarCardWidget *carCard = new CarCardWidget();
-            QListWidgetItem *item = new QListWidgetItem;
-            carCard->setSetting(std::get<0>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<7>(sCar), std::get<8>(sCar), std::get<9>(sCar));
-            item->setSizeHint(QSize(300,380));
-
-            ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
-            ui->carAvailableListWidget->addItem(item);
-            ui->carAvailableListWidget->setItemWidget(item, carCard);
+                ui->carAvailableListWidget->setViewMode(QListWidget::IconMode);
+                ui->carAvailableListWidget->addItem(item);
+                ui->carAvailableListWidget->setItemWidget(item, carCard);
+            }
         }
+    } else {
+
+        qDebug() << "First Registration unrealistic";
+        QMessageBox::information(this,"Error", "First registration is unrealistic");
     }
 }
 
@@ -466,6 +474,7 @@ bool Carsell::sellCar()
     bool sDamaged;
     int sPreis, sMileage;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, sFirstReg;
+    std::string stdFirstReg;
     sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
     sMarke = ui->carBrandRegistrationComboBox->currentText();
     sModell = ui->carModelRegistrationLineEdit->text();
@@ -475,6 +484,11 @@ bool Carsell::sellCar()
     sMileage = ui->carMileageRegistrationLineEdit->text().toInt();
     sDescription = ui->plainTextEdit->toPlainText();
     sFirstReg = ui->carFirstRegistrationLineEdit->text();
+    stdFirstReg = sFirstReg.toStdString();
+
+    const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
+    auto regexMatch = std::regex_match(stdFirstReg, sellCarFirstReg);
+    qDebug() << "Regex Match: " << regexMatch;
 
     if(ui->damagedRadioButton->isChecked()) {
         sDamaged = true;
@@ -485,7 +499,6 @@ bool Carsell::sellCar()
     if(sMarke == "Choose a Brand") {
         qDebug() << "No Brand chosed";
         QMessageBox::information(this,"Error", "No Brand chosed");
-
     } else if(sModell == "") {
         qDebug() << "No Model entered";
         QMessageBox::information(this,"Error", "No Model entered");
@@ -510,6 +523,9 @@ bool Carsell::sellCar()
     } else if(sFirstReg == "--") {
         qDebug() << "No First Registration entered";
         QMessageBox::information(this,"Error", "First registration not entered");
+    } else if(!regexMatch) {
+        qDebug() << "First Registration unrealistic";
+        QMessageBox::information(this,"Error", "First registration is unrealistic");
     } else {
         qDebug() << sMarke << "\t" << sModell << "\t" << sFarbe << "\t" << sPreis << "\t" << sKraftstoff<< "\t" << userId<< "\t" << sCity << "\t" << sMileage << "\t" << sDescription << "\t" << sFirstReg << "\t" << sDamaged;
         bool insert = DBConnector::insertCar(sMarke, sModell, sFarbe, sPreis, sKraftstoff, NULL, userId, sCity, sMileage, sDescription, sFirstReg, sDamaged);

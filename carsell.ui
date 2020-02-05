@@ -1147,7 +1147,7 @@ border-color: rgb(114, 159, 207);</string>
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>First registration date</string>
+            <string>                     First registration date                     </string>
            </property>
           </widget>
          </item>
@@ -1537,7 +1537,7 @@ background-color: rgba(204, 237, 210, 232);</string>
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>First Registration</string>
+            <string>         First Registration         </string>
            </property>
           </widget>
          </item>
@@ -1548,6 +1548,9 @@ background-color: rgba(204, 237, 210, 232);</string>
            </property>
            <property name="inputMask">
             <string>9999-99-99</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
            <property name="readOnly">
             <bool>false</bool>
