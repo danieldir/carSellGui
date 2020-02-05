@@ -336,7 +336,7 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString,
     }
 
     if(firstReg != "--") {
-        queryString.append("AND firstRegistration >= :firstReg");
+        queryString.append("AND firstRegistration >= :firstReg ");
     }
 
     if(!damaged) {
