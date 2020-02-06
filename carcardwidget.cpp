@@ -18,11 +18,14 @@ void CarCardWidget::setSetting(int car_id,QByteArray byteImage, QString car_bran
     QString car_mileage = QString::number(mileage);
     QPixmap carImage = QPixmap();
     QPixmap defaultImage("://defaultImage.jpg");
+
+
     description = car_description;
     carBrand = car_brand;
     carId = car_id;
     carCity= car_city;
     carMileage= mileage;
+
     carImage.loadFromData(byteImage);
     if(byteImage != "" ) // display default Image if the current car don't get Image
     {

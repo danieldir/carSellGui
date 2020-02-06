@@ -23,7 +23,7 @@ public:
     static std::pair<QString, QString> getUserById(const int id);
     static QString getHashByUsername(const QString username);
     static bool insertUser(const QString username, const QString password);
-    static bool insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart, const QString bild,
+    static bool insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart,  const QByteArray bild,
                           const int verkaeuferid, const QString city, const int mileage, const QString description, const QString firstReg, const bool damaged);
     static int getNewId(const QString table);
     static bool deleteUser(const int idUser);

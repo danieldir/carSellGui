@@ -47,8 +47,6 @@ Carsell::Carsell(QWidget *parent) :
     ui->label_10->setStyleSheet("QLabel{background-color: rgb(186, 189, 182);font-weight: bold; font-size: 15px; }");
     ui->label_11->setStyleSheet("QLabel{background-color: rgb(186, 189, 182);font-weight: bold; font-size: 15px; }");
 
-//    QPixmap galleryImage("://defaultImage.jpg");
-//    ui->label_13->setPixmap(galleryImage.scaled(100,300,Qt::KeepAspectRatio));
     ui->label_13->setStyleSheet("QLabel{ background-color: rgb(186, 189, 182); font: 75 26pt URW Bookman L; }");
 
 // background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #eef, stop: 1 #ccf);
@@ -256,7 +254,7 @@ void Carsell::on_searchButton_clicked()
             sCar = searchedCars.front();
             searchedCars.pop_front();
 
-            if(std::get<10>(sCar) == false) {
+            if(std::get<11>(sCar) == false) {
                 CarCardWidget *carCard = new CarCardWidget();
                 QListWidgetItem *item = new QListWidgetItem;
                 carCard->setSetting(std::get<0>(sCar), std::get<6>(sCar), std::get<1>(sCar), std::get<2>(sCar), std::get<5>(sCar), std::get<4>(sCar), std::get<8>(sCar), std::get<9>(sCar), std::get<10>(sCar));
@@ -477,10 +475,12 @@ bool Carsell::sellCar()
     bool sDamaged;
     int sPreis, sMileage;
     QString sMarke, sModell, sFarbe, sKraftstoff, sCity, sDescription, sFirstReg;
-    QImage currentImage;
+    const QPixmap *currentImage;
     QByteArray bytes;
+    bool regexMatch;
     std::string stdFirstReg;
-    currentImage = ui->carImagePixmap->pixmap()->toImage();
+
+    currentImage = ui->carImagePixmap->pixmap();
     sPreis = ui->carPriceRegistrationLineEdit->text().toInt();
     sMarke = ui->carBrandRegistrationComboBox->currentText();
     sModell = ui->carModelRegistrationLineEdit->text();
@@ -492,10 +492,12 @@ bool Carsell::sellCar()
     sFirstReg = ui->carFirstRegistrationLineEdit->text();
     stdFirstReg = sFirstReg.toStdString();
 
+
     //convert Image To Byte
     QBuffer buffer(&bytes);
     buffer.open(QIODevice::WriteOnly);
-    currentImage.save(&buffer, "PNG");
+    currentImage->save(&buffer, "JPG");
+
 
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
     if(sFirstReg =="--"){
@@ -606,7 +608,7 @@ void Carsell::on_listWidget_itemClicked(QListWidgetItem *item)
 
 void Carsell::on_addCarImageButton_clicked()
 {
-    auto fileImage = QFileDialog::getOpenFileName(this,tr("Choose Image"), "/home/", tr("Image Files (*.png *.jpg *.bmp)"));
+    auto fileImage = QFileDialog::getOpenFileName(this,tr("Choose Image"), "/home/", tr("Image Files (*.jpg)"));
     if(!fileImage.isEmpty())
     {
         QImage imag ;

@@ -137,9 +137,6 @@ std::tuple<int, QString, QString> DBConnector::getUserByUsername(const QString u
     id = query.value(0).toInt();
     hash = query.value(2).toString();
     return std::tuple<int, QString, QString> (id, username, hash);
-
-
-
 }
 
 std::list<std::tuple<int, int, int, int> > DBConnector::getAllSales() {
@@ -204,7 +201,7 @@ bool DBConnector::insertUser(const QString username, const QString password) {
 }
 
 bool DBConnector::insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart,
-                            const QString bild, const int verkaeuferid, const QString city, const int mileage, const QString description, const QString firstReg, const bool damaged) {
+                            const QByteArray bild, const int verkaeuferid, const QString city, const int mileage, const QString description, const QString firstReg, const bool damaged) {
     QSqlQuery query;
     int id = getNewId("Auto");
 

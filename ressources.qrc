@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>img/icon1-left.png</file>
-        <file>img/iconcool.png</file>
         <file>img/usedcar.jpg</file>
-        <file>defaultImage.jpg</file>
         <file>img/backgroung.jpg</file>
+        <file>defaultImage.jpg</file>
     </qresource>
 </RCC>
