@@ -20,7 +20,6 @@ Carsell::Carsell(QWidget *parent) :
     ui->actionSell->setEnabled(false);
     ui->actionDelete_Account->setEnabled(false);
     ui->actionGalery->setEnabled(false);
-    ui->actionParameter->setEnabled(false);
     ui->actionHome->setEnabled(false);
 
     ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
@@ -91,10 +90,8 @@ void Carsell::on_loginButton_clicked()
         ui->actionSell->setEnabled(true);
         ui->actionDelete_Account->setEnabled(true);
         ui->actionGalery->setEnabled(true);
-        ui->actionParameter->setEnabled(true);
         ui->actionHome->setEnabled(true);
         ui->actionLogin->setEnabled(false);
-        ui->actionSignUp->setEnabled(false);
     }
     else if( username.isEmpty() )
     {
@@ -145,8 +142,6 @@ void Carsell::on_toBuyCarPageButton_clicked()
 void Carsell::on_toSellCarPageButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
-    //    int k=0;
-
 }
 
 void Carsell::on_toOwnerGalleryCars_clicked()
@@ -163,6 +158,15 @@ void Carsell::on_toOwnerGalleryCars_clicked()
     }
 }
 
+void Carsell::on_actionSell_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+void Carsell::on_actionAbout_Carsell_triggered()
+{
+    QMessageBox::about(this,"Carsell","Carsell V1.03 First Release on 2020/03/01");
+}
 
 void Carsell::on_actionHome_triggered()
 {
@@ -191,6 +195,12 @@ void Carsell::on_actionGalery_triggered()
         getCarS();
     }
 }
+
+void Carsell::on_actionHelps_triggered()
+{
+    QMessageBox::information(this,"Help","find Help on our webPage Carsell.com/Helps","Thanks");
+}
+
 
 void Carsell::on_searchButton_clicked()
 {
@@ -469,8 +479,6 @@ void Carsell::getCarS()
     }
 
 }
-
-
 
 bool Carsell::sellCar()
 {

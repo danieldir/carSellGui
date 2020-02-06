@@ -3,5 +3,14 @@
         <file>img/usedcar.jpg</file>
         <file>img/backgroung.jpg</file>
         <file>defaultImage.jpg</file>
+        <file>img/Buy.png</file>
+        <file>img/Collections.png</file>
+        <file>img/Gallery.png</file>
+        <file>img/Home.png</file>
+        <file>img/Sell.png</file>
+        <file>img/exit.png</file>
+        <file>img/logout.png</file>
+        <file>img/Help.png</file>
+        <file>img/Carsell.png</file>
     </qresource>
 </RCC>

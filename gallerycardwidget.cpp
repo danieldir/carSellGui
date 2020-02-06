@@ -31,9 +31,6 @@ void GalleryCardWidget::setting(int carId, QString labelBranch, QString labelMod
      ui->labelId->setText(labelId);
      ui->labelId->setStyleSheet("QLabel  {  color : white; }");
      cId = carId;
-     cColor;//= carColor;
-     cCity;//= city;
-     car_description; //= descript;
   }
 int GalleryCardWidget::getCarPrice()
 {

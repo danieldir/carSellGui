@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -84,7 +84,7 @@
       <property name="geometry">
        <rect>
         <x>1070</x>
-        <y>350</y>
+        <y>660</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -1748,23 +1748,12 @@ background-color: rgba(239, 252, 239, 222);</string>
     <property name="title">
      <string>Carsell</string>
     </property>
-    <widget class="QMenu" name="menuChange_Language">
-     <property name="title">
-      <string>Change Language</string>
-     </property>
-     <addaction name="actionDeutsch"/>
-     <addaction name="separator"/>
-     <addaction name="actionAnglais"/>
-     <addaction name="separator"/>
-     <addaction name="actionFrancais"/>
-    </widget>
     <addaction name="actionHome"/>
     <addaction name="separator"/>
     <addaction name="actionSell"/>
     <addaction name="actionBuy"/>
     <addaction name="actionGalery"/>
     <addaction name="separator"/>
-    <addaction name="menuChange_Language"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -1776,7 +1765,6 @@ background-color: rgba(239, 252, 239, 222);</string>
     <addaction name="separator"/>
     <addaction name="actionLogout"/>
     <addaction name="separator"/>
-    <addaction name="actionParameter"/>
     <addaction name="separator"/>
     <addaction name="actionDelete_Account"/>
    </widget>
@@ -1808,18 +1796,15 @@ background-color: rgba(239, 252, 239, 222);</string>
    </attribute>
    <addaction name="actionHome"/>
    <addaction name="separator"/>
+   <addaction name="actionSell"/>
    <addaction name="actionBuy"/>
    <addaction name="separator"/>
    <addaction name="actionGalery"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionLogin">
    <property name="text">
     <string>Login</string>
-   </property>
-  </action>
-  <action name="actionSignUp">
-   <property name="text">
-    <string>SignUp</string>
    </property>
   </action>
   <action name="actionDelete_Account">
@@ -1828,41 +1813,37 @@ background-color: rgba(239, 252, 239, 222);</string>
    </property>
   </action>
   <action name="actionHelps">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/Help.png</normaloff>:/img/Help.png</iconset>
+   </property>
    <property name="text">
     <string>Helps</string>
    </property>
   </action>
-  <action name="actionAbout_Carsell">
-   <property name="text">
-    <string>About Carsell</string>
-   </property>
-  </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/exit.png</normaloff>:/img/exit.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionDeutsch">
-   <property name="text">
-    <string>Deutsch</string>
-   </property>
-  </action>
-  <action name="actionFrancais">
-   <property name="text">
-    <string>Francais</string>
-   </property>
-  </action>
-  <action name="actionAnglais">
-   <property name="text">
-    <string>Englisch    (default)</string>
-   </property>
-  </action>
   <action name="actionLogout">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/logout.png</normaloff>:/img/logout.png</iconset>
+   </property>
    <property name="text">
     <string>Sign Out</string>
    </property>
   </action>
   <action name="actionHome">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/Home.png</normaloff>:/img/Home.png</iconset>
+   </property>
    <property name="text">
     <string>Home</string>
    </property>
@@ -1871,29 +1852,45 @@ background-color: rgba(239, 252, 239, 222);</string>
    </property>
   </action>
   <action name="actionSell">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/Sell.png</normaloff>:/img/Sell.png</iconset>
+   </property>
    <property name="text">
     <string>Sell</string>
    </property>
   </action>
   <action name="actionBuy">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/Buy.png</normaloff>:/img/Buy.png</iconset>
+   </property>
    <property name="text">
     <string>Buy</string>
    </property>
    <property name="toolTip">
-    <string>Search a Car</string>
-   </property>
-  </action>
-  <action name="actionParameter">
-   <property name="text">
-    <string>Parameter</string>
+    <string>Buy a Car</string>
    </property>
   </action>
   <action name="actionGalery">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/Gallery.png</normaloff>:/img/Gallery.png</iconset>
+   </property>
    <property name="text">
     <string>Galery</string>
    </property>
    <property name="toolTip">
     <string>My Car Online</string>
+   </property>
+  </action>
+  <action name="actionAbout_Carsell">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/Carsell.png</normaloff>:/img/Carsell.png</iconset>
+   </property>
+   <property name="text">
+    <string>About Carsell</string>
    </property>
   </action>
  </widget>
