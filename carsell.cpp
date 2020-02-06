@@ -37,10 +37,10 @@ Carsell::Carsell(QWidget *parent) :
     ui->carTypeSearchCombobox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
     ui->carMileRegistrationComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
 
-    ui->groupBox_2->setStyleSheet("QGroupBox{background-color: rgb(186, 189, 182); border: 3px solid gray; border-radius: 40px;  }");
+//    ui->groupBox_2->setStyleSheet("QGroupBox{background-color: rgb(186, 189, 182); border: 3px solid gray; border-radius: 40px;  }");
     ui->userNameRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
-    ui->goBack_Button->setStyleSheet("QPushButton {color: white; background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);border-width: 1px; border-color: #339; border-style: solid; border-radius: 7; padding: 3px; font-size: 15px; padding-left: 5px;  padding-right: 5px; min-width: 50px; max-width: 50px; min-height: 13px; max-height: 13px; }");
-    ui->submitRegistrationButton->setStyleSheet("QPushButton {color: white; background-color: orange; border-width: 1px; border-color: #339; border-style: solid; border-radius: 7; padding: 3px; font-size: 15px; padding-left: 5px;  padding-right: 5px; min-width: 50px; max-width: 50px; min-height: 13px; max-height: 13px; }");
+//    ui->goBack_Button->setStyleSheet("QPushButton {color: white; background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);border-width: 1px; border-color: #339; border-style: solid; border-radius: 7; padding: 3px; font-size: 15px; padding-left: 5px;  padding-right: 5px; min-width: 50px; max-width: 50px; min-height: 13px; max-height: 13px; }");
+//    ui->submitRegistrationButton->setStyleSheet("QPushButton {color: white; background-color: orange; border-width: 1px; border-color: #339; border-style: solid; border-radius: 7; padding: 3px; font-size: 15px; padding-left: 5px;  padding-right: 5px; min-width: 50px; max-width: 50px; min-height: 13px; max-height: 13px; }");
     ui->passwordRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
     ui->repeatPasswordRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
     ui->label_9->setStyleSheet("QLabel{background-color: rgb(186, 189, 182);font-weight: bold; font-size: 15px; }");
@@ -348,6 +348,8 @@ void Carsell::on_sellCarButton_clicked()
         ui->carPickPointRegistrationCityLineEdit->clear();
         ui->carModelRegistrationLineEdit->clear();
         ui->plainTextEdit->clear();
+        ui->carFirstRegistrationLineEdit->clear();
+        ui->carImagePixmap->clear();
 
         //  QMessageBox::information(this,"Sell Car", "Angabe wurde bestätigen");
 
@@ -413,12 +415,10 @@ void Carsell::on_DeleteButton_clicked()
 void Carsell::on_editButton_clicked()
 {
     editMode = true;
-    //    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
 
     ui->stackedWidget->setCurrentIndex(4);
     auto editCar = DBConnector::getCarById(cId);
-    //std::tuple<int, QString, QString, QString, int, QString,        int,         QString, int,   QString,     bool>
-    //         (carId, marke,  modell,   farbe, preis, kraftstoffart, verkaeuferid, city, mileage, description, requested);
+
     cBrand = std::get<1>(editCar);
     cModel = std::get<2>(editCar);
     cColor = std::get<3>(editCar);
@@ -427,6 +427,7 @@ void Carsell::on_editButton_clicked()
     cit = std::get<7>(editCar);
     mile = std::get<8>(editCar);
     mo = std::get<9>(editCar);
+    cFirstReg = std::get<11>(editCar);
 
 
     ui->carBrandRegistrationComboBox->setCurrentText(cBrand);
@@ -437,6 +438,7 @@ void Carsell::on_editButton_clicked()
     ui->carPickPointRegistrationCityLineEdit->setText(cit);
     ui->carMileageRegistrationLineEdit->setText(QString::number(mile));
     ui->plainTextEdit->setPlainText(mo);
+    ui->carFirstRegistrationLineEdit->setText(cFirstReg);
 
 
 }
@@ -511,7 +513,7 @@ bool Carsell::sellCar()
     } else {
         sDamaged = false;
     }
-
+    //Error messages
     if(sMarke == "Choose a Brand") {
         qDebug() << "No Brand chosed";
         QMessageBox::information(this,"Error", "No Brand chosed");
