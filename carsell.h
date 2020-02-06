@@ -22,6 +22,7 @@ public:
     QString car_description;
     QString cBrand;
     QString cModel;
+    QString cFirstReg;
     int cPrice;
     QString labelPrice;
     //int cMileage;

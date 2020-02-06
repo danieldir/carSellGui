@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -126,7 +126,10 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="inputMask">
-            <string>pipo</string>
+            <string/>
+           </property>
+           <property name="text">
+            <string/>
            </property>
            <property name="readOnly">
             <bool>false</bool>
@@ -153,13 +156,13 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="inputMask">
-            <string>pipo</string>
+            <string/>
            </property>
            <property name="text">
-            <string>pipo</string>
+            <string/>
            </property>
            <property name="maxLength">
-            <number>4</number>
+            <number>32767</number>
            </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
@@ -1689,6 +1692,15 @@ background-color: rgba(239, 252, 239, 222);</string>
         <width>931</width>
         <height>731</height>
        </rect>
+      </property>
+      <property name="autoScrollMargin">
+       <number>16</number>
+      </property>
+      <property name="horizontalScrollMode">
+       <enum>QAbstractItemView::ScrollPerItem</enum>
+      </property>
+      <property name="batchSize">
+       <number>100</number>
       </property>
      </widget>
      <widget class="QLabel" name="searchLabel">
