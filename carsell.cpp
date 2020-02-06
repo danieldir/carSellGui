@@ -19,6 +19,7 @@ Carsell::Carsell(QWidget *parent) :
     // default Resource Images
     QPixmap defaultImage("://defaultImage.jpg");
     QPixmap pix(":/img/usedcar.jpg");
+    QPixmap carsellLogo(":/img/backgroung.jpg");
 
 
     // default Parameter on Carsell Launch
@@ -33,6 +34,7 @@ Carsell::Carsell(QWidget *parent) :
     ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
     ui->carMileageRegistrationLineEdit->setValidator(new QIntValidator(0, 500000, this));
     ui->pixfoto->setPixmap(pix);
+    ui->logoCarsell->setPixmap(carsellLogo.scaled(1300,1248,Qt::KeepAspectRatio));
 
     //defaul Design Colors
     ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
