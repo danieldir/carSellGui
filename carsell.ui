@@ -41,11 +41,11 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(223, 246, 240);</string>
+      <string notr="true"/>
      </property>
      <widget class="QLabel" name="identificationStatusLabel">
       <property name="geometry">
@@ -188,6 +188,23 @@
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="logoCarsell">
+      <property name="geometry">
+       <rect>
+        <x>-50</x>
+        <y>-50</y>
+        <width>1301</width>
+        <height>771</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>logoCarsell</zorder>
+     <zorder>identificationStatusLabel</zorder>
+     <zorder>signUpButton</zorder>
+     <zorder>groupBox</zorder>
     </widget>
     <widget class="QWidget" name="registrationPage">
      <property name="styleSheet">
