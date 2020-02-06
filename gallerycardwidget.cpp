@@ -7,16 +7,19 @@ GalleryCardWidget::GalleryCardWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     QPixmap galleryImage("://defaultImage.jpg");
-    ui->imageLabel->setPixmap(galleryImage.scaled(100,100,Qt::KeepAspectRatio));
+    ui->imageLabel->setPixmap(galleryImage.scaled(80,80,Qt::KeepAspectRatio));
 
 }
 
-void GalleryCardWidget::setting(int carId, QString labelBranch, QString labelModel, QString labelType, int Price)
+void GalleryCardWidget::setting(int carId, QString labelBranch, QString labelModel, QString labelType, int Price, QByteArray byteImage)
 
   {
      labelPrice= QString::number(Price);
      QString labelId = QString::number(carId);
      //QString mileage = QString::number(mileage);
+
+     QPixmap carImage = QPixmap();
+     QPixmap defaultImage("://defaultImage.jpg");
 
      cBrand = labelBranch;
      cModel =labelModel;
@@ -31,6 +34,16 @@ void GalleryCardWidget::setting(int carId, QString labelBranch, QString labelMod
      ui->labelId->setText(labelId);
      ui->labelId->setStyleSheet("QLabel  {  color : white; }");
      cId = carId;
+
+     carImage.loadFromData(byteImage);
+     if(byteImage != "" ) // display default Image if the current car don't get Image
+     {
+         ui->imageLabel->setPixmap(carImage.scaled(140,200,Qt::KeepAspectRatio));
+     }
+     else
+     {
+         ui->imageLabel->setPixmap(defaultImage.scaled(140,200,Qt::KeepAspectRatio));
+     }
   }
 int GalleryCardWidget::getCarPrice()
 {

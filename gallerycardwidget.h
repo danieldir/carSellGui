@@ -12,7 +12,7 @@ class GalleryCardWidget : public QWidget
     Q_OBJECT
 
 public:
-    void setting(int, QString, QString, QString, int);
+    void setting(int, QString, QString, QString, int, QByteArray);
     int getCarId();
     QString getCarModel();
     QString getCarType();

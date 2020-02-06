@@ -457,7 +457,7 @@ void Carsell::getCarS()
     ui->listEmptyLabel->setVisible(false);
     auto getCarByUserIds = DBConnector::getCarByUserId(userId);
 
-    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> sl;
+    std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool, QByteArray> sl;
     if(getCarByUserIds.empty()) {
         ui->listEmptyLabel->setVisible(true);
     }
@@ -468,7 +468,7 @@ void Carsell::getCarS()
 
         GalleryCardWidget *galleryCard = new GalleryCardWidget();
         QListWidgetItem *item = new QListWidgetItem;
-        galleryCard->setting(std::get<0>(sl), std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl));
+        galleryCard->setting(std::get<0>(sl), std::get<1>(sl), std::get<2>(sl), std::get<5>(sl), std::get<4>(sl), std::get<13>(sl));
         qDebug() << std::get<1>(sl);
         item->setSizeHint(QSize(80,80));
         ui->listWidget->setViewMode(QListWidget::ListMode);
@@ -667,7 +667,7 @@ void Carsell::on_deleteUserButton_clicked()
         qDebug() << "Yes was clicked";
         bool deleteCar, deleteUser;
         auto userCars = DBConnector::getCarByUserId(userId);
-        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> userCar;
+        std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool, QByteArray> userCar;
 
         while (!userCars.empty())
         {

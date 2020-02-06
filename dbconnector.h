@@ -14,7 +14,7 @@ class DBConnector
 public:
     static void connectToDB();
     static std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> getCarById(const int id);
-    static std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool> > getCarByUserId(const int userId);
+    static std::list<std::tuple<int, QString, QString, QString, int, QString, int, QString, int, QString, bool, QString, bool, QByteArray> > getCarByUserId(const int userId);
     static std::list<QString> getAllMarken();
     static std::list<QString> getAllModelle();
     static std::list<QString> getAllFarben();
