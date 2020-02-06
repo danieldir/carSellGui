@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1248</width>
-    <height>810</height>
+    <width>1280</width>
+    <height>805</height>
    </rect>
   </property>
   <property name="font">
@@ -83,8 +83,8 @@
      <widget class="QPushButton" name="signUpButton">
       <property name="geometry">
        <rect>
-        <x>820</x>
-        <y>470</y>
+        <x>1070</x>
+        <y>660</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -1754,7 +1754,7 @@ background-color: rgba(239, 252, 239, 222);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1248</width>
+     <width>1280</width>
      <height>22</height>
     </rect>
    </property>
