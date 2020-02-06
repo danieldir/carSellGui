@@ -41,7 +41,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -1240,10 +1240,10 @@ border-color: rgb(114, 159, 207);</string>
      <widget class="QPushButton" name="addCarImageButton">
       <property name="geometry">
        <rect>
-        <x>1120</x>
-        <y>200</y>
+        <x>1110</x>
+        <y>50</y>
         <width>89</width>
-        <height>25</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1258,7 +1258,7 @@ border-color: rgb(114, 159, 207);</string>
        <rect>
         <x>790</x>
         <y>300</y>
-        <width>431</width>
+        <width>411</width>
         <height>231</height>
        </rect>
       </property>
@@ -1323,22 +1323,6 @@ background-color: rgb(233, 185, 110);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="removeCarImageButton">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>240</y>
-        <width>89</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(64, 183, 191, 215);</string>
-      </property>
-      <property name="text">
-       <string>Remove</string>
-      </property>
-     </widget>
      <zorder>label_19</zorder>
      <zorder>sellCarButton</zorder>
      <zorder>carIdentificationLabel</zorder>
@@ -1347,7 +1331,6 @@ background-color: rgb(233, 185, 110);</string>
      <zorder>descriptionStatus</zorder>
      <zorder>groupBox_3</zorder>
      <zorder>carImagePixmap</zorder>
-     <zorder>removeCarImageButton</zorder>
     </widget>
     <widget class="QWidget" name="BuyCarPage">
      <property name="styleSheet">

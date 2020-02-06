@@ -15,44 +15,46 @@ Carsell::Carsell(QWidget *parent) :
 {
     DBConnector::connectToDB();
     ui->setupUi(this);
+
+    // default Resource Images
+    QPixmap defaultImage("://defaultImage.jpg");
+    QPixmap pix(":/img/usedcar.jpg");
+
+
+    // default Parameter on Carsell Launch
     ui->actionLogout->setEnabled(false);
     ui->actionBuy->setEnabled(false);
     ui->actionSell->setEnabled(false);
     ui->actionDelete_Account->setEnabled(false);
     ui->actionGalery->setEnabled(false);
     ui->actionHome->setEnabled(false);
+    ui->carImagePixmap->setPixmap(defaultImage.scaled(300,400,Qt::KeepAspectRatio));
+    ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+    ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
+    ui->carMileageRegistrationLineEdit->setValidator(new QIntValidator(0, 500000, this));
+    ui->pixfoto->setPixmap(pix);
 
+    //defaul Design Colors
     ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
-
-
     ui->listEmptyLabel->setStyleSheet("QLabel { background-color : white; color : black; }");
     ui->carBrandRegistrationComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
     ui->carColorRegistrationCombo->setStyleSheet("QComboBox{ background-color : white; color : black; }");
     ui->carTypeRegistrationCombo->setStyleSheet("QComboBox { background-color : white; color : black; }");
-
     ui->carBrandSearchComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
     ui->carColorSearchCombox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
     ui->carModelSearchComboBox->setStyleSheet("QComboBox { background-color : white; color : black; }");
     ui->carTypeSearchCombobox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
     ui->carMileRegistrationComboBox->setStyleSheet("QComboBox{ background-color : white; color : black; }");
-
     ui->userNameRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
     ui->passwordRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
     ui->repeatPasswordRegistrationLineEdit->setStyleSheet("QLineEdit {padding: 1px; border-style: solid;border: 2px solid gray; border-radius: 8px; background: white; }");
     ui->label_9->setStyleSheet("QLabel{background-color: rgb(186, 189, 182);font-weight: bold; font-size: 15px; }");
     ui->label_10->setStyleSheet("QLabel{background-color: rgb(186, 189, 182);font-weight: bold; font-size: 15px; }");
     ui->label_11->setStyleSheet("QLabel{background-color: rgb(186, 189, 182);font-weight: bold; font-size: 15px; }");
-
     ui->label_13->setStyleSheet("QLabel{ background-color: rgb(186, 189, 182); font: 75 26pt URW Bookman L; }");
 
     loadSearchFacilities();
 
-    ui->carPriceSearchLineEdit->setValidator(new QIntValidator(0, 1000000, this));
-    ui->carPriceRegistrationLineEdit->setValidator(new QIntValidator(0, 1000000, this));
-    ui->carMileageRegistrationLineEdit->setValidator(new QIntValidator(0, 500000, this));
-
-    QPixmap pix(":/img/usedcar.jpg");
-    ui->pixfoto->setPixmap(pix);
 
 }
 
@@ -503,7 +505,6 @@ bool Carsell::sellCar()
     QBuffer buffer(&bytes);
     buffer.open(QIODevice::WriteOnly);
     currentImage->save(&buffer, "JPG");
-
 
     const std::regex sellCarFirstReg("(19[5-9][0-9]|20([01][0-9]|20))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])");
     if(sFirstReg =="--"){
